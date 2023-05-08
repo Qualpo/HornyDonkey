@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctc3iuyrplg3g"
-path="res://.godot/imported/shopkeeper_buy.png-cdf180a216266893fbeabba8dc0e6005.ctex"
+uid="uid://dtdd56nyugp7e"
+path="res://.godot/imported/donkey_threat.png-86fc9f5cd13b2e05988c039ae8442167.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/objects/Shopkeeper Sprites/shopkeeper_buy.png"
-dest_files=["res://.godot/imported/shopkeeper_buy.png-cdf180a216266893fbeabba8dc0e6005.ctex"]
+source_file="res://textures/donkey_threat.png"
+dest_files=["res://.godot/imported/donkey_threat.png-86fc9f5cd13b2e05988c039ae8442167.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
