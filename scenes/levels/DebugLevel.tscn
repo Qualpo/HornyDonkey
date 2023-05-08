@@ -32,8 +32,8 @@ size = Vector3(50.2, 1, 31.6)
 material = SubResource("StandardMaterial3D_uugf5")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1, 0.7, 0)
-size = Vector3(3.4, 1.2, 3.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6, 0.7, 0)
+size = Vector3(6.4, 1.2, 6.6)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.2, 0)
@@ -54,6 +54,10 @@ size = Vector3(0.4, 0.8, 1)
 [node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 0.6, 0)
 size = Vector3(0.4, 1, 1)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.6, 3.9, 1.19209e-07)
+size = Vector3(0.4, 5.2, 6.6)
 
 [node name="Player" parent="." instance=ExtResource("1_bc7kl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
