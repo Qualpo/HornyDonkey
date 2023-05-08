@@ -20,7 +20,7 @@ driver/enable_input=true
 
 [autoload]
 
-Music="*res://scripts/Music.gd"
+Music="*res://scenes/Music.tscn"
 
 [input]
 
