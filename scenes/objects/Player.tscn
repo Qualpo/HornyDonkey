@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://sexqwji7npps"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_g2ydy"]
+[ext_resource type="Shader" path="res://dither.gdshader" id="3_cmc31"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w1t2g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_birtg"]
+render_priority = 0
+shader = ExtResource("3_cmc31")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_f85vb"]
+material = SubResource("ShaderMaterial_birtg")
+
+[sub_resource type="Animation" id="Animation_hfe1y"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:v_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_3ew0v"]
+resource_name = "Walk"
+length = 0.500004
+loop_mode = 1
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:v_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gnifo"]
+_data = {
+"Idle": SubResource("Animation_hfe1y"),
+"Walk": SubResource("Animation_3ew0v")
+}
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_g2ydy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_w1t2g")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.500259, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_f85vb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gnifo")
+}
