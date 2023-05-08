@@ -14,9 +14,13 @@ config/name="HornyDonkey"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+driver/enable_input=true
+
 [autoload]
 
-Music="*res://scripts/Music.gd"
+Music="*res://scenes/Music.tscn"
 
 [input]
 
