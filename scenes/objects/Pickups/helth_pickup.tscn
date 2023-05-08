@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctbiysl52ryec"]
+
+[ext_resource type="Script" path="res://scripts/objects/Pickups/helth_pickup.gd" id="1_gflm5"]
+
+[node name="HelthPickup"]
+script = ExtResource("1_gflm5")

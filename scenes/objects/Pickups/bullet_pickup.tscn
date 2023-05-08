@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://d28jq0ue0lxxl"]
+
+[ext_resource type="PackedScene" uid="uid://dsrpnnyapim0p" path="res://scenes/objects/Pickups/pickup.tscn" id="1_gb432"]
+[ext_resource type="Script" path="res://scripts/objects/Pickups/bullet_pickup.gd" id="2_rqsxo"]
+
+[node name="BulletPickup" instance=ExtResource("1_gb432")]
+script = ExtResource("2_rqsxo")

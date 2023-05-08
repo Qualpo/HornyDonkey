@@ -1,11 +1,12 @@
 extends Node
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
+var Lives = 3
+var Money = 0.0
+var Player = null
+var Ammo = 12
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func AmmoUp(am:int):
+	Ammo += am
+	Ammo = clamp(Ammo,0,14)
