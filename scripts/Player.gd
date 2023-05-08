@@ -6,6 +6,8 @@ extends CharacterBody3D
 var FacingDir = Vector2.UP
 var Sensitivity = 0.5
 
+@onready var JumpSound = preload("res://audio/sfx/JumpSounds.tres")
+
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -19,9 +21,13 @@ func _physics_process(delta):
 		if inputDir != Vector2.ZERO:
 			$AnimationPlayer.play("Walk")
 		else:
-			$AnimationPlayer.play("Idle")
+			$AnimationPlayer.stop()
+			$Camera3D.v_offset = lerp($Camera3D.v_offset,0.0,0.01 )
 		if Input.is_action_pressed("Jump"):
 			velocity.y += 16
+			$AudioStreamPlayer3D.stream = JumpSound
+			$AudioStreamPlayer3D.play()
+			$AnimationPlayer.stop()
 	else:
 		$Camera3D.v_offset = lerp($Camera3D.v_offset,velocity.y/30,0.1 )
 	move_and_slide()

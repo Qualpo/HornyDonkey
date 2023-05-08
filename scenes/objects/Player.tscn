@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://sexqwji7npps"]
+[gd_scene load_steps=11 format=3 uid="uid://sexqwji7npps"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_g2ydy"]
+[ext_resource type="ArrayMesh" uid="uid://35pen6o2rgoc" path="res://models/mesh/Gun.res" id="2_6uht8"]
 [ext_resource type="Shader" path="res://dither.gdshader" id="3_cmc31"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w1t2g"]
@@ -17,18 +18,6 @@ material = SubResource("ShaderMaterial_birtg")
 
 [sub_resource type="Animation" id="Animation_hfe1y"]
 resource_name = "Idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:v_offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
 
 [sub_resource type="Animation" id="Animation_3ew0v"]
 resource_name = "Walk"
@@ -68,6 +57,13 @@ shape = SubResource("SeparationRayShape3D_h48ti")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.500259, 0)
 
+[node name="Gun" type="Node3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.500259, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D/Gun"]
+transform = Transform3D(-0.1, 0, -1.50996e-08, 0, 0.1, 0, 1.50996e-08, 0, -0.1, 0.663, 0.175, -0.529)
+mesh = ExtResource("2_6uht8")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_f85vb")
 
@@ -76,3 +72,6 @@ speed_scale = 0.5
 libraries = {
 "": SubResource("AnimationLibrary_gnifo")
 }
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
