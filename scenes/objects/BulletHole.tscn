@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq0voq3lvo3r"]
+
+[ext_resource type="Texture2D" uid="uid://bkn17mjem258k" path="res://textures/objects/gun stuff/BulletHole.png" id="1_i1o3c"]
+[ext_resource type="Texture2D" uid="uid://bpjl6igpmqhqy" path="res://textures/objects/gun stuff/BulletNormalMap.png" id="2_ciyfa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u02lf"]
+transparency = 1
+albedo_texture = ExtResource("1_i1o3c")
+normal_enabled = true
+normal_texture = ExtResource("2_ciyfa")
+texture_filter = 0
+
+[node name="BulletHole" type="Sprite3D"]
+material_override = SubResource("StandardMaterial3D_u02lf")
+texture = ExtResource("1_i1o3c")
