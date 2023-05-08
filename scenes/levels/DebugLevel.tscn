@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxtmqbjxg1f0h"]
+[gd_scene load_steps=7 format=3 uid="uid://cxtmqbjxg1f0h"]
 
+[ext_resource type="Texture2D" uid="uid://dassaokj5vc1y" path="res://textures/donkey cult insignia glowing sprite.png" id="1_78svs"]
 [ext_resource type="PackedScene" uid="uid://sexqwji7npps" path="res://scenes/objects/Player.tscn" id="1_bc7kl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uugf5"]
+albedo_texture = ExtResource("1_78svs")
+uv1_triplanar = true
+texture_filter = 0
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_31wgt"]
 
