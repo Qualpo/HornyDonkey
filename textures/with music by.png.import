@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6l87jdnnol6a"
-path="res://.godot/imported/staIr.png-83e95dfa82680837cf9580cd0003e8ed.ctex"
+uid="uid://6i5y3g8n08vs"
+path="res://.godot/imported/with music by.png-388e2f1db2bf5ca232dfc993846f5085.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/staIr.png"
-dest_files=["res://.godot/imported/staIr.png-83e95dfa82680837cf9580cd0003e8ed.ctex"]
+source_file="res://textures/with music by.png"
+dest_files=["res://.godot/imported/with music by.png-388e2f1db2bf5ca232dfc993846f5085.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
