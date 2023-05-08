@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cxtmqbjxg1f0h"]
+[gd_scene load_steps=21 format=3 uid="uid://cxtmqbjxg1f0h"]
 
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_b864g"]
 [ext_resource type="PackedScene" uid="uid://8t15wlahpiii" path="res://scenes/objects/Player.tscn" id="1_bc7kl"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c56kyqkoqmbjd" path="res://textures/wall.png" id="5_ef3x3"]
 [ext_resource type="Texture2D" uid="uid://bxu82a02e30r4" path="res://textures/donkey_propaganda.png" id="5_wi7iy"]
 [ext_resource type="Texture2D" uid="uid://ctc3iuyrplg3g" path="res://textures/objects/Shopkeeper Sprites/shopkeeper_buy.png" id="6_4osvh"]
+[ext_resource type="Texture2D" uid="uid://c11dh5mgs2wvn" path="res://textures/window.png" id="9_l4yfx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uugf5"]
 albedo_texture = ExtResource("3_q6yne")
@@ -123,6 +124,19 @@ texture_albedo = ExtResource("5_wi7iy")
 cull_mask = 1048573
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.2, 2.4, 0)
+transform = Transform3D(-6.44306e-08, 0, 1.474, 0, 1.474, 0, -1.474, 0, -6.44306e-08, -7.2, 2.4, 0)
+layers = 2
 billboard = 2
 texture = ExtResource("6_4osvh")
+
+[node name="Decal2" type="Decal" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -8.3, 3.4, 2.5)
+size = Vector3(1.073, 2, 2.134)
+texture_albedo = ExtResource("9_l4yfx")
+cull_mask = 1048573
+
+[node name="Decal3" type="Decal" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -8.3, 3.4, -2.3)
+size = Vector3(1.073, 2, 2.134)
+texture_albedo = ExtResource("9_l4yfx")
+cull_mask = 1048573

@@ -1,0 +1,14 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3]
+
+[ext_resource type="AudioStream" uid="uid://eknqe8vb5wn1" path="res://audio/sfx/Playe/jump.ogg" id="1_dwp4e"]
+[ext_resource type="AudioStream" uid="uid://day87wxma5gg1" path="res://audio/sfx/Playe/jump2.ogg" id="2_urw70"]
+[ext_resource type="AudioStream" uid="uid://d0xggxjte5qvh" path="res://audio/sfx/Playe/jump3.ogg" id="3_2ojrt"]
+
+[resource]
+streams_count = 3
+stream_0/stream = ExtResource("1_dwp4e")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_urw70")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_2ojrt")
+stream_2/weight = 1.0

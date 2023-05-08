@@ -10,7 +10,7 @@ var RNG = RandomNumberGenerator.new()
 
 @onready var BulletHole = preload("res://scenes/objects/BulletHole.tscn")
 
-@onready var JumpSound = preload("res://audio/sfx/JumpSounds.tres")
+@onready var JumpSound = preload("res://audio/sfx/Playe/JumpSounds.tres")
 
 
 func _ready():
@@ -48,6 +48,7 @@ func _input(event):
 		$CameraPivot/Camera3D.rotation_degrees.x = clamp($CameraPivot/Camera3D.rotation_degrees.x, -90.0,90.0)
 
 func Shoot():
+	$GunSound.play()
 	for i in range(1):
 		var rand = (abs(1-1))*25
 		var spread = Vector2(RNG.randf_range(-rand,rand),RNG.randf_range(-rand,rand))

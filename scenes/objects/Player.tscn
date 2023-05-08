@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://8t15wlahpiii"]
+[gd_scene load_steps=9 format=3 uid="uid://8t15wlahpiii"]
 
 [ext_resource type="Script" path="res://scripts/objects/Player.gd" id="1_yweok"]
 [ext_resource type="ArrayMesh" uid="uid://35pen6o2rgoc" path="res://models/mesh/Gun.res" id="2_6uht8"]
+[ext_resource type="AudioStream" uid="uid://bua8ttou8eytl" path="res://audio/sfx/gun/Shoot.ogg" id="3_o62s8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w1t2g"]
 height = 1.4
@@ -71,3 +72,7 @@ libraries = {
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="GunSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_o62s8")
+max_polyphony = 4
