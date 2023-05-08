@@ -6,13 +6,12 @@ extends CharacterBody3D
 var FacingDir = Vector2.UP
 var Sensitivity = 0.5
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 func _physics_process(delta):
 	velocity = lerp(velocity, Vector3(0,velocity.y,0),0.3)
+	velocity.y -= 1
 	var inputDir =Input.get_vector("Left","Right","Forward","Backward")
 	var irt = inputDir.rotated(-rotation.y)
 	velocity += Vector3(irt.x,0,irt.y) * MoveSpeed
@@ -22,7 +21,7 @@ func _physics_process(delta):
 		else:
 			$AnimationPlayer.play("Idle")
 		if Input.is_action_pressed("Jump"):
-			velocity.y += 10
+			velocity.y += 16
 	else:
 		$Camera3D.v_offset = lerp($Camera3D.v_offset,velocity.y/30,0.1 )
 	move_and_slide()
