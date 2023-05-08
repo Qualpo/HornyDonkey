@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxtmqbjxg1f0h"]
+[gd_scene load_steps=8 format=3 uid="uid://cxtmqbjxg1f0h"]
 
 [ext_resource type="Texture2D" uid="uid://dassaokj5vc1y" path="res://textures/donkey cult insignia glowing sprite.png" id="1_78svs"]
+[ext_resource type="Script" path="res://scripts/Level.gd" id="1_b864g"]
 [ext_resource type="PackedScene" uid="uid://sexqwji7npps" path="res://scenes/objects/Player.tscn" id="1_bc7kl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uugf5"]
@@ -18,6 +19,7 @@ background_mode = 2
 sky = SubResource("Sky_gbg5t")
 
 [node name="DebugLevel" type="Node3D"]
+script = ExtResource("1_b864g")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true
