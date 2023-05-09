@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://70i33seqbypb"
-path.s3tc="res://.godot/imported/drop_health.png-fc69ba5b655830bf590762e63a7ae0d7.s3tc.ctex"
+path="res://.godot/imported/drop_health.png-fc69ba5b655830bf590762e63a7ae0d7.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/objects/pickups/drop_health.png"
-dest_files=["res://.godot/imported/drop_health.png-fc69ba5b655830bf590762e63a7ae0d7.s3tc.ctex"]
+dest_files=["res://.godot/imported/drop_health.png-fc69ba5b655830bf590762e63a7ae0d7.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

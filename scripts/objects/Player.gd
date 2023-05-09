@@ -27,7 +27,10 @@ var Shooting = false
 var RNG = RandomNumberGenerator.new()
 
 @onready var BulletHole = preload("res://scenes/objects/BulletHole.tscn")
+#Sounds
 @onready var JumpSound = preload("res://audio/sfx/Playe/JumpSounds.tres")
+@onready var ShootSound = preload("res://audio/sfx/gun/Shoot.ogg")
+@onready var NoBulletSound = preload("res://audio/sfx/gun/154934__klawykogut__empty-gun-shot.wav")
 
 
 func _ready():
@@ -130,8 +133,11 @@ func UnSprint():
 
 
 func Shoot():
-	if not Shooting:
+	if not Shooting and Global.Ammo > 0:
+		Global.Ammo -= 1
 		Shooting = true
+		if $GunSound.stream != ShootSound:
+			$GunSound.stream = ShootSound
 		$GunSound.play()
 		$GunAnims.stop()
 		$GunAnims.play("Shoot")
@@ -153,7 +159,7 @@ func Shoot():
 					
 						if Cast.get_collider().is_in_group("Enemy"):
 					
-							Cast.get_collider().Hit(false,self,30)
+							Cast.get_collider().Hit(false,self,Global.GunDamage)
 						else:
 							var hole = BulletHole.instantiate()
 					
@@ -170,3 +176,7 @@ func Shoot():
 
 		await get_tree().create_timer(0.15).timeout
 		Shooting = false
+	elif not Shooting:
+		if $GunSound.stream != NoBulletSound:
+			$GunSound.stream = NoBulletSound
+		$GunSound.play()
