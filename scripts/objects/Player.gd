@@ -28,7 +28,7 @@ func _ready():
 	GunPos = GunStartPos
 func _physics_process(delta):
 	
-	$CameraPivot/Camera3D.rotation_degrees.x = lerp($CameraPivot/Camera3D.rotation_degrees.x,CamEnd,0.4)
+	$CameraPivot/Camera3D.rotation_degrees.x = lerp($CameraPivot/Camera3D.rotation_degrees.x,CamEnd,0.2)
 	
 	$CameraPivot/Camera3D/Gun.position = lerp($CameraPivot/Camera3D/Gun.position,GunPos,0.4)
 	
@@ -103,6 +103,6 @@ func Shoot():
 						else:
 							hole.look_at(Cast.get_collision_point()-Cast.get_collision_normal(),Vector3.FORWARD)
 				Cast.queue_free()
-	$CameraPivot/Camera3D.rotation_degrees.x += 25
-	CamEnd += 5
+	$CameraPivot/Camera3D.rotation_degrees.x += 7
+	CamEnd += 3
 	CamEnd = clamp(CamEnd,-90,90)
