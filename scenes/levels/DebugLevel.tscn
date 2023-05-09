@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cxtmqbjxg1f0h"]
+[gd_scene load_steps=22 format=3 uid="uid://cxtmqbjxg1f0h"]
 
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_ym708"]
 [ext_resource type="AudioStream" uid="uid://cehdrvf25dvfm" path="res://audio/music/e1m1.ogg" id="2_1s4sw"]
@@ -14,33 +14,26 @@
 [ext_resource type="PackedScene" uid="uid://covy4aqlpxndw" path="res://scenes/objects/Pickups/health_pickup.tscn" id="12_yrhok"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uugf5"]
+diffuse_mode = 1
+specular_mode = 1
 albedo_texture = ExtResource("3_hxpkp")
 uv1_triplanar = true
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qss5h"]
+diffuse_mode = 1
+specular_mode = 1
 albedo_texture = ExtResource("4_20mea")
 uv1_triplanar = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_41onw"]
-albedo_texture = ExtResource("4_20mea")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lfa64"]
-albedo_texture = ExtResource("4_20mea")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pyv7q"]
-albedo_texture = ExtResource("4_20mea")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxbyl"]
-albedo_texture = ExtResource("4_20mea")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ms1md"]
-albedo_texture = ExtResource("4_20mea")
+texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_orcyj"]
+diffuse_mode = 1
+specular_mode = 1
 albedo_texture = ExtResource("5_jtpkp")
 uv1_scale = Vector3(1.082, 1.082, 1.082)
 uv1_triplanar = true
+texture_filter = 0
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_31wgt"]
 rayleigh_color = Color(0.654902, 0.901961, 0.988235, 1)
@@ -54,6 +47,10 @@ sky_material = SubResource("PhysicalSkyMaterial_31wgt")
 [sub_resource type="Environment" id="Environment_w8go0"]
 background_mode = 2
 sky = SubResource("Sky_gbg5t")
+ambient_light_source = 1
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 0.0
+reflected_light_source = 1
 ssr_enabled = true
 ssao_enabled = true
 ssil_enabled = true
@@ -91,36 +88,41 @@ material = SubResource("StandardMaterial3D_qss5h")
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.2, 0)
 size = Vector3(0.4, 0.2, 1)
-material = SubResource("StandardMaterial3D_41onw")
+material = SubResource("StandardMaterial3D_qss5h")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.3, 0)
 size = Vector3(0.4, 0.4, 1)
-material = SubResource("StandardMaterial3D_lfa64")
+material = SubResource("StandardMaterial3D_qss5h")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0.4, 0)
 size = Vector3(0.4, 0.6, 1)
-material = SubResource("StandardMaterial3D_pyv7q")
+material = SubResource("StandardMaterial3D_qss5h")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0.5, 0)
 size = Vector3(0.4, 0.8, 1)
-material = SubResource("StandardMaterial3D_uxbyl")
+material = SubResource("StandardMaterial3D_qss5h")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 0.6, 0)
 size = Vector3(0.4, 1, 1)
-material = SubResource("StandardMaterial3D_ms1md")
+material = SubResource("StandardMaterial3D_qss5h")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.6, 3.9, 1.19209e-07)
 size = Vector3(0.4, 5.2, 6.6)
 material = SubResource("StandardMaterial3D_orcyj")
 
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2, 1.5, 0)
+radial_segments = 32
+rings = 16
+material = SubResource("StandardMaterial3D_qss5h")
+
 [node name="Player" parent="." instance=ExtResource("6_il5x7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
-HP = 90.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_w8go0")
