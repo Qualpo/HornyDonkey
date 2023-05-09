@@ -28,7 +28,7 @@ func _ready():
 	GunPos = GunStartPos
 func _physics_process(delta):
 	
-	$CameraPivot/Camera3D.rotation_degrees.x = lerp($CameraPivot/Camera3D.rotation_degrees.x,CamEnd,0.2)
+	$CameraPivot/Camera3D.rotation_degrees.x = lerp($CameraPivot/Camera3D.rotation_degrees.x,CamEnd,0.1)
 	
 	$CameraPivot/Camera3D/Gun.position = lerp($CameraPivot/Camera3D/Gun.position,GunPos,0.4)
 	

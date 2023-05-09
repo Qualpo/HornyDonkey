@@ -1,44 +1,44 @@
 [gd_scene load_steps=24 format=3 uid="uid://cxtmqbjxg1f0h"]
 
-[ext_resource type="Script" path="res://scripts/Level.gd" id="1_skieq"]
-[ext_resource type="AudioStream" uid="uid://cehdrvf25dvfm" path="res://audio/music/e1m1.ogg" id="2_i17sc"]
-[ext_resource type="Texture2D" uid="uid://cjtqxc21pb5uu" path="res://textures/wood_ground.png" id="3_l7vm8"]
-[ext_resource type="Texture2D" uid="uid://6l87jdnnol6a" path="res://textures/staIr.png" id="4_rpp7p"]
-[ext_resource type="Texture2D" uid="uid://c56kyqkoqmbjd" path="res://textures/wall.png" id="5_ragyk"]
-[ext_resource type="PackedScene" uid="uid://8t15wlahpiii" path="res://scenes/objects/Player.tscn" id="6_sg6ys"]
-[ext_resource type="Texture2D" uid="uid://bxu82a02e30r4" path="res://textures/donkey_propaganda.png" id="7_0t0rr"]
-[ext_resource type="Texture2D" uid="uid://ctc3iuyrplg3g" path="res://textures/objects/Shopkeeper Sprites/shopkeeper_buy.png" id="8_f2vxy"]
-[ext_resource type="Texture2D" uid="uid://c11dh5mgs2wvn" path="res://textures/window.png" id="9_fpox4"]
-[ext_resource type="PackedScene" uid="uid://d28jq0ue0lxxl" path="res://scenes/objects/Pickups/bullet_pickup.tscn" id="10_7smc7"]
-[ext_resource type="PackedScene" uid="uid://du8daolhpsak0" path="res://scenes/objects/Pickups/money_pickup.tscn" id="11_0w5dx"]
-[ext_resource type="PackedScene" uid="uid://covy4aqlpxndw" path="res://scenes/objects/Pickups/health_pickup.tscn" id="12_42i7e"]
+[ext_resource type="Script" path="res://scripts/Level.gd" id="1_ym708"]
+[ext_resource type="AudioStream" uid="uid://cehdrvf25dvfm" path="res://audio/music/e1m1.ogg" id="2_1s4sw"]
+[ext_resource type="Texture2D" uid="uid://cjtqxc21pb5uu" path="res://textures/wood_ground.png" id="3_hxpkp"]
+[ext_resource type="Texture2D" uid="uid://6l87jdnnol6a" path="res://textures/staIr.png" id="4_20mea"]
+[ext_resource type="Texture2D" uid="uid://c56kyqkoqmbjd" path="res://textures/wall.png" id="5_jtpkp"]
+[ext_resource type="PackedScene" uid="uid://8t15wlahpiii" path="res://scenes/objects/Player.tscn" id="6_il5x7"]
+[ext_resource type="Texture2D" uid="uid://bxu82a02e30r4" path="res://textures/donkey_propaganda.png" id="7_54k7x"]
+[ext_resource type="Texture2D" uid="uid://ctc3iuyrplg3g" path="res://textures/objects/Shopkeeper Sprites/shopkeeper_buy.png" id="8_l6y45"]
+[ext_resource type="Texture2D" uid="uid://c11dh5mgs2wvn" path="res://textures/window.png" id="9_ebdew"]
+[ext_resource type="PackedScene" uid="uid://d28jq0ue0lxxl" path="res://scenes/objects/Pickups/bullet_pickup.tscn" id="10_lm4nc"]
+[ext_resource type="PackedScene" uid="uid://du8daolhpsak0" path="res://scenes/objects/Pickups/money_pickup.tscn" id="11_nky7h"]
+[ext_resource type="PackedScene" uid="uid://covy4aqlpxndw" path="res://scenes/objects/Pickups/health_pickup.tscn" id="12_yrhok"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uugf5"]
-albedo_texture = ExtResource("3_l7vm8")
+albedo_texture = ExtResource("3_hxpkp")
 uv1_triplanar = true
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qss5h"]
-albedo_texture = ExtResource("4_rpp7p")
+albedo_texture = ExtResource("4_20mea")
 uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_41onw"]
-albedo_texture = ExtResource("4_rpp7p")
+albedo_texture = ExtResource("4_20mea")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lfa64"]
-albedo_texture = ExtResource("4_rpp7p")
+albedo_texture = ExtResource("4_20mea")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pyv7q"]
-albedo_texture = ExtResource("4_rpp7p")
+albedo_texture = ExtResource("4_20mea")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxbyl"]
-albedo_texture = ExtResource("4_rpp7p")
+albedo_texture = ExtResource("4_20mea")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ms1md"]
-albedo_texture = ExtResource("4_rpp7p")
+albedo_texture = ExtResource("4_20mea")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_orcyj"]
-albedo_texture = ExtResource("5_ragyk")
+albedo_texture = ExtResource("5_jtpkp")
 uv1_scale = Vector3(1.082, 1.082, 1.082)
 uv1_triplanar = true
 
@@ -64,8 +64,8 @@ glow_strength = 1.11
 glow_bloom = 0.54
 
 [node name="DebugLevel" type="Node3D"]
-script = ExtResource("1_skieq")
-BGM = ExtResource("2_i17sc")
+script = ExtResource("1_ym708")
+BGM = ExtResource("2_1s4sw")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true
@@ -110,7 +110,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.6, 3.9, 1.19209e-07)
 size = Vector3(0.4, 5.2, 6.6)
 material = SubResource("StandardMaterial3D_orcyj")
 
-[node name="Player" parent="." instance=ExtResource("6_sg6ys")]
+[node name="Player" parent="." instance=ExtResource("6_il5x7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -123,7 +123,7 @@ shadow_enabled = true
 [node name="Decal" type="Decal" parent="."]
 transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, -8.4, 3.5, 0)
 size = Vector3(3.312, 0.907, 2.345)
-texture_albedo = ExtResource("7_0t0rr")
+texture_albedo = ExtResource("7_54k7x")
 cull_mask = 1048573
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
@@ -131,25 +131,25 @@ transform = Transform3D(-6.44306e-08, 0, 1.474, 0, 1.474, 0, -1.474, 0, -6.44306
 layers = 2
 billboard = 2
 texture_filter = 0
-texture = ExtResource("8_f2vxy")
+texture = ExtResource("8_l6y45")
 
 [node name="Decal2" type="Decal" parent="."]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -8.3, 3.4, 2.5)
 size = Vector3(1.073, 2, 2.134)
-texture_albedo = ExtResource("9_fpox4")
+texture_albedo = ExtResource("9_ebdew")
 cull_mask = 1048573
 
 [node name="Decal3" type="Decal" parent="."]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -8.3, 3.4, -2.3)
 size = Vector3(1.073, 2, 2.134)
-texture_albedo = ExtResource("9_fpox4")
+texture_albedo = ExtResource("9_ebdew")
 cull_mask = 1048573
 
-[node name="BulletPickup" parent="." instance=ExtResource("10_7smc7")]
+[node name="BulletPickup" parent="." instance=ExtResource("10_lm4nc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 1.6, 2.1)
 
-[node name="MoneyPickup" parent="." instance=ExtResource("11_0w5dx")]
+[node name="MoneyPickup" parent="." instance=ExtResource("11_nky7h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, 1.4, -0.9)
 
-[node name="HealthPickup" parent="." instance=ExtResource("12_42i7e")]
+[node name="HealthPickup" parent="." instance=ExtResource("12_yrhok")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.6, 2.1)
