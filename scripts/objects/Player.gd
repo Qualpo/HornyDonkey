@@ -3,22 +3,22 @@ extends CharacterBody3D
 
 @export var MoveSpeed = 1.0
 @export var HP = 100.0
+@export_range(0.0,1.0,0.01) var Sensitivity = 0.5
 
 var FacingDir = Vector2.UP
+var CameraDirection = Vector2()
+var CameraOffset = Vector2()
 var GunStartPos = Vector3(0.625,-0.32,-0.529)
 var GunAimPos = Vector3(0,-0.222,-0.184)
-
 var GunPos = Vector3()
 
-var Sensitivity = 0.5
-var CamEnd = 0.0
+
 
 var Aiming = false
 
 var RNG = RandomNumberGenerator.new()
 
 @onready var BulletHole = preload("res://scenes/objects/BulletHole.tscn")
-
 @onready var JumpSound = preload("res://audio/sfx/Playe/JumpSounds.tres")
 
 
@@ -28,17 +28,20 @@ func _ready():
 	GunPos = GunStartPos
 func _physics_process(delta):
 	
-	$CameraPivot/Camera3D.rotation_degrees.x = lerp($CameraPivot/Camera3D.rotation_degrees.x,CamEnd,0.1)
-	
+	#Camera Stuff
+	$CameraPivot/Camera3D.rotation_degrees.x = CameraDirection.x + CameraOffset.x
+	CameraOffset.x = lerp(CameraOffset.x,0.0,0.1)
+	#Aim Lerp
 	$CameraPivot/Camera3D/Gun.position = lerp($CameraPivot/Camera3D/Gun.position,GunPos,0.4)
 	
+	#Friction
 	velocity = lerp(velocity, Vector3(0,velocity.y,0),0.3)
+	#Gravity
 	velocity.y -= 1
+	#Inputs
 	var inputDir =Input.get_vector("Left","Right","Forward","Backward")
 	var irt = inputDir.rotated(-rotation.y)
 	velocity += Vector3(irt.x,0,irt.y) * MoveSpeed
-	
-	#Inputs
 	if Input.is_action_just_pressed("Shoot"):
 		Shoot()
 	if Input.is_action_just_pressed("Aim"):
@@ -63,8 +66,8 @@ func _physics_process(delta):
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotation_degrees.y -= event.relative.x * Sensitivity
-		CamEnd -= event.relative.y * Sensitivity
-		CamEnd = clamp(CamEnd, -90.0,90.0)
+		CameraDirection.x -= event.relative.y * Sensitivity
+		CameraDirection.x = clamp(CameraDirection.x, -90.0,90.0)
 
 func Heal(am:float):
 	HP += am
@@ -103,6 +106,6 @@ func Shoot():
 						else:
 							hole.look_at(Cast.get_collision_point()-Cast.get_collision_normal(),Vector3.FORWARD)
 				Cast.queue_free()
-	$CameraPivot/Camera3D.rotation_degrees.x += 7
-	CamEnd += 3
-	CamEnd = clamp(CamEnd,-90,90)
+	CameraOffset.x += 7
+	CameraDirection.x += 3
+	CameraDirection.x = clamp(CameraDirection.x,-90,90)
