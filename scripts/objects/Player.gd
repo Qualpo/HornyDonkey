@@ -5,7 +5,15 @@ extends CharacterBody3D
 @export var HP = 100.0
 
 var FacingDir = Vector2.UP
+var GunStartPos = Vector3(0.625,-0.32,-0.529)
+var GunAimPos = Vector3(0,-0.222,-0.184)
+
+var GunPos = Vector3()
+
 var Sensitivity = 0.5
+var CamEnd = 0.0
+
+var Aiming = false
 
 var RNG = RandomNumberGenerator.new()
 
@@ -17,7 +25,13 @@ var RNG = RandomNumberGenerator.new()
 func _ready():
 	Global.Player = self
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	GunPos = GunStartPos
 func _physics_process(delta):
+	
+	$CameraPivot/Camera3D.rotation_degrees.x = lerp($CameraPivot/Camera3D.rotation_degrees.x,CamEnd,0.4)
+	
+	$CameraPivot/Camera3D/Gun.position = lerp($CameraPivot/Camera3D/Gun.position,GunPos,0.4)
+	
 	velocity = lerp(velocity, Vector3(0,velocity.y,0),0.3)
 	velocity.y -= 1
 	var inputDir =Input.get_vector("Left","Right","Forward","Backward")
@@ -27,14 +41,17 @@ func _physics_process(delta):
 	#Inputs
 	if Input.is_action_just_pressed("Shoot"):
 		Shoot()
-	
+	if Input.is_action_just_pressed("Aim"):
+		GunPos = GunAimPos
+	if Input.is_action_just_released("Aim"):
+		GunPos = GunStartPos
 	
 	if is_on_floor():
 		if inputDir != Vector2.ZERO:
 			$AnimationPlayer.play("Walk")
 		else:
-			$AnimationPlayer.stop()
-			$CameraPivot/Camera3D.v_offset = lerp($CameraPivot/Camera3D.v_offset,0.0,0.01 )
+			$AnimationPlayer.stop(true)
+			$CameraPivot/Camera3D.v_offset = lerp($CameraPivot/Camera3D.v_offset,0.0,0.1 )
 		if Input.is_action_pressed("Jump"):
 			velocity.y += 16
 			$AudioStreamPlayer3D.stream = JumpSound
@@ -46,8 +63,8 @@ func _physics_process(delta):
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotation_degrees.y -= event.relative.x * Sensitivity
-		$CameraPivot/Camera3D.rotation_degrees.x -= event.relative.y * Sensitivity
-		$CameraPivot/Camera3D.rotation_degrees.x = clamp($CameraPivot/Camera3D.rotation_degrees.x, -90.0,90.0)
+		CamEnd -= event.relative.y * Sensitivity
+		CamEnd = clamp(CamEnd, -90.0,90.0)
 
 func Heal(am:float):
 	HP += am
@@ -55,6 +72,9 @@ func Heal(am:float):
 
 func Shoot():
 	$GunSound.play()
+	$GunAnims.stop()
+	$GunAnims.play("Shoot")
+
 	for i in range(1):
 		var rand = (abs(1-1))*25
 		var spread = Vector2(RNG.randf_range(-rand,rand),RNG.randf_range(-rand,rand))
@@ -83,3 +103,6 @@ func Shoot():
 						else:
 							hole.look_at(Cast.get_collision_point()-Cast.get_collision_normal(),Vector3.FORWARD)
 				Cast.queue_free()
+	$CameraPivot/Camera3D.rotation_degrees.x += 25
+	CamEnd += 5
+	CamEnd = clamp(CamEnd,-90,90)

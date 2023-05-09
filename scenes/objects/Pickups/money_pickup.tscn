@@ -7,5 +7,4 @@
 script = ExtResource("2_sbkeg")
 
 [node name="Pickup" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 pixel_size = 0.0176
