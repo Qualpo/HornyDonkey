@@ -4,10 +4,10 @@
 [ext_resource type="ArrayMesh" uid="uid://35pen6o2rgoc" path="res://models/mesh/Gun.res" id="2_6uht8"]
 [ext_resource type="AudioStream" uid="uid://bua8ttou8eytl" path="res://audio/sfx/gun/Shoot.ogg" id="3_o62s8"]
 [ext_resource type="Shader" path="res://resources/materials/Invert.gdshader" id="4_ia74v"]
-[ext_resource type="Texture2D" uid="uid://b308hqk2hm7re" path="res://textures/ui/Cursor.png" id="4_v2ikc"]
+[ext_resource type="Texture2D" uid="uid://b308hqk2hm7re" path="res://textures/UI/Cursor.png" id="4_v2ikc"]
 [ext_resource type="FontFile" uid="uid://cxwlpyc5xa31h" path="res://resources/fonts/Daydream.ttf" id="6_1ivy6"]
-[ext_resource type="Texture2D" uid="uid://dmiqgdpmqofm5" path="res://textures/ui/health_icon.png" id="7_f0lqq"]
-[ext_resource type="Texture2D" uid="uid://ccn5py45ivxsv" path="res://textures/ui/ammo_icon.png" id="8_qqtri"]
+[ext_resource type="Texture2D" uid="uid://dmiqgdpmqofm5" path="res://textures/UI/health_icon.png" id="7_f0lqq"]
+[ext_resource type="Texture2D" uid="uid://ccn5py45ivxsv" path="res://textures/UI/ammo_icon.png" id="8_qqtri"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w1t2g"]
 height = 1.4
@@ -61,22 +61,6 @@ _data = {
 "Shoot": SubResource("Animation_3m1n1")
 }
 
-[sub_resource type="Animation" id="Animation_fwhk5"]
-resource_name = "Hurt"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.74902, 0, 0, 0.705882), Color(0.75, 0, 0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_27m0s"]
 resource_name = "Heal"
 length = 0.5
@@ -91,6 +75,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0.929412, 0.168627, 0.705882), Color(0, 0.929412, 0.168627, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fwhk5"]
+resource_name = "Hurt"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.74902, 0, 0, 0.705882), Color(0.75, 0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ep0hg"]
