@@ -6,7 +6,7 @@
 [ext_resource type="Shader" path="res://resources/materials/Invert.gdshader" id="4_ia74v"]
 [ext_resource type="Texture2D" uid="uid://b308hqk2hm7re" path="res://textures/ui/Cursor.png" id="4_v2ikc"]
 [ext_resource type="FontFile" uid="uid://cxwlpyc5xa31h" path="res://resources/fonts/Daydream.ttf" id="6_1ivy6"]
-[ext_resource type="Texture2D" uid="uid://70i33seqbypb" path="res://textures/objects/pickups/drop_health.png" id="7_va7nb"]
+[ext_resource type="Texture2D" uid="uid://dmiqgdpmqofm5" path="res://textures/ui/health_icon.png" id="7_f0lqq"]
 [ext_resource type="Texture2D" uid="uid://ccn5py45ivxsv" path="res://textures/ui/ammo_icon.png" id="8_qqtri"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w1t2g"]
@@ -111,6 +111,7 @@ script = ExtResource("1_yweok")
 WalkSpeed = 2.0
 RunSpeed = 3.0
 AimSpeed = 1.0
+Sensitivity = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
@@ -178,10 +179,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -18.0
-offset_top = -18.0
-offset_right = 18.0
-offset_bottom = 18.0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_v2ikc")
@@ -192,16 +193,15 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -223.0
-offset_top = 35.0
-offset_right = -127.0
-offset_bottom = 80.0
+offset_left = -26.0
+offset_top = 1.0
+offset_right = -2.0
+offset_bottom = 15.0
 grow_horizontal = 0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("6_1ivy6")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 8
 text = "$50"
 horizontal_alignment = 2
 
@@ -212,50 +212,46 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -319.0
-offset_top = -70.0
-offset_right = -223.0
-offset_bottom = -25.0
+offset_left = -36.0
+offset_top = -14.0
+offset_right = -23.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("6_1ivy6")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 8
 text = "12
 "
-horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Health" type="Label" parent="CanvasLayer/UI"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 336.0
-offset_top = -70.0
-offset_right = 432.0
-offset_bottom = -25.0
+offset_left = 40.0
+offset_top = -14.0
+offset_right = 62.0
 grow_vertical = 0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("6_1ivy6")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 8
 text = "100"
-horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HpIcon" type="TextureRect" parent="CanvasLayer/UI"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 296.0
-offset_top = -70.0
-offset_right = 336.0
-offset_bottom = -30.0
+offset_left = 27.0
+offset_top = -12.0
+offset_right = 35.0
+offset_bottom = -4.0
 grow_vertical = 0
-texture = ExtResource("7_va7nb")
+texture = ExtResource("7_f0lqq")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI"]
 layout_mode = 1
@@ -264,13 +260,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -344.0
-offset_top = -70.0
-offset_right = -304.0
-offset_bottom = -30.0
+offset_left = -50.0
+offset_top = -12.0
+offset_right = -44.0
+offset_bottom = -2.0
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("8_qqtri")
+stretch_mode = 5
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
@@ -279,6 +276,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.929412, 0.168627, 0)
+metadata/_edit_lock_ = true
 
 [node name="Hurtbox" type="Area3D" parent="."]
 collision_layer = 2

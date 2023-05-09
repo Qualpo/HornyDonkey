@@ -112,13 +112,13 @@ func Heal(am:float):
 	HP += am
 	HP = clamp(HP,0.0,100.0)
 	$ScreenAnims.play("Heal")
-	$AudioStreamPlayer3D.stream = load("res://audio/sfx/shopkeep/shop_hello.ogg")
+	$AudioStreamPlayer3D.stream = load("res://audio/sfx/heal.ogg")
 	$AudioStreamPlayer3D.play()
 func PickupMoney():
-	$AudioStreamPlayer3D.stream = load("res://audio/sfx/shopkeep/shop_hello.ogg")
+	$AudioStreamPlayer3D.stream = load("res://audio/sfx/coin.ogg")
 	$AudioStreamPlayer3D.play()
 func PickupAmmo():
-	$AudioStreamPlayer3D.stream = load("res://audio/sfx/shopkeep/shop_hello.ogg")
+	$AudioStreamPlayer3D.stream = load("res://audio/sfx/ammo.ogg")
 	$AudioStreamPlayer3D.play()
 func Hurt(am:float):
 	HP -= am
@@ -199,7 +199,7 @@ func Shoot():
 							if abs(Cast.get_collision_normal().y) == 1:
 								hole.rotation_degrees.x = 90
 							else:
-								hole.look_at(Cast.get_collision_point()-Cast.get_collision_normal(),Vector3.FORWARD)
+								hole.look_at(Cast.get_collision_point()-Cast.get_collision_normal(),Vector3.UP)
 					Cast.queue_free()
 		CameraOffset.x += RecoilAmt * 3
 		CameraDirection.x += RecoilAmt
