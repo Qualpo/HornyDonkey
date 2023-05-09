@@ -14,7 +14,7 @@ signal UpMoney
 
 func AmmoUp(am:int):
 	Ammo += am
-	Ammo = clamp(Ammo,0,14)
+	Ammo = clamp(Ammo,0,16)
 	emit_signal("UpdateUi")
 	emit_signal("UpAmmo")
 func HpUp(am:int):
