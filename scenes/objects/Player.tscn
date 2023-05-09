@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://8t15wlahpiii"]
+[gd_scene load_steps=11 format=3 uid="uid://8t15wlahpiii"]
 
 [ext_resource type="Script" path="res://scripts/objects/Player.gd" id="1_yweok"]
 [ext_resource type="ArrayMesh" uid="uid://35pen6o2rgoc" path="res://models/mesh/Gun.res" id="2_6uht8"]
@@ -35,6 +35,27 @@ _data = {
 "Walk": SubResource("Animation_3ew0v")
 }
 
+[sub_resource type="Animation" id="Animation_3m1n1"]
+resource_name = "Shoot"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraPivot/Camera3D/Gun:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.785398, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ubv6"]
+_data = {
+"Shoot": SubResource("Animation_3m1n1")
+}
+
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
 script = ExtResource("1_yweok")
@@ -54,10 +75,10 @@ shape = SubResource("SeparationRayShape3D_h48ti")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.500259, 0)
 
 [node name="Gun" type="Node3D" parent="CameraPivot/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.500259, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625, -0.32, -0.529)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CameraPivot/Camera3D/Gun"]
-transform = Transform3D(-0.1, 0, -1.50996e-08, 0, 0.1, 0, 1.50996e-08, 0, -0.1, 0.663, 0.175, -0.529)
+transform = Transform3D(-0.1, 0, -1.50996e-08, 0, 0.1, 0, 1.50996e-08, 0, -0.1, 0, 0.191, 0)
 layers = 2
 sorting_offset = 1.0
 sorting_use_aabb_center = false
@@ -71,9 +92,30 @@ libraries = {
 "": SubResource("AnimationLibrary_gnifo")
 }
 
+[node name="GunAnims" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4ubv6")
+}
+
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="GunSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_o62s8")
 max_polyphony = 4
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 3
