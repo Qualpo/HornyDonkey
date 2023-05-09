@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 
 @export var MoveSpeed = 1.0
+@export var HP = 100.0
 
 var FacingDir = Vector2.UP
 var Sensitivity = 0.5
@@ -14,6 +15,7 @@ var RNG = RandomNumberGenerator.new()
 
 
 func _ready():
+	Global.Player = self
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 func _physics_process(delta):
 	velocity = lerp(velocity, Vector3(0,velocity.y,0),0.3)
@@ -46,6 +48,10 @@ func _input(event):
 		rotation_degrees.y -= event.relative.x * Sensitivity
 		$CameraPivot/Camera3D.rotation_degrees.x -= event.relative.y * Sensitivity
 		$CameraPivot/Camera3D.rotation_degrees.x = clamp($CameraPivot/Camera3D.rotation_degrees.x, -90.0,90.0)
+
+func Heal(am:float):
+	HP += am
+	HP = clamp(HP,0.0,100.0)
 
 func Shoot():
 	$GunSound.play()

@@ -36,6 +36,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 2
 script = ExtResource("1_yweok")
 MoveSpeed = 2.0
 

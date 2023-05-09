@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://du8daolhpsak0"]
+
+[ext_resource type="PackedScene" uid="uid://dsrpnnyapim0p" path="res://scenes/objects/Pickups/pickup.tscn" id="1_yf3cy"]
+[ext_resource type="Script" path="res://scripts/objects/Pickups/money_pickup.gd" id="2_sbkeg"]
+
+[node name="MoneyPickup" instance=ExtResource("1_yf3cy")]
+script = ExtResource("2_sbkeg")
+
+[node name="Pickup" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+pixel_size = 0.0176

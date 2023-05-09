@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kp5rj04xha28"
-path.s3tc="res://.godot/imported/Quarter.png-0ba4d1dda5cddea24fbb5a3ffdd7f007.s3tc.ctex"
+uid="uid://70i33seqbypb"
+path.s3tc="res://.godot/imported/drop_health.png-fc69ba5b655830bf590762e63a7ae0d7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/objects/pickups/Quarter.png"
-dest_files=["res://.godot/imported/Quarter.png-0ba4d1dda5cddea24fbb5a3ffdd7f007.s3tc.ctex"]
+source_file="res://textures/objects/pickups/drop_health.png"
+dest_files=["res://.godot/imported/drop_health.png-fc69ba5b655830bf590762e63a7ae0d7.s3tc.ctex"]
 
 [params]
 

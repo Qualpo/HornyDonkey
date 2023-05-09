@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://np4axrb3kg0s"
-path="res://.godot/imported/drop_ammo.png-8fe1f9dac0e86f9c86412a256777056e.ctex"
+uid="uid://bv1jempfck5ld"
+path="res://.godot/imported/ui concept.png-9587ff07d72dfc01772eedcf65d8470f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/objects/drop_ammo.png"
-dest_files=["res://.godot/imported/drop_ammo.png-8fe1f9dac0e86f9c86412a256777056e.ctex"]
+source_file="res://textures/objects/gun stuff/ui concept.png"
+dest_files=["res://.godot/imported/ui concept.png-9587ff07d72dfc01772eedcf65d8470f.ctex"]
 
 [params]
 
