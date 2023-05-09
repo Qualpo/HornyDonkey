@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3yfe2u5wrp34"
-path="res://.godot/imported/pc12_body_alb.png-533c36e75ee391d75cf90257314085eb.ctex"
+uid="uid://c42eo2mg112d3"
+path="res://.godot/imported/HP_full.png-792d3018b3ea6903a2dbaecf8b87b343.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/pc12_body_alb.png"
-dest_files=["res://.godot/imported/pc12_body_alb.png-533c36e75ee391d75cf90257314085eb.ctex"]
+source_file="res://textures/ui/HP_full.png"
+dest_files=["res://.godot/imported/HP_full.png-792d3018b3ea6903a2dbaecf8b87b343.ctex"]
 
 [params]
 

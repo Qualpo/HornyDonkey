@@ -1,10 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://8t15wlahpiii"]
+[gd_scene load_steps=21 format=3 uid="uid://8t15wlahpiii"]
 
 [ext_resource type="Script" path="res://scripts/objects/Player.gd" id="1_yweok"]
 [ext_resource type="ArrayMesh" uid="uid://35pen6o2rgoc" path="res://models/mesh/Gun.res" id="2_6uht8"]
 [ext_resource type="AudioStream" uid="uid://bua8ttou8eytl" path="res://audio/sfx/gun/Shoot.ogg" id="3_o62s8"]
 [ext_resource type="Shader" path="res://resources/materials/Invert.gdshader" id="4_ia74v"]
 [ext_resource type="Texture2D" uid="uid://b308hqk2hm7re" path="res://textures/ui/Cursor.png" id="4_v2ikc"]
+[ext_resource type="FontFile" uid="uid://cxwlpyc5xa31h" path="res://resources/fonts/Daydream.ttf" id="6_1ivy6"]
+[ext_resource type="Texture2D" uid="uid://70i33seqbypb" path="res://textures/objects/pickups/drop_health.png" id="7_va7nb"]
+[ext_resource type="Texture2D" uid="uid://ccn5py45ivxsv" path="res://textures/ui/ammo_icon.png" id="8_qqtri"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w1t2g"]
 height = 1.4
@@ -58,8 +61,49 @@ _data = {
 "Shoot": SubResource("Animation_3m1n1")
 }
 
+[sub_resource type="Animation" id="Animation_fwhk5"]
+resource_name = "Hurt"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.74902, 0, 0, 0.705882), Color(0.75, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_27m0s"]
+resource_name = "Heal"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0.929412, 0.168627, 0.705882), Color(0, 0.929412, 0.168627, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ep0hg"]
+_data = {
+"Heal": SubResource("Animation_27m0s"),
+"Hurt": SubResource("Animation_fwhk5")
+}
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q23x6"]
 shader = ExtResource("4_ia74v")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nyv2a"]
+radius = 0.368
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -104,6 +148,11 @@ libraries = {
 "": SubResource("AnimationLibrary_4ubv6")
 }
 
+[node name="ScreenAnims" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ep0hg")
+}
+
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
@@ -113,8 +162,17 @@ max_polyphony = 4
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Reticle" type="TextureRect" parent="CanvasLayer/UI"]
 material = SubResource("ShaderMaterial_q23x6")
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -128,3 +186,105 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_v2ikc")
 stretch_mode = 5
+
+[node name="Money" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -223.0
+offset_top = 35.0
+offset_right = -127.0
+offset_bottom = 80.0
+grow_horizontal = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("6_1ivy6")
+theme_override_font_sizes/font_size = 32
+text = "$50"
+horizontal_alignment = 2
+
+[node name="Ammo" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -319.0
+offset_top = -70.0
+offset_right = -223.0
+offset_bottom = -25.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("6_1ivy6")
+theme_override_font_sizes/font_size = 32
+text = "12
+"
+horizontal_alignment = 1
+
+[node name="Health" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 336.0
+offset_top = -70.0
+offset_right = 432.0
+offset_bottom = -25.0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("6_1ivy6")
+theme_override_font_sizes/font_size = 32
+text = "100"
+horizontal_alignment = 1
+
+[node name="HpIcon" type="TextureRect" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 296.0
+offset_top = -70.0
+offset_right = 336.0
+offset_bottom = -30.0
+grow_vertical = 0
+texture = ExtResource("7_va7nb")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -344.0
+offset_top = -70.0
+offset_right = -304.0
+offset_bottom = -30.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_qqtri")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.929412, 0.168627, 0)
+
+[node name="Hurtbox" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+shape = SubResource("CapsuleShape3D_nyv2a")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

@@ -4,10 +4,23 @@ extends Node
 
 var Lives = 3
 var Money = 0.0
-var Player = null
 var Ammo = 12
 var GunDamage = 30
+
+signal UpdateUi
+signal UpHp(ammount)
+signal UpAmmo
+signal UpMoney
 
 func AmmoUp(am:int):
 	Ammo += am
 	Ammo = clamp(Ammo,0,14)
+	emit_signal("UpdateUi")
+	emit_signal("UpAmmo")
+func HpUp(am:int):
+	emit_signal("UpHp",am)
+	emit_signal("UpdateUi")
+func MoneyUp(am):
+	Money+=am
+	emit_signal("UpdateUi")
+	emit_signal("UpMoney")

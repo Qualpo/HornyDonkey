@@ -35,9 +35,13 @@ var RNG = RandomNumberGenerator.new()
 
 func _ready():
 	MoveSpeed = WalkSpeed
-	Global.Player = self
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	GunPos = GunStartPos
+	Global.UpdateUi.connect(UpdateUi)
+	Global.UpHp.connect(Heal)
+	Global.UpAmmo.connect(PickupAmmo)
+	Global.UpMoney.connect(PickupMoney)
+	UpdateUi()
 func _physics_process(delta):
 	
 	#Camera Stuff
@@ -107,7 +111,29 @@ func _input(event):
 func Heal(am:float):
 	HP += am
 	HP = clamp(HP,0.0,100.0)
-
+	$ScreenAnims.play("Heal")
+	$AudioStreamPlayer3D.stream = load("res://audio/sfx/shopkeep/shop_hello.ogg")
+	$AudioStreamPlayer3D.play()
+func PickupMoney():
+	$AudioStreamPlayer3D.stream = load("res://audio/sfx/shopkeep/shop_hello.ogg")
+	$AudioStreamPlayer3D.play()
+func PickupAmmo():
+	$AudioStreamPlayer3D.stream = load("res://audio/sfx/shopkeep/shop_hello.ogg")
+	$AudioStreamPlayer3D.play()
+func Hurt(am:float):
+	HP -= am
+	$ScreenAnims.play("Hurt")
+	$AudioStreamPlayer3D.stream = JumpSound
+	$AudioStreamPlayer3D.play()
+	UpdateUi()
+	if HP <= 0:
+		Die()
+func Die():
+	if Global.Lives <= 0:
+		get_tree().quit()
+	Global.Lives -= 1
+	get_tree().reload_current_scene()
+	
 func Aim():
 	$AnimationPlayer.stop(true)
 	Aiming = true
@@ -131,10 +157,15 @@ func UnSprint():
 	Sprinting = false
 	$AnimationPlayer.speed_scale = 0.5
 
+func UpdateUi():
+	$CanvasLayer/UI/Money.text = str("$",Global.Money)
+	$CanvasLayer/UI/Health.text = str(int(HP))
+	$CanvasLayer/UI/Ammo.text = str(Global.Ammo)
 
 func Shoot():
 	if not Shooting and Global.Ammo > 0:
 		Global.Ammo -= 1
+		UpdateUi()
 		Shooting = true
 		if $GunSound.stream != ShootSound:
 			$GunSound.stream = ShootSound
@@ -180,3 +211,7 @@ func Shoot():
 		if $GunSound.stream != NoBulletSound:
 			$GunSound.stream = NoBulletSound
 		$GunSound.play()
+
+
+func _on_hurtbox_area_entered(area):
+	Hurt(10)

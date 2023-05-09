@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cxtmqbjxg1f0h"]
+[gd_scene load_steps=27 format=3 uid="uid://cxtmqbjxg1f0h"]
 
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_ym708"]
 [ext_resource type="AudioStream" uid="uid://cehdrvf25dvfm" path="res://audio/music/e1m1.ogg" id="2_1s4sw"]
@@ -63,6 +63,14 @@ glow_intensity = 1.72
 glow_strength = 1.11
 glow_bloom = 0.54
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6jphb"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lcha5"]
+material = SubResource("StandardMaterial3D_6jphb")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_txlar"]
+
 [node name="DebugLevel" type="Node3D"]
 script = ExtResource("1_ym708")
 BGM = ExtResource("2_1s4sw")
@@ -112,6 +120,7 @@ material = SubResource("StandardMaterial3D_orcyj")
 
 [node name="Player" parent="." instance=ExtResource("6_il5x7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+HP = 90.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_w8go0")
@@ -153,3 +162,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, 1.4, -0.9)
 
 [node name="HealthPickup" parent="." instance=ExtResource("12_yrhok")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.6, 2.1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.4, 5.4)
+mesh = SubResource("BoxMesh_lcha5")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
+shape = SubResource("BoxShape3D_txlar")
