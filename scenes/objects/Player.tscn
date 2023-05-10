@@ -61,22 +61,6 @@ _data = {
 "Shoot": SubResource("Animation_3m1n1")
 }
 
-[sub_resource type="Animation" id="Animation_fwhk5"]
-resource_name = "Hurt"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.74902, 0, 0, 0.705882), Color(0.75, 0, 0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_27m0s"]
 resource_name = "Heal"
 length = 0.5
@@ -91,6 +75,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0.929412, 0.168627, 0.705882), Color(0, 0.929412, 0.168627, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fwhk5"]
+resource_name = "Hurt"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.74902, 0, 0, 0.705882), Color(0.75, 0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ep0hg"]
@@ -138,6 +138,12 @@ sorting_use_aabb_center = false
 mesh = ExtResource("2_6uht8")
 
 [node name="Bullets" type="Node3D" parent="CameraPivot/Camera3D"]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="CameraPivot/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.199741, 0)
+light_energy = 2.778
+shadow_enabled = true
+spot_range = 60.407
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 speed_scale = 0.5

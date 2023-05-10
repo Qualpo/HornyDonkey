@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhwetbs626i2l"
-path.s3tc="res://.godot/imported/grass_ground.png-0887513d7dcfa6a32e9f85cc502e8a83.s3tc.ctex"
+uid="uid://lxw8jwbb5piu"
+path.s3tc="res://.godot/imported/Level1DirtMask.png-d8a6e541a0f8ebaa9e26df45cf85f3da.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/grass_ground.png"
-dest_files=["res://.godot/imported/grass_ground.png-0887513d7dcfa6a32e9f85cc502e8a83.s3tc.ctex"]
+source_file="res://textures/Masks/Level1DirtMask.png"
+dest_files=["res://.godot/imported/Level1DirtMask.png-d8a6e541a0f8ebaa9e26df45cf85f3da.s3tc.ctex"]
 
 [params]
 
