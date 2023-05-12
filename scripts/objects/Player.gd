@@ -21,7 +21,7 @@ var GunPos = Vector3()
 var RecoilAmt = 3.0
 var Fov = 75.0
 var MoveSpeed = 1.0
-
+var SuperJumpBuffer = 0.0
 
 var Aiming = false
 var Sprinting = false
@@ -50,6 +50,10 @@ func _ready():
 	UpdateUi()
 func _physics_process(delta):
 	if not Dead:
+		if SuperJumpBuffer > 0.0:
+			SuperJumpBuffer -= delta
+			$CanvasLayer/UI/Speed.text = str(SuperJumpBuffer) 
+		#$CanvasLayer/UI/Speed.text = str(Vector2(velocity.x,velocity.z).length())
 		#Camera Stuff
 		$CameraPivot/Camera3D.rotation_degrees.x = CameraDirection.x + CameraOffset.x
 		$CameraPivot/Camera3D.fov = lerp($CameraPivot/Camera3D.fov,Fov,0.2)
@@ -65,7 +69,7 @@ func _physics_process(delta):
 		#Gravity
 		velocity.y -= 1
 		#Inputs
-		var inputDir =Input.get_vector("Left","Right","Forward","Backward")
+		var inputDir = Input.get_vector("Left","Right","Forward","Backward")
 		var irt = inputDir.rotated(-rotation.y)
 		
 		if Input.is_action_just_pressed("Shoot"):
@@ -82,7 +86,8 @@ func _physics_process(delta):
 		if Input.is_action_just_released("Sprint"):
 			if Sprinting:
 				UnSprint()
-			
+		if Input.is_action_just_pressed("Jump"):
+				SuperJumpBuffer = 0.1
 		if inputDir != Vector2.ZERO:
 			if Sprinting:
 				Fov = 90.0
@@ -90,7 +95,7 @@ func _physics_process(delta):
 			if Sprinting:
 				Fov = 75.0
 		if is_on_floor():
-			velocity = lerp(velocity, Vector3(0,velocity.y,0),0.3)
+			velocity = lerp(velocity, Vector3(0,velocity.y,0),0.25)
 			velocity += Vector3(irt.x,0,irt.y) * MoveSpeed
 			
 			if inputDir != Vector2.ZERO and not Aiming:
@@ -98,15 +103,21 @@ func _physics_process(delta):
 			else:
 				$AnimationPlayer.stop(true)
 				Bobset = 0.0
+
+			
 			if Input.is_action_pressed("Jump"):
-				velocity.y += 16
-				#$AudioStreamPlayer3D.stream = JumpSound
-				#$AudioStreamPlayer3D.play()
+				if SuperJumpBuffer > 0.0:
+					velocity.y += 16
+				else:
+					velocity.y = 16
+					#$AudioStreamPlayer3D.stream = JumpSound
+					#$AudioStreamPlayer3D.play()
+			
 			
 		else:
 			$AnimationPlayer.play("Idle" )
 			velocity = lerp(velocity, Vector3(0,velocity.y,0),0.025)
-			velocity += Vector3(irt.x,0,irt.y) * (MoveSpeed * 0.15)
+			velocity += Vector3(irt.x,0,irt.y) * (MoveSpeed * 0.17)
 			if Aiming:
 				Bobset = velocity.y/256
 			else:
@@ -127,6 +138,7 @@ func _input(event):
 			CameraDirection.x = clamp(CameraDirection.x, -90.0,90.0)
 	if event.is_action_pressed("Flashlight"):
 		$CameraPivot/Camera3D/SpotLight3D.visible = !$CameraPivot/Camera3D/SpotLight3D.visible
+		$FlashlightSound.play()
 
 func Heal(am:float):
 	HP += am

@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://8t15wlahpiii"]
+[gd_scene load_steps=25 format=3 uid="uid://8t15wlahpiii"]
 
 [ext_resource type="Script" path="res://scripts/objects/Player.gd" id="1_yweok"]
 [ext_resource type="ArrayMesh" uid="uid://35pen6o2rgoc" path="res://models/mesh/Gun.res" id="2_6uht8"]
 [ext_resource type="AudioStream" uid="uid://bua8ttou8eytl" path="res://audio/sfx/gun/Shoot.ogg" id="3_o62s8"]
 [ext_resource type="Shader" path="res://resources/materials/Invert.gdshader" id="4_ia74v"]
+[ext_resource type="AudioStream" uid="uid://c1lq8t1iulfwy" path="res://audio/sfx/flashlight.ogg" id="4_tnbl5"]
 [ext_resource type="Texture2D" uid="uid://b308hqk2hm7re" path="res://textures/ui/Cursor.png" id="4_v2ikc"]
 [ext_resource type="FontFile" uid="uid://cxwlpyc5xa31h" path="res://resources/fonts/Daydream.ttf" id="6_1ivy6"]
 [ext_resource type="Texture2D" uid="uid://dmiqgdpmqofm5" path="res://textures/ui/health_icon.png" id="7_f0lqq"]
@@ -229,6 +230,10 @@ libraries = {
 stream = ExtResource("3_o62s8")
 max_polyphony = 4
 
+[node name="FlashlightSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_tnbl5")
+max_polyphony = 4
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" type="Control" parent="CanvasLayer"]
@@ -359,6 +364,14 @@ offset_bottom = 17.0
 texture = ExtResource("9_vmia2")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="Speed" type="Label" parent="CanvasLayer/UI"]
+offset_left = 217.0
+offset_top = 3.0
+offset_right = 257.0
+offset_bottom = 29.0
+text = "poop"
+horizontal_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
