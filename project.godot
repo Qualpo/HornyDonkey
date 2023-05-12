@@ -12,7 +12,10 @@ config_version=5
 
 config/name="HornyDonkey"
 config/features=PackedStringArray("4.0", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/image="res://textures/branding/donkey fucker devs.png"
+boot_splash/use_filter=false
+config/icon="res://textures/donkey cult insignia glowing sprite.png"
+boot_splash/minimum_display_time=3000
 
 [audio]
 
@@ -29,6 +32,10 @@ window/size/viewport_width=480
 window/size/viewport_height=270
 window/size/mode=3
 window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PackedStringArray()
 
 [importer_defaults]
 

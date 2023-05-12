@@ -98,8 +98,8 @@ func _physics_process(delta):
 			Bobset = 0.0
 		if Input.is_action_pressed("Jump"):
 			velocity.y += 16
-			$AudioStreamPlayer3D.stream = JumpSound
-			$AudioStreamPlayer3D.play()
+			#$AudioStreamPlayer3D.stream = JumpSound
+			#$AudioStreamPlayer3D.play()
 		
 	else:
 		$AnimationPlayer.play("Idle" )

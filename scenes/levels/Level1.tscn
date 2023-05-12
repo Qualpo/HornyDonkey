@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dvat6v2me6fmy"]
+[gd_scene load_steps=28 format=3 uid="uid://dvat6v2me6fmy"]
 
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_h7o08"]
 [ext_resource type="Shader" path="res://scenes/levels/startpath.gdshader" id="2_5mdww"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://lxw8jwbb5piu" path="res://textures/Masks/Level1DirtMask.png" id="5_ltc0a"]
 [ext_resource type="PackedScene" uid="uid://8t15wlahpiii" path="res://scenes/objects/Player.tscn" id="5_xjdmk"]
 [ext_resource type="Texture2D" uid="uid://c11dh5mgs2wvn" path="res://textures/window.png" id="6_nu1po"]
+[ext_resource type="Texture2D" uid="uid://c0dfon0as8u2p" path="res://textures/door.png" id="10_obp5r"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_e52e2"]
 data = PackedVector3Array(-6.2125, -1, 8.35, -6.1125, 1, -2.65, -6.1625, 1, 8.35, -6.2125, -1, 8.35, -6.1125, -1, -2.65, -6.1125, 1, -2.65, -6.1125, -1, -2.65, 6.2625, 1, -2.65, -6.1125, 1, -2.65, -6.1125, -1, -2.65, 6.2625, -1, -2.65, 6.2625, 1, -2.65, 6.2625, -1, -2.65, 6.2125, 1, 8.35, 6.2625, 1, -2.65, 6.2625, -1, -2.65, 6.2625, -1, 8.35, 6.2125, 1, 8.35, 6.2625, -1, 8.35, -6.1625, 1, 8.35, 6.2125, 1, 8.35, 6.2625, -1, 8.35, -6.2125, -1, 8.35, -6.1625, 1, 8.35, -6.1125, -1, -2.65, 6.2625, -1, 8.35, 6.2625, -1, -2.65, -6.1125, -1, -2.65, -6.2125, -1, 8.35, 6.2625, -1, 8.35, 6.2625, 1, -2.65, -6.1625, 1, 8.35, -6.1125, 1, -2.65, 6.2625, 1, -2.65, 6.2125, 1, 8.35, -6.1625, 1, 8.35)
@@ -142,6 +143,14 @@ sky_material = SubResource("PhysicalSkyMaterial_etqbp")
 background_mode = 2
 sky = SubResource("Sky_8fasa")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdel7"]
+albedo_texture = ExtResource("10_obp5r")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1a48"]
+albedo_texture = ExtResource("10_obp5r")
+texture_filter = 0
+
 [node name="Level1" type="Node3D"]
 script = ExtResource("1_h7o08")
 
@@ -227,3 +236,13 @@ use_collision = true
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -1.5, -14.8)
 size = Vector3(9.4, 1, 20)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, 0.5, -5.3)
+size = Vector3(1.2, 3, 1)
+material = SubResource("StandardMaterial3D_gdel7")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23517e-08, 0.5, -5.3)
+size = Vector3(1.2, 3, 1)
+material = SubResource("StandardMaterial3D_m1a48")
