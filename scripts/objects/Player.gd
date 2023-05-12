@@ -11,9 +11,11 @@ extends CharacterBody3D
 var FacingDir = Vector2.UP
 var CameraDirection = Vector2()
 var CameraOffset = Vector2()
+var TiltDir = Vector2()
 var GunStartPos = Vector3(0.625,-0.32,-0.529)
 var GunAimPos = Vector3(0,-0.230,-0.184)
 var GunPos = Vector3()
+
 
 var RecoilAmt = 3.0
 var Fov = 75.0
@@ -49,6 +51,7 @@ func _physics_process(delta):
 	$CameraPivot/Camera3D.fov = lerp($CameraPivot/Camera3D.fov,Fov,0.2)
 	CameraOffset.x = lerp(CameraOffset.x,0.0,0.1)
 	$CameraPivot/Camera3D.v_offset = lerp($CameraPivot/Camera3D.v_offset,Bobset,0.1)
+	$CameraPivot.rotation_degrees = lerp($CameraPivot.rotation_degrees, Vector3(TiltDir.y,0,TiltDir.x), 0.1)
 	#Aim Lerp
 	$CameraPivot/Camera3D/Gun.position = lerp($CameraPivot/Camera3D/Gun.position,GunPos,0.4)
 	
@@ -93,8 +96,9 @@ func _physics_process(delta):
 			velocity.y += 16
 			$AudioStreamPlayer3D.stream = JumpSound
 			$AudioStreamPlayer3D.play()
-			$AnimationPlayer.stop()
+			
 	else:
+		$AnimationPlayer.play("Idle" )
 		velocity = lerp(velocity, Vector3(0,velocity.y,0),0.025)
 		velocity += Vector3(irt.x,0,irt.y) * (MoveSpeed * 0.15)
 		if Aiming:
@@ -102,6 +106,7 @@ func _physics_process(delta):
 		else:
 			Bobset = velocity.y/32
 	move_and_slide()
+	TiltDir = Vector2(-inputDir.x*(4+(6*int(Sprinting))),inputDir.y*10* int(Sprinting))
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotation_degrees.y -= event.relative.x * Sensitivity
