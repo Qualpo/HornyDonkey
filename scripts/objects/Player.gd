@@ -117,7 +117,6 @@ func _physics_process(delta):
 			if abs(position.y - LastPos.y)>0.01:
 				
 				var dist = position.y - LastPos.y
-				print(dist)
 				$CameraPivot/Camera3D.position.y -= dist
 		TiltDir = Vector2(-inputDir.x*(4+(6*int(Sprinting))),inputDir.y*10* int(Sprinting))
 func _input(event):
@@ -126,6 +125,8 @@ func _input(event):
 			rotation_degrees.y -= event.relative.x * Sensitivity
 			CameraDirection.x -= event.relative.y * Sensitivity
 			CameraDirection.x = clamp(CameraDirection.x, -90.0,90.0)
+	if event.is_action_pressed("Flashlight"):
+		$CameraPivot/Camera3D/SpotLight3D.visible = !$CameraPivot/Camera3D/SpotLight3D.visible
 
 func Heal(am:float):
 	HP += am
