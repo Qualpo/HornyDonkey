@@ -94,6 +94,8 @@ data = PackedVector3Array(0.95, -1, 5.225, 0.95, 4.8, -3.35, 0.95, 4.8, 5.225, 0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g5oop"]
 resource_name = "Material.001"
 cull_mode = 2
+diffuse_mode = 1
+specular_mode = 1
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("4_1klhk")
 roughness = 0.5
@@ -238,7 +240,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -1.5, -14.8)
 size = Vector3(9.4, 1, 20)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, 0.5, -5.3)
+transform = Transform3D(-1.001, 0, 0, 0, -1.001, 0, 0, 0, -1.001, -1.1, 0.5, -5.3)
+flip_faces = true
 size = Vector3(1.2, 3, 1)
 material = SubResource("StandardMaterial3D_gdel7")
 
