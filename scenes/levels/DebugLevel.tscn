@@ -126,6 +126,41 @@ radial_segments = 32
 rings = 16
 material = SubResource("StandardMaterial3D_qss5h")
 
+[node name="Slope" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-0.707107, -0.707107, 5.75737e-08, -0.707107, 0.707107, 1.54268e-08, -2.98023e-08, -2.98023e-08, -1, -0.6, 1.9, -7.4)
+size = Vector3(1, 6.2, 2)
+
+[node name="Stairs" type="CSGCombiner3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 1, 2)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, 0.4, 0)
+size = Vector3(0.4, 2.4, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0.2, 0)
+size = Vector3(0.4, 2, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 1.19209e-07, 0)
+size = Vector3(0.4, 1.6, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0999999, -0.2, 0)
+size = Vector3(0.4, 1.2, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.4, 0)
+size = Vector3(0.4, 0.8, 1)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.899999, -0.6, 0)
+size = Vector3(0.4, 0.4, 1)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D/Stairs"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 0.1, 0)
+size = Vector3(0.2, 2.6, 0.2)
+
 [node name="Player" parent="." instance=ExtResource("6_il5x7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
 
