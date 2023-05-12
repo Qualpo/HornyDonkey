@@ -5,6 +5,8 @@ extends Node
 var LoadingScreen = preload("res://scenes/loading_screen.tscn")
 var TargetScenePath = "res://scenes/levels/DebugLevel.tscn"
 
+var Checkpoint = Vector3()
+
 var Lives = 3
 var Money = 0.0
 var Ammo = 12

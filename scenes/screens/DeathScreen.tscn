@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsdv2qio0vhob"]
+
+[ext_resource type="Script" path="res://scripts/screens/DeathScreen.gd" id="1_6t4hs"]
+[ext_resource type="Texture2D" uid="uid://dxqh0fojsxk3r" path="res://textures/game_over_optional2.png" id="2_pwvs3"]
+
+[node name="DeathScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6t4hs")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pwvs3")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 237.0
+offset_right = 180.0
+offset_bottom = 263.0
+text = "Click"
