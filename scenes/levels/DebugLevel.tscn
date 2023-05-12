@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cxtmqbjxg1f0h"]
+[gd_scene load_steps=23 format=3 uid="uid://cxtmqbjxg1f0h"]
 
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_ym708"]
 [ext_resource type="AudioStream" uid="uid://cehdrvf25dvfm" path="res://audio/music/e1m1.ogg" id="2_1s4sw"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d28jq0ue0lxxl" path="res://scenes/objects/Pickups/bullet_pickup.tscn" id="10_lm4nc"]
 [ext_resource type="PackedScene" uid="uid://du8daolhpsak0" path="res://scenes/objects/Pickups/money_pickup.tscn" id="11_nky7h"]
 [ext_resource type="PackedScene" uid="uid://covy4aqlpxndw" path="res://scenes/objects/Pickups/health_pickup.tscn" id="12_yrhok"]
+[ext_resource type="PackedScene" uid="uid://b3a0huwlqx0v0" path="res://models/object/Donkey.gltf" id="13_pc2oq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uugf5"]
 diffuse_mode = 1
@@ -171,6 +172,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.6, 2.1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.6, 5.4)
+visible = false
 mesh = SubResource("BoxMesh_lcha5")
 
 [node name="Area3D" type="Area3D" parent="MeshInstance3D"]
@@ -179,3 +181,6 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
 shape = SubResource("BoxShape3D_txlar")
+
+[node name="Donkey" parent="." instance=ExtResource("13_pc2oq")]
+transform = Transform3D(-0.101946, 0, -0.0439092, 0, 0.111, 0, 0.0439092, 0, -0.101946, 4.01243, -0.221743, 5.33686)
