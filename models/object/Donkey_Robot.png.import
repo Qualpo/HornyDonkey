@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmiqgdpmqofm5"
-path="res://.godot/imported/health_icon.png-18bb462763fc498b9dd24ec745c0ec97.ctex"
+uid="uid://diq0uv3m1roq8"
+path="res://.godot/imported/Donkey_Robot.png-2139213bdf640f3764dba2001af3d267.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/UI/health_icon.png"
-dest_files=["res://.godot/imported/health_icon.png-18bb462763fc498b9dd24ec745c0ec97.ctex"]
+source_file="res://models/object/Donkey_Robot.png"
+dest_files=["res://.godot/imported/Donkey_Robot.png-2139213bdf640f3764dba2001af3d267.ctex"]
 
 [params]
 
