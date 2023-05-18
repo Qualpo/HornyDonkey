@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cxtmqbjxg1f0h"]
+[gd_scene load_steps=24 format=3 uid="uid://cxtmqbjxg1f0h"]
 
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_ym708"]
 [ext_resource type="AudioStream" uid="uid://cehdrvf25dvfm" path="res://audio/music/e1m1.ogg" id="2_1s4sw"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://covy4aqlpxndw" path="res://scenes/objects/Pickups/health_pickup.tscn" id="12_yrhok"]
 [ext_resource type="PackedScene" uid="uid://y0j6i7bcm8cd" path="res://scenes/models/donkey.tscn" id="13_mn7qa"]
 [ext_resource type="Texture2D" uid="uid://diq0uv3m1roq8" path="res://models/object/Donkey_Robot.png" id="14_bpl76"]
+[ext_resource type="PackedScene" uid="uid://c8u1c56nrepsl" path="res://scenes/objects/Pickups/ItemPickUp.tscn" id="15_6m60b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uugf5"]
 diffuse_mode = 1
@@ -200,7 +201,6 @@ transform = Transform3D(0.115, 0, 0, 0, 0.115, 0, 0, 0, 0.115, 4.1, 0, 4.7)
 surface_material_override/0 = SubResource("StandardMaterial3D_v75wf")
 
 [node name="Area3D" type="Area3D" parent="Donkey2"]
-transform = Transform3D(6.414, 0, 0, 0, 6.414, 0, 0, 0, 6.414, 0, 5.21739, 0)
 collision_layer = 4
 collision_mask = 2
 
@@ -234,5 +234,8 @@ shadow_enabled = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0)
+
+[node name="ItemPickUp" parent="." instance=ExtResource("15_6m60b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.9, -3.9)
 
 [editable path="Donkey2"]

@@ -1,14 +1,15 @@
-[gd_scene load_steps=25 format=3 uid="uid://8t15wlahpiii"]
+[gd_scene load_steps=28 format=3 uid="uid://8t15wlahpiii"]
 
 [ext_resource type="Script" path="res://scripts/objects/Player.gd" id="1_yweok"]
 [ext_resource type="ArrayMesh" uid="uid://35pen6o2rgoc" path="res://models/mesh/Gun.res" id="2_6uht8"]
+[ext_resource type="Resource" uid="uid://ckw0qf8fkwvsd" path="res://resources/PlayerInventory.tres" id="2_syoly"]
 [ext_resource type="AudioStream" uid="uid://bua8ttou8eytl" path="res://audio/sfx/gun/Shoot.ogg" id="3_o62s8"]
 [ext_resource type="Shader" path="res://resources/materials/Invert.gdshader" id="4_ia74v"]
 [ext_resource type="AudioStream" uid="uid://c1lq8t1iulfwy" path="res://audio/sfx/flashlight.ogg" id="4_tnbl5"]
-[ext_resource type="Texture2D" uid="uid://b308hqk2hm7re" path="res://textures/UI/Cursor.png" id="4_v2ikc"]
+[ext_resource type="Texture2D" uid="uid://b308hqk2hm7re" path="res://textures/ui/Cursor.png" id="4_v2ikc"]
 [ext_resource type="FontFile" uid="uid://cxwlpyc5xa31h" path="res://resources/fonts/Daydream.ttf" id="6_1ivy6"]
-[ext_resource type="Texture2D" uid="uid://dmiqgdpmqofm5" path="res://textures/UI/health_icon.png" id="7_f0lqq"]
-[ext_resource type="Texture2D" uid="uid://ccn5py45ivxsv" path="res://textures/UI/ammo_icon.png" id="8_qqtri"]
+[ext_resource type="Texture2D" uid="uid://dmiqgdpmqofm5" path="res://textures/ui/health_icon.png" id="7_f0lqq"]
+[ext_resource type="Texture2D" uid="uid://ccn5py45ivxsv" path="res://textures/ui/ammo_icon.png" id="8_qqtri"]
 [ext_resource type="Texture2D" uid="uid://dassaokj5vc1y" path="res://textures/donkey cult insignia glowing sprite.png" id="9_vmia2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w1t2g"]
@@ -58,7 +59,7 @@ _data = {
 "Walk": SubResource("Animation_3ew0v")
 }
 
-[sub_resource type="Animation" id="Animation_3m1n1"]
+[sub_resource type="Animation" id="Animation_ymk0v"]
 resource_name = "Shoot"
 length = 0.2
 tracks/0/type = "value"
@@ -74,9 +75,42 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0.785398, 0, 0), Vector3(0, 0, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ubv6"]
+[sub_resource type="Animation" id="Animation_ty5ve"]
+resource_name = "Hit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraPivot/Camera3D/Gun:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.5708, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0pkfk"]
+resource_name = "PullOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraPivot/Camera3D/Gun:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.625, -0.741, -0.529), Vector3(0.625, -0.32, -0.529)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kk58s"]
 _data = {
-"Shoot": SubResource("Animation_3m1n1")
+"Hit": SubResource("Animation_ty5ve"),
+"PullOut": SubResource("Animation_0pkfk"),
+"Shoot": SubResource("Animation_ymk0v")
 }
 
 [sub_resource type="Animation" id="Animation_6nh7s"]
@@ -147,6 +181,7 @@ WalkSpeed = 2.0
 RunSpeed = 3.0
 AimSpeed = 1.0
 Sensitivity = 1.0
+inventory = ExtResource("2_syoly")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
@@ -191,7 +226,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.500259, 0)
 current = true
 
 [node name="Gun" type="Node3D" parent="CameraPivot/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625, -0.32, -0.529)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625, -0.741, -0.529)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CameraPivot/Camera3D/Gun"]
 transform = Transform3D(-0.1, 0, -1.50996e-08, 0, 0.1, 0, 1.50996e-08, 0, -0.1, 0, 0.191, 0)
@@ -216,7 +251,7 @@ libraries = {
 
 [node name="GunAnims" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_4ubv6")
+"": SubResource("AnimationLibrary_kk58s")
 }
 
 [node name="ScreenAnims" type="AnimationPlayer" parent="."]
@@ -380,12 +415,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.74902, 0, 0, 0)
+color = Color(1, 1, 1, 0)
 metadata/_edit_lock_ = true
 
 [node name="Hurtbox" type="Area3D" parent="."]
 collision_layer = 2
-collision_mask = 4
+collision_mask = 12
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
 shape = SubResource("CapsuleShape3D_nyv2a")

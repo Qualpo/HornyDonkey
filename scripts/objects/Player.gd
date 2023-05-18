@@ -7,6 +7,8 @@ extends CharacterBody3D
 @export var HP = 100.0
 @export_range(0.0,1.0,0.01) var Sensitivity = 0.5
 @export var Bobset = 0.0
+@export var inventory : Inventory
+
 
 var FacingDir = Vector2.UP
 var CameraDirection = Vector2()
@@ -39,6 +41,8 @@ var RNG = RandomNumberGenerator.new()
 @onready var NoBulletSound = preload("res://audio/sfx/gun/154934__klawykogut__empty-gun-shot.wav")
 
 
+signal Use(user)
+
 func _ready():
 	MoveSpeed = WalkSpeed
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -48,6 +52,8 @@ func _ready():
 	Global.UpAmmo.connect(PickupAmmo)
 	Global.UpMoney.connect(PickupMoney)
 	UpdateUi()
+	inventory.Start(self)
+	inventory.NewItem.connect(NewItem)
 func _physics_process(delta):
 	if not Dead:
 		if SuperJumpBuffer > 0.0:
@@ -73,7 +79,8 @@ func _physics_process(delta):
 		var irt = inputDir.rotated(-rotation.y)
 		
 		if Input.is_action_just_pressed("Shoot"):
-			Shoot()
+			if not $GunAnims.current_animation == "PullOut":
+				emit_signal("Use",self)
 		if Input.is_action_just_pressed("Aim"):
 			UnSprint()
 			Aim()
@@ -139,7 +146,21 @@ func _input(event):
 	if event.is_action_pressed("Flashlight"):
 		$CameraPivot/Camera3D/SpotLight3D.visible = !$CameraPivot/Camera3D/SpotLight3D.visible
 		$FlashlightSound.play()
-
+	if event.is_action_pressed("InvUp"):
+		$GunAnims.stop()
+		$GunAnims.play("PullOut")
+		inventory.MoveRight()
+		
+	elif event.is_action_pressed("InvDown"):
+		$GunAnims.stop()
+		$GunAnims.play("PullOut")
+		inventory.MoveLeft()
+func PickUpItem(pick):
+	pick.item.PickUp(self)
+	inventory.content.append(pick.item)
+	pick.queue_free()
+func NewItem(item:Item):
+	$CameraPivot/Camera3D/Gun/MeshInstance3D.mesh = item.mesh
 func Heal(am:float):
 	HP += am
 	HP = clamp(HP,0.0,100.0)
@@ -202,7 +223,7 @@ func UpdateUi():
 	$CanvasLayer/UI/Ammo.text = str(Global.Ammo)
 	$CanvasLayer/UI/Lives.text = str("x ", Global.Lives)
 
-func Shoot():
+func Shoot(accuracy, bulletammount, recoil):
 	if not Shooting and Global.Ammo > 0:
 		Global.Ammo -= 1
 		UpdateUi()
@@ -213,8 +234,8 @@ func Shoot():
 		$GunAnims.stop()
 		$GunAnims.play("Shoot")
 
-		for i in range(1):
-			var rand = (abs(1-1))*25
+		for i in range(bulletammount):
+			var rand = (abs(1-accuracy))*25
 			var spread = Vector2(RNG.randf_range(-rand,rand),RNG.randf_range(-rand,rand))
 			var Cast:RayCast3D = RayCast3D.new()
 			$CameraPivot/Camera3D/Bullets.add_child(Cast)
@@ -241,8 +262,8 @@ func Shoot():
 							else:
 								hole.look_at(Cast.get_collision_point()-Cast.get_collision_normal(),Vector3.UP)
 					Cast.queue_free()
-		CameraOffset.x += RecoilAmt * 3
-		CameraDirection.x += RecoilAmt
+		CameraOffset.x += recoil * 3
+		CameraDirection.x += recoil
 		CameraDirection.x = clamp(CameraDirection.x,-90,90)
 
 		await get_tree().create_timer(0.15).timeout
@@ -261,4 +282,8 @@ func UnDie():
 	$CameraPivot.rotation = Vector3()
 
 func _on_hurtbox_area_entered(area):
-	Hurt(10)
+	if area.is_in_group("Pickup"):
+		PickUpItem(area.get_parent())
+		print("peepee")
+	if area.is_in_group("Hurt"):
+		Hurt(10)

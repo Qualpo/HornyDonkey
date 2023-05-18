@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=5 format=3 uid="uid://ckw0qf8fkwvsd"]
+
+[ext_resource type="Script" path="res://scripts/resources/items/Gun.gd" id="1_gb23e"]
+[ext_resource type="ArrayMesh" uid="uid://7govamtxuq3u" path="res://models/mesh/Donkey.res" id="1_j783d"]
+[ext_resource type="Script" path="res://scripts/resources/Inventory.gd" id="1_u1xhp"]
+
+[sub_resource type="Resource" id="Resource_y6uph"]
+script = ExtResource("1_gb23e")
+MaxAmmo = 16
+Ammo = 14
+Accuracy = 0.8
+Recoil = 0.0
+BulletAmmount = 100
+mesh = ExtResource("1_j783d")
+offset = Vector3(0, 0, 0)
+
+[resource]
+script = ExtResource("1_u1xhp")
+content = [SubResource("Resource_y6uph")]
+curselect = 0
