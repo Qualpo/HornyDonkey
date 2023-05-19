@@ -1,8 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://8t15wlahpiii"]
+[gd_scene load_steps=29 format=3 uid="uid://8t15wlahpiii"]
 
 [ext_resource type="Script" path="res://scripts/objects/Player.gd" id="1_yweok"]
-[ext_resource type="ArrayMesh" uid="uid://35pen6o2rgoc" path="res://models/mesh/Gun.res" id="2_6uht8"]
-[ext_resource type="Resource" uid="uid://ckw0qf8fkwvsd" path="res://resources/PlayerInventory.tres" id="2_syoly"]
 [ext_resource type="AudioStream" uid="uid://bua8ttou8eytl" path="res://audio/sfx/gun/Shoot.ogg" id="3_o62s8"]
 [ext_resource type="Shader" path="res://resources/materials/Invert.gdshader" id="4_ia74v"]
 [ext_resource type="AudioStream" uid="uid://c1lq8t1iulfwy" path="res://audio/sfx/flashlight.ogg" id="4_tnbl5"]
@@ -11,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dmiqgdpmqofm5" path="res://textures/ui/health_icon.png" id="7_f0lqq"]
 [ext_resource type="Texture2D" uid="uid://ccn5py45ivxsv" path="res://textures/ui/ammo_icon.png" id="8_qqtri"]
 [ext_resource type="Texture2D" uid="uid://dassaokj5vc1y" path="res://textures/donkey cult insignia glowing sprite.png" id="9_vmia2"]
+[ext_resource type="Texture2D" uid="uid://c2xooisgd675y" path="res://textures/items/Pistol.png" id="10_o1afr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w1t2g"]
 height = 1.4
@@ -170,6 +169,27 @@ _data = {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q23x6"]
 shader = ExtResource("4_ia74v")
 
+[sub_resource type="Animation" id="Animation_uvq4k"]
+resource_name = "Fade"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_db0ke"]
+_data = {
+"Fade": SubResource("Animation_uvq4k")
+}
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nyv2a"]
 radius = 0.368
 
@@ -181,7 +201,6 @@ WalkSpeed = 2.0
 RunSpeed = 3.0
 AimSpeed = 1.0
 Sensitivity = 1.0
-inventory = ExtResource("2_syoly")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
@@ -227,13 +246,6 @@ current = true
 
 [node name="Gun" type="Node3D" parent="CameraPivot/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625, -0.741, -0.529)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CameraPivot/Camera3D/Gun"]
-transform = Transform3D(-0.1, 0, -1.50996e-08, 0, 0.1, 0, 1.50996e-08, 0, -0.1, 0, 0.191, 0)
-layers = 2
-sorting_offset = 1.0
-sorting_use_aabb_center = false
-mesh = ExtResource("2_6uht8")
 
 [node name="Bullets" type="Node3D" parent="CameraPivot/Camera3D"]
 
@@ -408,6 +420,72 @@ offset_right = 257.0
 offset_bottom = 29.0
 text = "poop"
 horizontal_alignment = 1
+
+[node name="ScrollThing" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Selected" type="TextureRect" parent="CanvasLayer/ScrollThing"]
+layout_mode = 0
+offset_left = 217.0
+offset_top = 4.0
+offset_right = 257.0
+offset_bottom = 44.0
+texture = ExtResource("10_o1afr")
+
+[node name="Foreward" type="TextureRect" parent="CanvasLayer/ScrollThing"]
+self_modulate = Color(1, 1, 1, 0.509804)
+layout_mode = 0
+offset_left = 271.0
+offset_top = 4.0
+offset_right = 311.0
+offset_bottom = 44.0
+texture = ExtResource("10_o1afr")
+
+[node name="Backward" type="TextureRect" parent="CanvasLayer/ScrollThing"]
+self_modulate = Color(1, 1, 1, 0.509804)
+layout_mode = 0
+offset_left = 154.0
+offset_top = 4.0
+offset_right = 194.0
+offset_bottom = 44.0
+texture = ExtResource("10_o1afr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ScrollThing"]
+libraries = {
+"": SubResource("AnimationLibrary_db0ke")
+}
+
+[node name="Inventory" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Inventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemList" type="ItemList" parent="CanvasLayer/Inventory/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+item_count = 1
+item_0/text = ""
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15

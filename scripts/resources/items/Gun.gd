@@ -20,6 +20,14 @@ func Use(user):
 		
 		Shoot(Accuracy,BulletAmmount,Recoil, user)
 		user.UpdateUi()
+func SecondUse(user):
+	if Held:
+		user.UnSprint()
+		user.Aim()
+func UnSecondUse(user):
+	if Held:
+		if user.Aiming:
+			user.UnAim()
 func Shoot(accuracy, bulletammount, recoil, user):
 	if not Shooting and Global.Ammo > 0:
 		Global.Ammo -= 1
@@ -27,8 +35,8 @@ func Shoot(accuracy, bulletammount, recoil, user):
 		if user.GunSound.stream != ShootSound:
 			user.GunSound.stream = ShootSound
 		user.GunSound.play()
-		user.GunAnims.stop()
-		user.GunAnims.play("Shoot")
+		$AnimationPlayer.stop()
+		$AnimationPlayer.play("Shoot")
 
 		for i in range(bulletammount):
 			var rand = (abs(1-accuracy))*25

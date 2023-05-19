@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8u1c56nrepsl"]
+[gd_scene load_steps=5 format=3 uid="uid://c8u1c56nrepsl"]
 
 [ext_resource type="Script" path="res://scripts/objects/Pickups/ItemPickUp.gd" id="1_8pjov"]
-[ext_resource type="Resource" uid="uid://bcs3iu24niu3j" path="res://resources/items/Pisstol.tres" id="2_6btmn"]
 
 [sub_resource type="Animation" id="Animation_2nwej"]
 resource_name = "Spin"
@@ -41,10 +40,8 @@ _data = {
 
 [node name="ItemPickUp" type="Node3D"]
 script = ExtResource("1_8pjov")
-item = ExtResource("2_6btmn")
 
 [node name="Visual" type="Node3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Visual"]
 root_node = NodePath("../..")

@@ -3,21 +3,20 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://byxlywyrdqd6l"
-path.s3tc="res://.godot/imported/Gun_Gun.png-fa1285ff3cea0b8aeee019e346fada0c.s3tc.ctex"
+path="res://.godot/imported/Gun_Gun.png-fa1285ff3cea0b8aeee019e346fada0c.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={}
 
 [deps]
 
 source_file="res://models/object/Gun_Gun.png"
-dest_files=["res://.godot/imported/Gun_Gun.png-fa1285ff3cea0b8aeee019e346fada0c.s3tc.ctex"]
+dest_files=["res://.godot/imported/Gun_Gun.png-fa1285ff3cea0b8aeee019e346fada0c.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

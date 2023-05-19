@@ -7,7 +7,6 @@ extends CharacterBody3D
 @export var HP = 100.0
 @export_range(0.0,1.0,0.01) var Sensitivity = 0.5
 @export var Bobset = 0.0
-@export var inventory : Inventory
 
 
 var FacingDir = Vector2.UP
@@ -46,6 +45,9 @@ var RNG = RandomNumberGenerator.new()
 
 
 signal Use(user)
+signal UnUse(user)
+signal SecondUse(user)
+signal UnSecondUse(user)
 
 func _ready():
 	MoveSpeed = WalkSpeed
@@ -56,9 +58,9 @@ func _ready():
 	Global.UpAmmo.connect(PickupAmmo)
 	Global.UpMoney.connect(PickupMoney)
 	UpdateUi()
-	inventory.NewItem.connect(NewItem)
-	inventory.Start(self)
-	
+	Inventory.NewItem.connect(NewItem)
+	Inventory.Start(self)
+	UpdateInvScroll()
 func _physics_process(delta):
 	if not Dead:
 		if SuperJumpBuffer > 0.0:
@@ -87,11 +89,10 @@ func _physics_process(delta):
 			if not $GunAnims.current_animation == "PullOut":
 				emit_signal("Use",self)
 		if Input.is_action_just_pressed("Aim"):
-			UnSprint()
-			Aim()
+			emit_signal("SecondUse",self)
+
 		if Input.is_action_just_released("Aim"):
-			if Aiming:
-				UnAim()
+			emit_signal("UnSecondUse",self)
 		if Input.is_action_just_pressed("Sprint"):
 			UnAim()
 			Sprint()
@@ -152,20 +153,42 @@ func _input(event):
 		$CameraPivot/Camera3D/SpotLight3D.visible = !$CameraPivot/Camera3D/SpotLight3D.visible
 		$FlashlightSound.play()
 	if event.is_action_pressed("InvUp"):
-		$GunAnims.stop()
-		$GunAnims.play("PullOut")
-		inventory.MoveRight()
-		
+		Inventory.MoveRight()
+	if event.is_action_pressed("Inventory"):
+		$CanvasLayer/Inventory.visible = !$CanvasLayer/Inventory.visible
 	elif event.is_action_pressed("InvDown"):
-		$GunAnims.stop()
-		$GunAnims.play("PullOut")
-		inventory.MoveLeft()
+
+		Inventory.MoveLeft()
+
 func PickUpItem(pick):
 	pick.item.PickUp(self)
-	inventory.content.append(pick.item)
+	Inventory.content.append(pick.item)
 	pick.queue_free()
+	$CanvasLayer/Inventory/Panel/ItemList.add_item(pick.item.Name, pick.item.icon,true)
+	UpdateInvScroll()
+func UpdateInvScroll():
+	if Inventory.content.size() > 0:
+		$CanvasLayer/ScrollThing/AnimationPlayer.stop()
+		$CanvasLayer/ScrollThing/AnimationPlayer.play("Fade")
+		$CanvasLayer/ScrollThing/Selected.texture = Inventory.content[Inventory.curselect].icon
+		if Inventory.curselect == Inventory.content.size() -1:
+			$CanvasLayer/ScrollThing/Foreward.hide()
+		else:
+			$CanvasLayer/ScrollThing/Foreward.show()
+			$CanvasLayer/ScrollThing/Foreward.texture = Inventory.content[Inventory.curselect+1].icon
+		if Inventory.curselect == 0:
+			$CanvasLayer/ScrollThing/Backward.hide()
+		else:
+			$CanvasLayer/ScrollThing/Backward.texture = Inventory.content[Inventory.curselect-1].icon
+			$CanvasLayer/ScrollThing/Backward.show()
 func NewItem(item:Item):
-	$CameraPivot/Camera3D/Gun/MeshInstance3D.mesh = item.mesh
+	$GunAnims.stop()
+	$GunAnims.play("PullOut")
+	$CameraPivot/Camera3D/Gun.remove_child($CameraPivot/Camera3D/Gun.get_child(0))
+	$CameraPivot/Camera3D/Gun.add_child(item)
+	UpdateInvScroll()
+	if Aiming:
+		UnAim()
 func Heal(am:float):
 	HP += am
 	HP = clamp(HP,0.0,100.0)
