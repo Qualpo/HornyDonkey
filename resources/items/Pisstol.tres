@@ -1,36 +1,20 @@
-[gd_resource type="Resource" script_class="Gun" load_steps=5 format=3 uid="uid://bcs3iu24niu3j"]
+[gd_resource type="Resource" script_class="Gun" load_steps=6 format=3 uid="uid://bcs3iu24niu3j"]
 
 [ext_resource type="Script" path="res://scripts/resources/items/Gun.gd" id="1_p7325"]
-
-[sub_resource type="Animation" id="Animation_ymk0v"]
-resource_name = "Shoot"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CameraPivot/Camera3D/Gun:rotation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0.785398, 0, 0), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_ty5ve"]
-resource_name = "Hit"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kk58s"]
-_data = {
-"Hit": SubResource("Animation_ty5ve"),
-"Shoot": SubResource("Animation_ymk0v")
-}
+[ext_resource type="AudioStream" uid="uid://1gdq6kc17ptq" path="res://audio/sfx/gun/154934__klawykogut__empty-gun-shot.wav" id="1_sbyi0"]
+[ext_resource type="AudioStream" uid="uid://bua8ttou8eytl" path="res://audio/sfx/gun/Shoot.ogg" id="2_m1q1a"]
+[ext_resource type="Texture2D" uid="uid://c2xooisgd675y" path="res://textures/items/Pistol.png" id="3_nkbfo"]
+[ext_resource type="ArrayMesh" uid="uid://35pen6o2rgoc" path="res://models/mesh/Gun.res" id="4_8orqe"]
 
 [resource]
 script = ExtResource("1_p7325")
 MaxAmmo = 16
 Ammo = 14
 Accuracy = 1.0
+Recoil = 3.0
+BulletAmmount = 1
+ShootSound = ExtResource("2_m1q1a")
+NoBulletSound = ExtResource("1_sbyi0")
+mesh = ExtResource("4_8orqe")
+icon = ExtResource("3_nkbfo")
 offset = Vector3(0, 0, 0)
-anims = SubResource("AnimationLibrary_kk58s")

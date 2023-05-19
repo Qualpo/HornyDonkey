@@ -34,6 +34,10 @@ var Dead = false
 
 var RNG = RandomNumberGenerator.new()
 
+@onready var GunAnims = $GunAnims
+@onready var GunSound = $GunSound
+@onready var ShootNode = $CameraPivot/Camera3D/Bullets
+
 @onready var BulletHole = preload("res://scenes/objects/BulletHole.tscn")
 #Sounds
 @onready var JumpSound = preload("res://audio/sfx/Playe/JumpSounds.tres")
@@ -52,8 +56,9 @@ func _ready():
 	Global.UpAmmo.connect(PickupAmmo)
 	Global.UpMoney.connect(PickupMoney)
 	UpdateUi()
-	inventory.Start(self)
 	inventory.NewItem.connect(NewItem)
+	inventory.Start(self)
+	
 func _physics_process(delta):
 	if not Dead:
 		if SuperJumpBuffer > 0.0:
@@ -223,55 +228,7 @@ func UpdateUi():
 	$CanvasLayer/UI/Ammo.text = str(Global.Ammo)
 	$CanvasLayer/UI/Lives.text = str("x ", Global.Lives)
 
-func Shoot(accuracy, bulletammount, recoil):
-	if not Shooting and Global.Ammo > 0:
-		Global.Ammo -= 1
-		UpdateUi()
-		Shooting = true
-		if $GunSound.stream != ShootSound:
-			$GunSound.stream = ShootSound
-		$GunSound.play()
-		$GunAnims.stop()
-		$GunAnims.play("Shoot")
 
-		for i in range(bulletammount):
-			var rand = (abs(1-accuracy))*25
-			var spread = Vector2(RNG.randf_range(-rand,rand),RNG.randf_range(-rand,rand))
-			var Cast:RayCast3D = RayCast3D.new()
-			$CameraPivot/Camera3D/Bullets.add_child(Cast)
-			Cast.position = Vector3()
-			Cast.enabled = true
-			Cast.target_position = Vector3(0,0,-1000)
-			Cast.collision_mask = 5
-			Cast.rotation_degrees = Vector3(spread.x,spread.y,0)
-			Cast.force_raycast_update()
-		for Cast in $CameraPivot/Camera3D/Bullets.get_children():
-					if Cast.is_colliding():
-						
-					
-						if Cast.get_collider().is_in_group("Enemy"):
-					
-							Cast.get_collider().Hit(false,self,Global.GunDamage)
-						else:
-							var hole = BulletHole.instantiate()
-					
-							get_parent().add_child(hole)
-							hole.position = Cast.get_collision_point() + (Cast.get_collision_normal()/80)
-							if abs(Cast.get_collision_normal().y) == 1:
-								hole.rotation_degrees.x = 90
-							else:
-								hole.look_at(Cast.get_collision_point()-Cast.get_collision_normal(),Vector3.UP)
-					Cast.queue_free()
-		CameraOffset.x += recoil * 3
-		CameraDirection.x += recoil
-		CameraDirection.x = clamp(CameraDirection.x,-90,90)
-
-		await get_tree().create_timer(0.15).timeout
-		Shooting = false
-	elif not Shooting:
-		if $GunSound.stream != NoBulletSound:
-			$GunSound.stream = NoBulletSound
-		$GunSound.play()
 
 func UnDie():
 	Dead = false

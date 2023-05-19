@@ -1,18 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8u1c56nrepsl"]
+[gd_scene load_steps=6 format=3 uid="uid://c8u1c56nrepsl"]
 
 [ext_resource type="Script" path="res://scripts/objects/Pickups/ItemPickUp.gd" id="1_8pjov"]
-[ext_resource type="ArrayMesh" uid="uid://35pen6o2rgoc" path="res://models/mesh/Gun.res" id="2_i8tah"]
-[ext_resource type="Script" path="res://scripts/resources/items/Gun.gd" id="3_t5bdq"]
-
-[sub_resource type="Resource" id="Resource_mivug"]
-script = ExtResource("3_t5bdq")
-MaxAmmo = 16
-Ammo = 14
-Accuracy = 1.0
-Recoil = 3.0
-BulletAmmount = 1
-mesh = ExtResource("2_i8tah")
-offset = Vector3(0, 0, 0)
+[ext_resource type="Resource" uid="uid://bcs3iu24niu3j" path="res://resources/items/Pisstol.tres" id="2_6btmn"]
 
 [sub_resource type="Animation" id="Animation_2nwej"]
 resource_name = "Spin"
@@ -52,7 +41,7 @@ _data = {
 
 [node name="ItemPickUp" type="Node3D"]
 script = ExtResource("1_8pjov")
-item = SubResource("Resource_mivug")
+item = ExtResource("2_6btmn")
 
 [node name="Visual" type="Node3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
