@@ -1,7 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://o0nigkmlpwjv"]
+[gd_scene load_steps=5 format=3 uid="uid://o0nigkmlpwjv"]
 
 [ext_resource type="Script" path="res://Key.gd" id="1_ufiyc"]
 [ext_resource type="Texture2D" uid="uid://b4i4dh5av8vew" path="res://textures/objects/pickups/key.png" id="2_tok5r"]
+
+[sub_resource type="Animation" id="Animation_bukky"]
+resource_name = "use"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 1.5708), Vector3(0, 1.5708, 1.5708), Vector3(1.5708, 1.5708, 1.5708), Vector3(1.5708, 1.5708, 1.5708), Vector3(0, 1.5708, 1.5708), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.625, 0.2, -0.3), Vector3(-0.625, 0.2, -0.3), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8nqmy"]
+_data = {
+"use": SubResource("Animation_bukky")
+}
 
 [node name="Key" type="Node3D"]
 script = ExtResource("1_ufiyc")
@@ -10,3 +42,8 @@ icon = ExtResource("2_tok5r")
 [node name="Sprite3D" type="Sprite3D" parent="."]
 texture_filter = 0
 texture = ExtResource("2_tok5r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8nqmy")
+}
