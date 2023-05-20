@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://6tqy65mrcwke"]
+
+[ext_resource type="Script" path="res://scripts/resources/items/Item.gd" id="1_drfd7"]
+[ext_resource type="Texture2D" uid="uid://diyb66mprc7wg" path="res://textures/items/icons/Shovel.png" id="2_4g5no"]
+[ext_resource type="PackedScene" uid="uid://damjua7peuf86" path="res://models/object/Shovel.gltf" id="2_jjl43"]
+
+[node name="Shovel" type="Node3D"]
+script = ExtResource("1_drfd7")
+icon = ExtResource("2_4g5no")
+Name = "Shovel"
+
+[node name="Shovel" parent="." instance=ExtResource("2_jjl43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
