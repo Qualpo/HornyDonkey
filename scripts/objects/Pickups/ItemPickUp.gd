@@ -5,6 +5,10 @@ var item = null
 
 func _ready():
 	item = setitem.instantiate()
-	$Visual.add_child(item.duplicate())
+	$Visual.add_child(item)
 	$Visual/AnimationPlayer.play("Spin")
-	
+func remove(remover):
+	item.PickUp(remover)
+	Inventory.content.append(item)
+	$Visual.remove_child(item)
+	queue_free()

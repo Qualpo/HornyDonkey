@@ -163,9 +163,7 @@ func _input(event):
 		Inventory.MoveLeft()
 
 func PickUpItem(pick):
-	pick.item.PickUp(self)
-	Inventory.content.append(pick.item)
-	pick.queue_free()
+	pick.remove(self)
 	$CanvasLayer/Inventory/Panel/ItemList.add_item(pick.item.Name, pick.item.icon,true)
 	UpdateInvScroll()
 func UpdateInvScroll():

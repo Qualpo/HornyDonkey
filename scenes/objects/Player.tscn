@@ -1,6 +1,7 @@
-[gd_scene load_steps=29 format=3 uid="uid://8t15wlahpiii"]
+[gd_scene load_steps=30 format=3 uid="uid://8t15wlahpiii"]
 
 [ext_resource type="Script" path="res://scripts/objects/Player.gd" id="1_yweok"]
+[ext_resource type="Texture2D" uid="uid://tx7d83buhd1y" path="res://textures/objects/easter_egg.png" id="2_563ag"]
 [ext_resource type="AudioStream" uid="uid://bua8ttou8eytl" path="res://audio/sfx/gun/Shoot.ogg" id="3_o62s8"]
 [ext_resource type="Shader" path="res://resources/materials/Invert.gdshader" id="4_ia74v"]
 [ext_resource type="AudioStream" uid="uid://c1lq8t1iulfwy" path="res://audio/sfx/flashlight.ogg" id="4_tnbl5"]
@@ -246,6 +247,10 @@ current = true
 
 [node name="Gun" type="Node3D" parent="CameraPivot/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625, -0.741, -0.529)
+
+[node name="Sprite3D" type="Sprite3D" parent="CameraPivot/Camera3D/Gun"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.628, 0.802, -0.051)
+texture = ExtResource("2_563ag")
 
 [node name="Bullets" type="Node3D" parent="CameraPivot/Camera3D"]
 
