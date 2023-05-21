@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://cypywomghdkr2"]
+
+[ext_resource type="Script" path="res://scripts/resources/items/Item.gd" id="1_5mchg"]
+
+[sub_resource type="Animation" id="Animation_1budx"]
+resource_name = "Spin"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visual:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5pv7i"]
+_data = {
+"Spin": SubResource("Animation_1budx")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2udbt"]
+
+[node name="Item" type="Node3D"]
+script = ExtResource("1_5mchg")
+
+[node name="Spin" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5pv7i")
+}
+
+[node name="Area3D" type="Area3D" parent="." groups=["Pickup"]]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_2udbt")
+
+[node name="Visual" type="Node3D" parent="."]
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

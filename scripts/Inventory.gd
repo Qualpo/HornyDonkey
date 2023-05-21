@@ -8,7 +8,7 @@ signal NewItem(item)
 
 
 func _ready():
-	content.append(preload("res://scripts/objects/items/guns/Pisstol.tscn").instantiate())
+	content.append(preload("res://scenes/objects/items/Pisstol.tscn").instantiate())
 
 func Start(starter):
 	if content.size() > 0:
@@ -26,6 +26,12 @@ func MoveRight():
 			curselect += 1
 		content[curselect].Select()
 		emit_signal("NewItem",content[curselect])
+func RemoveItem(item):
+	content.erase(item)
+	if curselect >= content.size():
+		curselect -= 1
+	content[curselect].Select()
+	emit_signal("NewItem",content[curselect])
 func MoveLeft():
 	if content.size() > 1:
 		content[curselect].Deselect()

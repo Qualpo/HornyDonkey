@@ -1,0 +1,120 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4634838ux6pa"]
+
+[ext_resource type="PackedScene" uid="uid://cxh507iow7u1r" path="res://scenes/objects/items/Shovel.tscn" id="1_2s67t"]
+[ext_resource type="Material" uid="uid://b2hp6xcxdplfi" path="res://resources/materials/Gold.tres" id="2_sr5yb"]
+
+[sub_resource type="Animation" id="Animation_ckq4t"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_p0xbi"]
+resource_name = "hit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.373, 0.06, -0.455), Vector3(0.164386, 0.0617966, 0.0361342), Vector3(0.164386, 0.0617966, 0.0361342), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.16064, 2.40681, -1.85529), Vector3(-0.605715, 3.13845, -2.71426), Vector3(-0.605715, 3.13845, -2.71426), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kr8nv"]
+resource_name = "use"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.373394, 0.0597553, -0.454715), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.16052, 2.40659, -1.85479), Vector3(0, 0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Dig"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f4htf"]
+_data = {
+"RESET": SubResource("Animation_ckq4t"),
+"hit": SubResource("Animation_p0xbi"),
+"use": SubResource("Animation_kr8nv")
+}
+
+[node name="SuperShovel" instance=ExtResource("1_2s67t")]
+
+[node name="AnimationPlayer" parent="." index="2"]
+libraries = {
+"Shovel": SubResource("AnimationLibrary_f4htf")
+}
+
+[node name="cube" parent="Visual/Shovel/Node2" index="0"]
+surface_material_override/0 = ExtResource("2_sr5yb")
+
+[editable path="Visual/Shovel"]

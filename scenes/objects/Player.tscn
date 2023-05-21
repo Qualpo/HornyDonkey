@@ -1,7 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://8t15wlahpiii"]
+[gd_scene load_steps=31 format=3 uid="uid://8t15wlahpiii"]
 
 [ext_resource type="Script" path="res://scripts/objects/Player.gd" id="1_yweok"]
 [ext_resource type="Texture2D" uid="uid://tx7d83buhd1y" path="res://textures/objects/easter_egg.png" id="2_563ag"]
+[ext_resource type="AudioStream" uid="uid://dsju0mnm14anp" path="res://audio/sfx/DoorClose.ogg" id="3_mkcdy"]
 [ext_resource type="AudioStream" uid="uid://bua8ttou8eytl" path="res://audio/sfx/gun/Shoot.ogg" id="3_o62s8"]
 [ext_resource type="Shader" path="res://resources/materials/Invert.gdshader" id="4_ia74v"]
 [ext_resource type="AudioStream" uid="uid://c1lq8t1iulfwy" path="res://audio/sfx/flashlight.ogg" id="4_tnbl5"]
@@ -13,23 +14,52 @@
 [ext_resource type="Texture2D" uid="uid://c2xooisgd675y" path="res://textures/items/Pistol.png" id="10_o1afr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w1t2g"]
-height = 1.4
+radius = 0.41
+height = 1.3
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_h48ti"]
 
 [sub_resource type="Animation" id="Animation_2w3ku"]
 resource_name = "Dead"
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("CameraPivot:rotation")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.4, 0.7, 0.8, 1.1, 1.3, 2.8, 2.9001, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(1.5708, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0.698132, 0.174533, 0), Vector3(-0.174533, -0.349066, 0), Vector3(0.261799, -0.174533, 0), Vector3(1.74533, 0.174533, 0), Vector3(1.5708, 0, 0), Vector3(1.5708, 0, 0), Vector3(1.5708, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_mkcdy")
+}],
+"times": PackedFloat32Array(1.1)
+}
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CameraPivot:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.9, 1.1, 2.8, 2.9, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -0.3, 0), Vector3(0, -0.3, 0), Vector3(0, -0.3, 0), Vector3(0, -0.3, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_hfe1y"]
@@ -115,6 +145,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_6nh7s"]
 resource_name = "Die"
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -122,10 +153,10 @@ tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_27m0s"]
@@ -249,7 +280,7 @@ current = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625, -0.741, -0.529)
 
 [node name="Sprite3D" type="Sprite3D" parent="CameraPivot/Camera3D/Gun"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.628, 0.802, -0.051)
+transform = Transform3D(0.999099, 0.00910749, 0.0414633, 0, 0.976716, -0.214537, -0.0424517, 0.214344, 0.975835, -0.646934, 0.967047, 0.0834455)
 texture = ExtResource("2_563ag")
 
 [node name="Bullets" type="Node3D" parent="CameraPivot/Camera3D"]
@@ -259,6 +290,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.199741, 0)
 light_energy = 2.778
 shadow_enabled = true
 spot_range = 60.407
+spot_attenuation = 0.31864
+
+[node name="UseCast" type="RayCast3D" parent="CameraPivot/Camera3D"]
+target_position = Vector3(0, 0, -2)
+collision_mask = 16
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 speed_scale = 0.5

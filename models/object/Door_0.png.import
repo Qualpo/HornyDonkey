@@ -2,21 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vhh5q7q7uaxu"
-path.s3tc="res://.godot/imported/door_noinsignia.png-b86a9f4c26c0516548e35048c05a355f.s3tc.ctex"
+uid="uid://dfx28en6i84g"
+path="res://.godot/imported/Door_0.png-3e4164a0bfbe66ca1bd855e84aab79c4.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://textures/door_noinsignia.png"
-dest_files=["res://.godot/imported/door_noinsignia.png-b86a9f4c26c0516548e35048c05a355f.s3tc.ctex"]
+source_file="res://models/object/Door_0.png"
+dest_files=["res://.godot/imported/Door_0.png-3e4164a0bfbe66ca1bd855e84aab79c4.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

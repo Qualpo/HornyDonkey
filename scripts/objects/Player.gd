@@ -27,7 +27,7 @@ var SuperJumpBuffer = 0.0
 var Aiming = false
 var Sprinting = false
 var Shooting = false
-
+var NoClip = false
 var Dead = false
 
 
@@ -62,13 +62,14 @@ func _ready():
 	Inventory.Start(self)
 	UpdateInvScroll()
 func _physics_process(delta):
+	$CameraPivot/Camera3D.rotation_degrees.x = CameraDirection.x + CameraOffset.x
 	if not Dead:
 		if SuperJumpBuffer > 0.0:
 			SuperJumpBuffer -= delta
 			$CanvasLayer/UI/Speed.text = str(SuperJumpBuffer) 
 		#$CanvasLayer/UI/Speed.text = str(Vector2(velocity.x,velocity.z).length())
 		#Camera Stuff
-		$CameraPivot/Camera3D.rotation_degrees.x = CameraDirection.x + CameraOffset.x
+		
 		$CameraPivot/Camera3D.fov = lerp($CameraPivot/Camera3D.fov,Fov,0.2)
 		CameraOffset.x = lerp(CameraOffset.x,0.0,0.1)
 		$CameraPivot/Camera3D.v_offset = lerp($CameraPivot/Camera3D.v_offset,Bobset,0.1)
@@ -103,6 +104,9 @@ func _physics_process(delta):
 				UnSprint()
 		if Input.is_action_just_pressed("Jump"):
 				SuperJumpBuffer = 0.1
+		if Input.is_action_just_pressed("Interact"):
+			if $CameraPivot/Camera3D/UseCast.is_colliding():
+				$CameraPivot/Camera3D/UseCast.get_collider().get_parent().Interact(self)
 		if inputDir != Vector2.ZERO:
 			if Sprinting:
 				Fov = 90.0
@@ -163,8 +167,10 @@ func _input(event):
 		Inventory.MoveLeft()
 
 func PickUpItem(pick):
-	pick.remove(self)
-	$CanvasLayer/Inventory/Panel/ItemList.add_item(pick.item.Name, pick.item.icon,true)
+	pick.PickUp(self)
+	Inventory.content.append(pick)
+	pick.get_parent().remove_child(pick)
+	$CanvasLayer/Inventory/Panel/ItemList.add_item(pick.Name, pick.icon,true)
 	UpdateInvScroll()
 func UpdateInvScroll():
 	if Inventory.content.size() > 0:
@@ -215,6 +221,7 @@ func Die():
 		Dead = true
 		$AnimationPlayer.play("Dead")
 		$ScreenAnims.play("Die")
+		CameraDirection.x = 0
 		await  $AnimationPlayer.animation_finished
 		if Global.Lives <= 0:
 			get_tree().change_scene_to_file("res://scenes/screens/DeathScreen.tscn")

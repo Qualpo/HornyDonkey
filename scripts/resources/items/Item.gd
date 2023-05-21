@@ -8,13 +8,20 @@ class_name Item
 
 
 var Held = false
+var OnGround = true
 
 func PickUp(user):
+	OnGround = false
+	$Area3D.collision_layer = 0
+	position = Vector3()
+	$Spin.stop()
 	user.connect("Use",Use)
 	user.connect("UnUse",UnUse)
 	user.connect("SecondUse",SecondUse)
 	user.connect("UnSecondUse",UnSecondUse)
-
+func _ready():
+	if OnGround:
+		$Spin.play("Spin")
 func Select():
 	Held = true
 func Deselect():
@@ -32,3 +39,7 @@ func SecondUse(user):
 func UnSecondUse(user):
 	if Held:
 		pass
+
+
+func _on_area_3d_area_entered(area):
+	pass # Replace with function body.

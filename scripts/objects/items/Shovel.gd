@@ -11,7 +11,7 @@ func Use(user):
 		User = user
 		if not Using:
 			Using = true
-			$AnimationPlayer.play("use")
+			$AnimationPlayer.play("Shovel/use")
 
 func UnUse(user):
 	pass
@@ -28,10 +28,12 @@ func Dig():
 					Cast.get_collider().Dig()
 				else:
 					$GPUParticles3D.restart()
-					$AnimationPlayer.play("hit")
+					$AnimationPlayer.play("Shovel/hit")
 					$AudioStreamPlayer3D.stream = HitNoise
 					$AudioStreamPlayer3D.play()
-					User.velocity -= (User.global_position.direction_to(Cast.get_collision_point())*Cast.get_collision_normal())*8
+					if User.velocity.y < 0:
+						User.velocity.y = 0
+					User.velocity -= (User.global_position.direction_to(Cast.get_collision_point()))*8
 					
 			Cast.queue_free()
 			await $AnimationPlayer.animation_finished

@@ -1,167 +1,36 @@
-[gd_scene load_steps=13 format=3 uid="uid://6tqy65mrcwke"]
+[gd_scene load_steps=7 format=3 uid="uid://cxh507iow7u1r"]
 
 [ext_resource type="Script" path="res://scripts/objects/items/Shovel.gd" id="1_8c8ym"]
+[ext_resource type="PackedScene" uid="uid://cypywomghdkr2" path="res://scenes/objects/items/Item.tscn" id="1_18xkv"]
 [ext_resource type="Texture2D" uid="uid://diyb66mprc7wg" path="res://textures/items/icons/Shovel.png" id="2_4g5no"]
 [ext_resource type="PackedScene" uid="uid://damjua7peuf86" path="res://models/object/Shovel.gltf" id="2_jjl43"]
+[ext_resource type="AnimationLibrary" uid="uid://cefq7mmqulxg0" path="res://resources/animations/item/Shovel.res" id="3_d1l8c"]
+[ext_resource type="Material" uid="uid://do6t7ddc1utdl" path="res://resources/particles/Shovel.tres" id="6_piast"]
 
-[sub_resource type="Animation" id="Animation_kr8nv"]
-resource_name = "use"
-length = 1.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.6, 0.65, 0.9, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.373394, 0.0597553, -0.454715), Vector3(-0.373394, 0.0597553, -0.454715), Vector3(0, 0.2, -0.1), Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.6, 0.7, 0.9, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.610865, 3.14159, -2.87979), Vector3(-1.16052, 2.40659, -1.85479), Vector3(-1.16052, 2.40659, -1.85479), Vector3(0.349066, 0.349066, 0), Vector3(0, 0, 0)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.6),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"Dig"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_ckq4t"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_p0xbi"]
-resource_name = "hit"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.75, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-0.373, 0.06, -0.455), Vector3(0.164386, 0.0617966, 0.0361342), Vector3(0.164386, 0.0617966, 0.0361342), Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.75, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-1.16064, 2.40681, -1.85529), Vector3(-0.605715, 3.13845, -2.71426), Vector3(-0.605715, 3.13845, -2.71426), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ghxs7"]
-_data = {
-"RESET": SubResource("Animation_ckq4t"),
-"hit": SubResource("Animation_p0xbi"),
-"use": SubResource("Animation_kr8nv")
-}
-
-[sub_resource type="Gradient" id="Gradient_x4dng"]
-offsets = PackedFloat32Array(0.362319, 1)
-colors = PackedColorArray(1, 1, 1, 0.67451, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_7o0sm"]
-gradient = SubResource("Gradient_x4dng")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e6sd3"]
-particle_flag_align_y = true
-direction = Vector3(0, 1, 0.627)
-spread = 36.76
-gravity = Vector3(0, 0, 0)
-initial_velocity_min = 2.53
-initial_velocity_max = 2.53
-damping_max = 11.6
-scale_min = 0.5
-scale_max = 0.5
-color = Color(0.894118, 0.894118, 0, 1)
-color_ramp = SubResource("GradientTexture1D_7o0sm")
-collision_mode = 1
-collision_friction = 0.0
-collision_bounce = 0.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3w26x"]
-transparency = 1
-vertex_color_use_as_albedo = true
-
-[sub_resource type="TextMesh" id="TextMesh_h5d5t"]
-material = SubResource("StandardMaterial3D_3w26x")
-text = "nigger"
-
-[node name="Shovel" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, 0, 0)
+[node name="Shovel" instance=ExtResource("1_18xkv")]
 script = ExtResource("1_8c8ym")
 icon = ExtResource("2_4g5no")
 Name = "Shovel"
-metadata/_edit_group_ = true
 
-[node name="Shovel" parent="." instance=ExtResource("2_jjl43")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.5, 0)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 libraries = {
-"": SubResource("AnimationLibrary_ghxs7")
+"Shovel": ExtResource("3_d1l8c")
 }
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+[node name="Shovel" parent="Visual" index="0" instance=ExtResource("2_jjl43")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.4, 0)
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, -2.98023e-08, 3.57628e-07, 1, 1.93715e-07, -5.96046e-08, 0, 1, -0.0201955, 0.358255, 0.0352922)
+[node name="cube" parent="Visual/Shovel/Node2" index="0"]
+layers = 2
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="4"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="5"]
 emitting = false
-amount = 28
-lifetime = 0.5
+amount = 23
 one_shot = true
 explosiveness = 1.0
-process_material = SubResource("ParticleProcessMaterial_e6sd3")
-draw_pass_1 = SubResource("TextMesh_h5d5t")
+process_material = ExtResource("6_piast")
+metadata/_edit_lock_ = true
+
+[editable path="Visual/Shovel"]
