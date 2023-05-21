@@ -1,7 +1,15 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bq81we16imamr"]
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://bq81we16imamr"]
 
 [ext_resource type="Texture2D" uid="uid://052hk2gblg4w" path="res://textures/items/Shovel.png" id="1_3b3hc"]
+[ext_resource type="Texture2D" uid="uid://bp8boc2yjov0m" path="res://textures/items/ShovelMetal.png" id="2_iq5jf"]
+[ext_resource type="Texture2D" uid="uid://dci40s181ricl" path="res://textures/items/ShovelRough.png" id="3_72fxq"]
 
 [resource]
+diffuse_mode = 1
+specular_mode = 1
 albedo_texture = ExtResource("1_3b3hc")
+metallic = 1.0
+metallic_texture = ExtResource("2_iq5jf")
+roughness_texture = ExtResource("3_72fxq")
+roughness_texture_channel = 4
 texture_filter = 0

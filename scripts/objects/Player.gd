@@ -88,6 +88,8 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("Shoot"):
 			if not $GunAnims.current_animation == "PullOut":
 				emit_signal("Use",self)
+		if Input.is_action_just_released("Shoot"):
+			emit_signal("UnUse",self)
 		if Input.is_action_just_pressed("Aim"):
 			emit_signal("SecondUse",self)
 

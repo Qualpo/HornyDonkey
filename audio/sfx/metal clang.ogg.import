@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dxyfmrj0riy47"
+path="res://.godot/imported/metal clang.ogg-ab62d9bee7b7f008c7f9d1ecbd17aa1d.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/sfx/metal clang.ogg"
+dest_files=["res://.godot/imported/metal clang.ogg-ab62d9bee7b7f008c7f9d1ecbd17aa1d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cyppbfbxy3h3i"]
+
+[ext_resource type="Texture2D" uid="uid://c1jivgjcf0bx0" path="res://models/object/Gun_0.png" id="1_apth2"]
+
+[resource]
+diffuse_mode = 1
+specular_mode = 1
+albedo_texture = ExtResource("1_apth2")
+texture_filter = 0
