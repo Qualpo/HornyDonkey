@@ -2,21 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqwldicdqx17e"
-path="res://.godot/imported/tree_wall.png-3cec8ef601e7671e664f8ed642ff7096.ctex"
+uid="uid://dhu1f5eac2b"
+path="res://.godot/imported/TreeWall_0.png-f35de1227f26e0c1f8c44a75bc7522c6.ctex"
 metadata={
 "vram_texture": false
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://textures/tree_wall.png"
-dest_files=["res://.godot/imported/tree_wall.png-3cec8ef601e7671e664f8ed642ff7096.ctex"]
+source_file="res://models/object/TreeWall_0.png"
+dest_files=["res://.godot/imported/TreeWall_0.png-f35de1227f26e0c1f8c44a75bc7522c6.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=true
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

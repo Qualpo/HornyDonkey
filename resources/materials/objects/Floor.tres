@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://d36x51l4wfll2"]
+
+[ext_resource type="Texture2D" uid="uid://cjtqxc21pb5uu" path="res://textures/wood_ground.png" id="1_2n7wh"]
+
+[resource]
+diffuse_mode = 1
+specular_mode = 1
+albedo_texture = ExtResource("1_2n7wh")
+uv1_triplanar = true
+texture_filter = 0

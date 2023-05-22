@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cikm6vcxn5cjr"]
+
+[ext_resource type="Shader" path="res://resources/materials/objects/Tree.gdshader" id="1_qhjln"]
+[ext_resource type="Texture2D" uid="uid://bqwldicdqx17e" path="res://textures/tree_wall.png" id="2_i4iou"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_qhjln")
+shader_parameter/xScale = 1.518
+shader_parameter/Texture = ExtResource("2_i4iou")

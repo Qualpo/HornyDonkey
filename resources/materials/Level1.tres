@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://05qppb0b8dbe"]
+
+[ext_resource type="Shader" path="res://scenes/levels/startpath.gdshader" id="1_fb3us"]
+[ext_resource type="Texture2D" uid="uid://bfelfgruispqr" path="res://textures/dirt_ground.png" id="2_e1lm0"]
+[ext_resource type="Texture2D" uid="uid://bhwetbs626i2l" path="res://textures/grass_ground.png" id="3_ytj35"]
+[ext_resource type="Texture2D" uid="uid://lxw8jwbb5piu" path="res://textures/Masks/Level1DirtMask.png" id="4_11anb"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_fb3us")
+shader_parameter/Grass = ExtResource("3_ytj35")
+shader_parameter/Dirt = ExtResource("2_e1lm0")
+shader_parameter/Mask = ExtResource("4_11anb")

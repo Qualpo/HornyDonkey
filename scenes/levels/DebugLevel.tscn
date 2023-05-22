@@ -1,10 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://cxtmqbjxg1f0h"]
+[gd_scene load_steps=32 format=3 uid="uid://cxtmqbjxg1f0h"]
 
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_ym708"]
 [ext_resource type="AudioStream" uid="uid://cehdrvf25dvfm" path="res://audio/music/e1m1.ogg" id="2_1s4sw"]
 [ext_resource type="Texture2D" uid="uid://cjtqxc21pb5uu" path="res://textures/wood_ground.png" id="3_hxpkp"]
 [ext_resource type="Texture2D" uid="uid://6l87jdnnol6a" path="res://textures/staIr.png" id="4_20mea"]
 [ext_resource type="Texture2D" uid="uid://cel0aqtl1xoer" path="res://textures/wall_alt.png" id="5_lmntg"]
+[ext_resource type="Material" uid="uid://cikm6vcxn5cjr" path="res://resources/materials/objects/Tree.tres" id="6_b6pg0"]
 [ext_resource type="PackedScene" uid="uid://8t15wlahpiii" path="res://scenes/objects/Player.tscn" id="6_il5x7"]
 [ext_resource type="Texture2D" uid="uid://bxu82a02e30r4" path="res://textures/donkey_propaganda.png" id="7_54k7x"]
 [ext_resource type="Texture2D" uid="uid://ctc3iuyrplg3g" path="res://textures/objects/Shopkeeper Sprites/shopkeeper_buy.png" id="8_l6y45"]
@@ -19,6 +20,14 @@
 [ext_resource type="PackedScene" uid="uid://cxh507iow7u1r" path="res://scenes/objects/items/Shovel.tscn" id="18_th4s3"]
 [ext_resource type="PackedScene" uid="uid://bxvikkan37t75" path="res://scenes/objects/DigSpot.tscn" id="19_733d2"]
 [ext_resource type="PackedScene" uid="uid://d2o78fybjqqli" path="res://scenes/objects/Door.tscn" id="19_joo32"]
+[ext_resource type="ArrayMesh" uid="uid://b5hyk8iu0sc8b" path="res://models/mesh/TreeWall.res" id="21_dxr8w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qss5h"]
+diffuse_mode = 1
+specular_mode = 1
+albedo_texture = ExtResource("4_20mea")
+uv1_triplanar = true
+texture_filter = 0
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_mka4l"]
 vertices = PackedVector3Array(-2.3, 0.6, -3.8, -1.8, 0.6, -6.05, -1.8, 0.6, -8.8, -6.55, 0.6, -15.3, -12.8, 0.6, -15.3, -9.3, 0.6, -3.55, -1.8, 0.6, -8.8, -0.0500031, 0.6, -9.05, -0.0500031, 0.6, -15.3, -6.55, 0.6, -15.3, -31.3, 0.6, 15.2, -9.3, 0.6, -3.55, -32.05, 0.6, -15.3, -38.3, 0.6, -15.3, -43.05, 0.6, 15.2, -76.55, 0.6, -15.3, -83.05, 0.6, -15.3, -101.8, 0.6, -0.0500002, -95.55, 0.6, -15.3, -101.8, 0.6, -15.3, -101.8, 0.6, -7.8, -7.8, 0.6, 15.2, -7.55, 0.6, 3.95, -9.3, 0.6, 3.7, -19.55, 0.6, 15.2, -76.55, 0.6, -15.3, -101.8, 0.6, -0.0500002, -78.3, 0.6, 15.2, -66.55, 0.6, 15.2, -70.3, 0.6, -15.3, -54.8, 0.6, 15.2, -51.05, 0.6, -15.3, -57.55, 0.6, -15.3, -101.8, 0.6, 7.45, -101.8, 0.6, 15.2, -90.05, 0.6, 15.2, -89.3, 0.6, -15.3, -95.55, 0.6, -15.3, -101.8, 0.6, -7.8, -63.8, 0.6, -15.3, -70.3, 0.6, -15.3, -66.55, 0.6, 15.2, -9.3, 0.6, -3.55, -12.8, 0.6, -15.3, -19.3, 0.6, -15.3, -101.8, 0.6, -0.0500002, -101.8, 0.6, 7.45, -90.05, 0.6, 15.2, -78.3, 0.6, 15.2, -89.3, 0.6, -15.3, -101.8, 0.6, -7.8, -101.8, 0.6, -0.0500002, -83.05, 0.6, -15.3, -9.3, 0.6, -3.55, -19.3, 0.6, -15.3, -25.55, 0.6, -15.3, -19.55, 0.6, 15.2, -9.3, 0.6, 3.7, -9.3, 0.6, -3.55, -31.3, 0.6, 15.2, -43.05, 0.6, 15.2, -44.8, 0.6, -15.3, -51.05, 0.6, -15.3, -54.8, 0.6, 15.2, -9.3, 0.6, -3.55, -25.55, 0.6, -15.3, -32.05, 0.6, -15.3, -43.05, 0.6, 15.2, -38.3, 0.6, -15.3, -44.8, 0.6, -15.3, -57.55, 0.6, -15.3, -63.8, 0.6, -15.3, -66.55, 0.6, 15.2, -54.8, 0.6, 15.2, 1.2, 1.35, -7.55, -0.300003, 2.85, -7.05, 1.7, 0.85, -6.8, 1.7, 0.6, -9.05, 1.2, 1.35, -7.55, 1.7, 0.85, -6.8, 5.45, 0.6, 0.45, 4.2, 0.6, 1.2, 4.2, 0.6, 2.95, 1.7, 0.6, -6.05, 3.7, 0.6, -1.05, 4.95, 0.6, -1.05, 1.7, 0.85, -6.8, -0.0500031, 0.6, -15.3, -0.0500031, 0.6, -9.05, 1.7, 0.6, -9.05, 6.2, 0.6, -15.3, 101.7, 0.6, -0.0500002, 82.45, 0.6, -15.3, 76.2, 0.6, -15.3, 1.7, 0.85, -6.8, 4.95, 0.6, -1.05, 5.45, 0.6, -0.3, 18.7, 0.6, -15.3, 12.45, 0.6, -15.3, 1.7, 0.6, -9.05, 31.45, 0.6, -15.3, 25.2, 0.6, -15.3, 5.45, 0.6, -0.3, 28.2, 0.6, 15.2, 34.2, 0.6, 15.2, 77.2, 0.6, 15.2, 101.7, 0.6, -0.0500002, 76.2, 0.6, -15.3, 69.7, 0.6, -15.3, 70.95, 0.6, 15.2, 101.7, 0.6, -7.8, 101.7, 0.6, -15.3, 95.2, 0.6, -15.3, 95.45, 0.6, 15.2, 101.7, 0.6, 15.2, 101.7, 0.6, 7.45, 4.2, 0.6, 2.95, 3.7, 0.6, 3.2, 3.7, 0.6, 15.2, 12.45, 0.6, -15.3, 6.2, 0.6, -15.3, 1.7, 0.6, -9.05, 4.2, 0.6, 2.95, 3.7, 0.6, 15.2, 9.7, 0.6, 15.2, 5.45, 0.6, 0.45, 89.45, 0.6, 15.2, 95.45, 0.6, 15.2, 101.7, 0.6, 7.45, 101.7, 0.6, -7.8, 95.2, 0.6, -15.3, 88.95, 0.6, -15.3, 56.95, 0.6, -15.3, 50.7, 0.6, -15.3, 52.7, 0.6, 15.2, 58.7, 0.6, 15.2, 5.45, 0.6, -0.3, 5.45, 0.6, 0.45, 9.7, 0.6, 15.2, 15.95, 0.6, 15.2, 50.7, 0.6, -15.3, 44.2, 0.6, -15.3, 46.45, 0.6, 15.2, 52.7, 0.6, 15.2, 37.95, 0.6, -15.3, 31.45, 0.6, -15.3, 34.2, 0.6, 15.2, 40.45, 0.6, 15.2, 89.45, 0.6, 15.2, 101.7, 0.6, 7.45, 101.7, 0.6, -0.0500002, 83.2, 0.6, 15.2, 101.7, 0.6, -0.0500002, 101.7, 0.6, -7.8, 88.95, 0.6, -15.3, 82.45, 0.6, -15.3, 63.45, 0.6, -15.3, 56.95, 0.6, -15.3, 58.7, 0.6, 15.2, 64.95, 0.6, 15.2, 5.45, 0.6, -0.3, 15.95, 0.6, 15.2, 21.95, 0.6, 15.2, 44.2, 0.6, -15.3, 37.95, 0.6, -15.3, 40.45, 0.6, 15.2, 46.45, 0.6, 15.2, 69.7, 0.6, -15.3, 63.45, 0.6, -15.3, 64.95, 0.6, 15.2, 70.95, 0.6, 15.2, 25.2, 0.6, -15.3, 18.7, 0.6, -15.3, 5.45, 0.6, -0.3, 5.45, 0.6, -0.3, 21.95, 0.6, 15.2, 28.2, 0.6, 15.2, 77.2, 0.6, 15.2, 83.2, 0.6, 15.2, 101.7, 0.6, -0.0500002, -0.800003, 0.85, -0.0500002, -1.55, 1.35, -0.0500002, -1.55, 1.35, 0.2, -0.800003, 0.85, 0.2, -1.8, 0.6, -3.55, -1.8, 0.6, -1.05, -0.800003, 0.6, -1.05, -0.800003, 0.6, 1.2, 0.449997, 0.6, 1.45, 0.699997, 0.6, 0.95, -0.800003, 0.85, 0.2, 1.7, 0.6, -6.05, -1.8, 0.6, -6.05, -1.8, 0.6, -3.55, -0.800003, 0.6, -1.05, 3.2, 0.6, -0.8, 3.7, 0.6, -1.05, -0.800003, 0.85, -0.0500002, -0.800003, 0.85, 0.2, 0.699997, 0.6, 0.95, -0.800003, 0.6, -1.05, -0.800003, 0.85, -0.0500002, 0.699997, 0.6, 0.95, 3.45, 0.6, 0.95, 3.2, 0.6, -0.8, -1.8, 0.6, -6.05, -2.3, 0.6, -3.8, -1.8, 0.6, -3.55, -1.55, 1.35, 0.2, -1.55, 1.35, -0.0500002, -2.8, 1.6, -0.3, -2.8, 1.6, 0.45, -2.8, 1.6, -0.3, -7.8, 1.6, -2.8, -7.8, 1.6, 2.95, -2.8, 1.6, 0.45, -2.8, 1.6, -0.3, -2.8, 1.6, -2.8, -7.8, 1.6, -2.8, -7.8, 1.6, 2.95, -2.8, 1.6, 2.95, -2.8, 1.6, 0.45, 0.449997, 0.6, 1.45, -0.800003, 0.6, 1.2, -1.8, 0.6, 1.2, -2.05, 0.6, 3.95, 0.699997, 0.6, 3.2, 3.7, 0.6, 3.2, 0.699997, 0.6, 3.2, -2.05, 0.6, 3.95, -3.3, 0.6, 15.2, 3.7, 0.6, 15.2, -2.05, 0.6, 3.95, -3.55, 0.6, 3.95, -3.3, 0.6, 15.2, -7.8, 0.6, 15.2, -3.3, 0.6, 15.2, -3.55, 0.6, 3.95, -7.55, 0.6, 3.95)
@@ -29,13 +38,6 @@ geometry_parsed_geometry_type = 2
 diffuse_mode = 1
 specular_mode = 1
 albedo_texture = ExtResource("3_hxpkp")
-uv1_triplanar = true
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qss5h"]
-diffuse_mode = 1
-specular_mode = 1
-albedo_texture = ExtResource("4_20mea")
 uv1_triplanar = true
 texture_filter = 0
 
@@ -83,6 +85,12 @@ roughness = 0.31
 script = ExtResource("1_ym708")
 BGM = ExtResource("2_1s4sw")
 
+[node name="CSGBox3D20" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6, -5.9, 0.8)
+use_collision = true
+size = Vector3(15.4, 1.2, 8.8)
+material = SubResource("StandardMaterial3D_qss5h")
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_mka4l")
 
@@ -129,6 +137,46 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.6, 3.9, 1.19209e-07)
 size = Vector3(0.4, 5.2, 6.6)
 material = SubResource("StandardMaterial3D_orcyj")
 
+[node name="CSGBox3D17" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 6, 1.19209e-07)
+size = Vector3(5.8, 1, 6)
+material = SubResource("StandardMaterial3D_orcyj")
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 4.9, 1.19209e-07)
+size = Vector3(0.4, 3.2, 2)
+material = SubResource("StandardMaterial3D_orcyj")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.6, 3.9, 2.7)
+size = Vector3(1.2, 5.2, 5.8)
+material = SubResource("StandardMaterial3D_orcyj")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.6, 3.9, -3.1)
+size = Vector3(0.4, 5.2, 5.6)
+material = SubResource("StandardMaterial3D_orcyj")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 3.9, 2.15)
+size = Vector3(0.4, 5.2, 2.3)
+material = SubResource("StandardMaterial3D_orcyj")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, 3.9, 2.15)
+size = Vector3(1.2, 5.2, 2.3)
+material = SubResource("StandardMaterial3D_orcyj")
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9, 3.9, 0.95)
+size = Vector3(0.2, 5.2, 1)
+material = SubResource("StandardMaterial3D_orcyj")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 3.9, -2.15)
+size = Vector3(0.4, 5.2, 2.3)
+material = SubResource("StandardMaterial3D_orcyj")
+
 [node name="CSGSphere3D" type="CSGSphere3D" parent="NavigationRegion3D/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2, 1.5, 0)
 radial_segments = 32
@@ -171,8 +219,9 @@ transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 
 size = Vector3(0.2, 2.6, 0.2)
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6, 2.7, -8.8)
-size = Vector3(6.2, 5.2, 0.6)
+transform = Transform3D(1, 0, 4.98703e-07, 0, 1, 0, -4.98703e-07, 0, 1, 5.6, 2.7, -8.8)
+size = Vector3(8.2, 5.2, 0.6)
+material = ExtResource("6_b6pg0")
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6, 1.1, -8.8)
@@ -206,7 +255,7 @@ texture_filter = 0
 texture = ExtResource("8_l6y45")
 
 [node name="Decal2" type="Decal" parent="."]
-transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -8.3, 3.4, 2.5)
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -8.3, 3.4, 2.3)
 size = Vector3(1.073, 2, 2.134)
 texture_albedo = ExtResource("9_ebdew")
 cull_mask = 1048573
@@ -218,13 +267,13 @@ texture_albedo = ExtResource("9_ebdew")
 cull_mask = 1048573
 
 [node name="BulletPickup" parent="." instance=ExtResource("10_lm4nc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 1.6, 2.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.5, 2)
 
 [node name="MoneyPickup" parent="." instance=ExtResource("11_nky7h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, 1.6, -0.9)
 
 [node name="HealthPickup" parent="." instance=ExtResource("12_yrhok")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.6, 2.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6, 1.6, 2.1)
 
 [node name="Donkey2" parent="." instance=ExtResource("13_mn7qa")]
 transform = Transform3D(0.115, 0, 0, 0, 0.115, 0, 0, 0, 0.115, 4.1, 0, 4.7)
@@ -241,7 +290,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.82609, 0)
 shape = SubResource("BoxShape3D_txlar")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.1, 3.3, 2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.1, 3.3, 2.3)
 light_energy = 2.293
 shadow_enabled = true
 
@@ -266,10 +315,17 @@ light_energy = 2.293
 shadow_enabled = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0)
 
 [node name="Door" parent="." instance=ExtResource("19_joo32")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.5, 1.3, 0.5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.52, 1.3, 1)
+
+[node name="Door4" parent="." instance=ExtResource("19_joo32")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -2.52, 0.1, 5.6)
+
+[node name="Door3" parent="." instance=ExtResource("19_joo32")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -2.52, 1.3, -1)
+Flipped = true
 
 [node name="Door2" parent="." instance=ExtResource("19_joo32")]
 transform = Transform3D(1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 5.1, 0.1, -8.8)
@@ -288,5 +344,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6, -0.8, -5.5)
 [node name="DigSpot" parent="." instance=ExtResource("19_733d2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0.1, -5.6)
 DigAmmount = 5
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5.7, 5.5, 0.4)
+light_energy = 1.41
+shadow_enabled = true
+spot_range = 11.225
+spot_angle = 72.5
+
+[node name="TreeWall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2, 0.1, -11.8)
+mesh = ExtResource("21_dxr8w")
 
 [editable path="Donkey2"]
