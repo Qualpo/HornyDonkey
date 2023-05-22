@@ -70,8 +70,12 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0)
 stream = ExtResource("3_x86e2")
 max_polyphony = 4
+bus = &"SFX"
+doppler_tracking = 2
 
 [node name="Close" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0)
 stream = ExtResource("4_itg7p")
 max_polyphony = 4
+bus = &"SFX"
+doppler_tracking = 2

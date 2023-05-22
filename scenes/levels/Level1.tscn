@@ -19,6 +19,11 @@ sky_material = SubResource("PhysicalSkyMaterial_etqbp")
 [sub_resource type="Environment" id="Environment_huweb"]
 background_mode = 2
 sky = SubResource("Sky_8fasa")
+reflected_light_source = 1
+ssr_enabled = true
+ssr_depth_tolerance = 0.01
+volumetric_fog_enabled = true
+adjustment_enabled = true
 
 [node name="Level1" type="Node3D"]
 script = ExtResource("1_h7o08")
@@ -102,13 +107,13 @@ size = Vector3(0.4, 8.2, 22)
 material = ExtResource("5_u5jb8")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
-transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 2.0336, 9.64415, -2.1)
-size = Vector3(0.4, 7.4, 21.8)
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 2.0336, 9.64415, -4.2)
+size = Vector3(0.4, 7.4, 26)
 material = ExtResource("5_u5jb8")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
-transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, -2.8664, 9.64415, -2.1)
-size = Vector3(0.4, 7.4, 21.8)
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, -2.8664, 9.64415, -4.2)
+size = Vector3(0.4, 7.4, 26)
 material = ExtResource("5_u5jb8")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
@@ -162,12 +167,12 @@ size = Vector3(12, 0.5, 0.5)
 material = ExtResource("6_sn3jd")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, -16)
 size = Vector3(32, 1, 6)
 material = ExtResource("6_sn3jd")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4, -19.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 3.4, -19.5)
 size = Vector3(32, 6, 1)
 material = ExtResource("5_u5jb8")
 
@@ -175,6 +180,48 @@ material = ExtResource("5_u5jb8")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.4, 3.6, -19)
 size = Vector3(6, 2, 4)
 texture_albedo = ExtResource("7_sij87")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1, 3.5, -12.5)
+size = Vector3(10.6, 6, 1)
+material = ExtResource("5_u5jb8")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3, 3.5, -12.5)
+size = Vector3(10.6, 6, 1)
+material = ExtResource("5_u5jb8")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 6.7, -15.8)
+size = Vector3(32, 0.6, 8)
+material = ExtResource("5_u5jb8")
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
+transform = Transform3D(0.909018, 0.0593912, -0.412503, -0.407247, 0.336824, -0.84894, 0.0885213, 0.939693, 0.330366, -3.1, 0.8, -18)
+light_energy = 15.631
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 16.0
+light_size = 0.346
+light_specular = 7.419
+spot_angle = 18.0
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
+transform = Transform3D(0.978211, -0.144544, 0.14903, 0.187795, 0.309976, -0.932013, 0.0885213, 0.939693, 0.330366, 1.8, 0.8, -18)
+light_energy = 15.631
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 16.0
+light_size = 0.346
+light_specular = 7.419
+spot_angle = 18.0
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
+transform = Transform3D(0.99596, -0.0885213, -0.0150768, 0.0150769, 0.330366, -0.943732, 0.0885213, 0.939693, 0.330366, -0.5, 0.8, -18)
+light_energy = 15.631
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 16.0
+light_size = 0.346
+light_specular = 7.419
+spot_angle = 18.0
 
 [node name="Decal" type="Decal" parent="LevelStuff"]
 transform = Transform3D(-1, -3.82137e-15, 8.74228e-08, -8.74228e-08, 4.37114e-08, -1, 0, -1, -4.37114e-08, -2.9, 0.9, -5.1)

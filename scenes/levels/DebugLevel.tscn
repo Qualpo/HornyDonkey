@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cxtmqbjxg1f0h"]
+[gd_scene load_steps=30 format=3 uid="uid://cxtmqbjxg1f0h"]
 
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_ym708"]
 [ext_resource type="AudioStream" uid="uid://cehdrvf25dvfm" path="res://audio/music/e1m1.ogg" id="2_1s4sw"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://du8daolhpsak0" path="res://scenes/objects/Pickups/money_pickup.tscn" id="11_nky7h"]
 [ext_resource type="PackedScene" uid="uid://covy4aqlpxndw" path="res://scenes/objects/Pickups/health_pickup.tscn" id="12_yrhok"]
 [ext_resource type="PackedScene" uid="uid://y0j6i7bcm8cd" path="res://scenes/models/donkey.tscn" id="13_mn7qa"]
-[ext_resource type="Texture2D" uid="uid://diq0uv3m1roq8" path="res://models/object/Donkey_Robot.png" id="14_bpl76"]
 [ext_resource type="PackedScene" uid="uid://o0nigkmlpwjv" path="res://scenes/objects/items/key.tscn" id="17_ncwja"]
 [ext_resource type="PackedScene" uid="uid://c4634838ux6pa" path="res://scenes/objects/items/SuperShovel.tscn" id="18_1r2tu"]
 [ext_resource type="PackedScene" uid="uid://cxh507iow7u1r" path="res://scenes/objects/items/Shovel.tscn" id="18_th4s3"]
@@ -73,11 +72,6 @@ glow_enabled = true
 glow_intensity = 1.72
 glow_strength = 1.11
 glow_bloom = 0.54
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v75wf"]
-albedo_texture = ExtResource("14_bpl76")
-metallic = 1.0
-roughness = 0.31
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_txlar"]
 
@@ -277,9 +271,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6, 1.6, 2.1)
 
 [node name="Donkey2" parent="." instance=ExtResource("13_mn7qa")]
 transform = Transform3D(0.115, 0, 0, 0, 0.115, 0, 0, 0, 0.115, 4.1, 0, 4.7)
-
-[node name="Donkey_mesh2" parent="Donkey2" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_v75wf")
 
 [node name="Area3D" type="Area3D" parent="Donkey2" groups=["Hurt"]]
 collision_layer = 4
