@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b016ldnwvo2fq"
-path="res://.godot/imported/lives_icon.png-12368411ee80b708532d1713f5b5dbfa.ctex"
+uid="uid://xs2mflcnmomv"
+path="res://.godot/imported/Key Color.png-3965621a0a5091ae786414b92394c95f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/ui/lives_icon.png"
-dest_files=["res://.godot/imported/lives_icon.png-12368411ee80b708532d1713f5b5dbfa.ctex"]
+source_file="res://models/object/Key Color.png"
+dest_files=["res://.godot/imported/Key Color.png-3965621a0a5091ae786414b92394c95f.ctex"]
 
 [params]
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://o0nigkmlpwjv"]
+[gd_scene load_steps=6 format=3 uid="uid://o0nigkmlpwjv"]
 
 [ext_resource type="PackedScene" uid="uid://cypywomghdkr2" path="res://scenes/objects/items/Item.tscn" id="1_rbqux"]
 [ext_resource type="Script" path="res://Key.gd" id="1_ufiyc"]
 [ext_resource type="Texture2D" uid="uid://b4i4dh5av8vew" path="res://textures/objects/pickups/key.png" id="2_tok5r"]
 [ext_resource type="AnimationLibrary" uid="uid://os81tdo2jvf6" path="res://resources/animations/item/Key.res" id="4_6n1bn"]
+[ext_resource type="PackedScene" uid="uid://cr6rajygnh0mw" path="res://models/object/key.glb" id="5_v0gre"]
 
 [node name="Key" instance=ExtResource("1_rbqux")]
 script = ExtResource("1_ufiyc")
@@ -16,7 +17,5 @@ libraries = {
 "Key": ExtResource("4_6n1bn")
 }
 
-[node name="Sprite3D" type="Sprite3D" parent="Visual" index="0"]
-layers = 2
-texture_filter = 0
-texture = ExtResource("2_tok5r")
+[node name="key" parent="Visual" index="0" instance=ExtResource("5_v0gre")]
+transform = Transform3D(2.33104e-16, 5.33279e-09, 0.122, 0.122, -5.33279e-09, 0, 5.33279e-09, 0.122, -5.33279e-09, 0, 0.129, 0)

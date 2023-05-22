@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dvat6v2me6fmy"]
+[gd_scene load_steps=15 format=3 uid="uid://dvat6v2me6fmy"]
 
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_h7o08"]
 [ext_resource type="Material" uid="uid://cikm6vcxn5cjr" path="res://resources/materials/objects/Tree.tres" id="3_fukee"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c11dh5mgs2wvn" path="res://textures/window.png" id="6_nu1po"]
 [ext_resource type="Material" uid="uid://d36x51l4wfll2" path="res://resources/materials/objects/Floor.tres" id="6_sn3jd"]
 [ext_resource type="Texture2D" uid="uid://bxu82a02e30r4" path="res://textures/donkey_propaganda.png" id="7_sij87"]
+[ext_resource type="PackedScene" uid="uid://c7prskgdwrrd4" path="res://scenes/objects/decoration/Table.tscn" id="9_6bdl5"]
 [ext_resource type="PackedScene" uid="uid://c4634838ux6pa" path="res://scenes/objects/items/SuperShovel.tscn" id="9_lt3yj"]
 [ext_resource type="PackedScene" uid="uid://d2o78fybjqqli" path="res://scenes/objects/Door.tscn" id="10_heps8"]
 
@@ -118,15 +119,21 @@ material = ExtResource("5_u5jb8")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.4, 10.4, 4)
-light_energy = 4.755
-spot_range = 4096.0
-spot_angle = 67.38
+light_energy = 15.671
+light_indirect_energy = 4.805
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+spot_range = 11.738
+spot_angle = 44.25
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.4, 10.4, -5.5)
-light_energy = 4.755
-spot_range = 4096.0
-spot_angle = 67.38
+light_energy = 15.671
+light_indirect_energy = 4.805
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+spot_range = 11.738
+spot_angle = 44.25
 
 [node name="Beams" type="CSGCombiner3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -264,6 +271,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 3.8, -4.5)
 light_energy = 1.323
 shadow_enabled = true
 omni_attenuation = 0.840897
+
+[node name="Decor" type="Node3D" parent="LevelStuff"]
+
+[node name="Table" parent="LevelStuff/Decor" instance=ExtResource("9_6bdl5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, -1, -6.2)
 
 [node name="Player" parent="." instance=ExtResource("5_xjdmk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.2, 0.5)

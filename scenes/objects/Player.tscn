@@ -6,10 +6,10 @@
 [ext_resource type="AudioStream" uid="uid://bua8ttou8eytl" path="res://audio/sfx/gun/Shoot.ogg" id="3_o62s8"]
 [ext_resource type="Shader" path="res://resources/materials/Invert.gdshader" id="4_ia74v"]
 [ext_resource type="AudioStream" uid="uid://c1lq8t1iulfwy" path="res://audio/sfx/flashlight.ogg" id="4_tnbl5"]
-[ext_resource type="Texture2D" uid="uid://b308hqk2hm7re" path="res://textures/UI/Cursor.png" id="4_v2ikc"]
+[ext_resource type="Texture2D" uid="uid://b308hqk2hm7re" path="res://textures/ui/Cursor.png" id="4_v2ikc"]
 [ext_resource type="FontFile" uid="uid://cxwlpyc5xa31h" path="res://resources/fonts/Daydream.ttf" id="6_1ivy6"]
-[ext_resource type="Texture2D" uid="uid://dmiqgdpmqofm5" path="res://textures/UI/health_icon.png" id="7_f0lqq"]
-[ext_resource type="Texture2D" uid="uid://ccn5py45ivxsv" path="res://textures/UI/ammo_icon.png" id="8_qqtri"]
+[ext_resource type="Texture2D" uid="uid://dmiqgdpmqofm5" path="res://textures/ui/health_icon.png" id="7_f0lqq"]
+[ext_resource type="Texture2D" uid="uid://ccn5py45ivxsv" path="res://textures/ui/ammo_icon.png" id="8_qqtri"]
 [ext_resource type="Texture2D" uid="uid://dassaokj5vc1y" path="res://textures/donkey cult insignia glowing sprite.png" id="9_vmia2"]
 [ext_resource type="Texture2D" uid="uid://c2xooisgd675y" path="res://textures/items/Pistol.png" id="10_o1afr"]
 
@@ -278,6 +278,7 @@ shape = SubResource("SeparationRayShape3D_h48ti")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.500259, 0)
+doppler_tracking = 2
 current = true
 
 [node name="Gun" type="Node3D" parent="CameraPivot/Camera3D"]
@@ -291,6 +292,7 @@ texture = ExtResource("2_563ag")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="CameraPivot/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.199741, 0)
+light_volumetric_fog_energy = 0.0
 shadow_enabled = true
 spot_range = 60.407
 spot_attenuation = 0.31864

@@ -2,16 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b016ldnwvo2fq"
-path="res://.godot/imported/lives_icon.png-12368411ee80b708532d1713f5b5dbfa.ctex"
+uid="uid://urrgb4ousden"
+path="res://.godot/imported/key_Key Color.png-e8b8989886495c60450badc70aa80796.ctex"
 metadata={
 "vram_texture": false
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://textures/ui/lives_icon.png"
-dest_files=["res://.godot/imported/lives_icon.png-12368411ee80b708532d1713f5b5dbfa.ctex"]
+source_file="res://models/object/key_Key Color.png"
+dest_files=["res://.godot/imported/key_Key Color.png-e8b8989886495c60450badc70aa80796.ctex"]
 
 [params]
 
