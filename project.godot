@@ -11,7 +11,10 @@ config_version=5
 [application]
 
 config/name="HornyDonkey"
-run/main_scene="res://scenes/levels/DebugLevel.tscn"
+run/main_scene="res://scenes/screens/load.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="HornyDonkeys"
+config/project_settings_override="Config"
 config/features=PackedStringArray("4.0", "Forward Plus")
 boot_splash/image="res://textures/branding/donkey fucker devs.png"
 boot_splash/use_filter=false

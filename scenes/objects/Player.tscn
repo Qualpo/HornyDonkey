@@ -285,7 +285,7 @@ current = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625, -0.741, -0.529)
 
 [node name="Sprite3D" type="Sprite3D" parent="CameraPivot/Camera3D/Gun"]
-transform = Transform3D(0.999099, 0.00910749, 0.0414633, 0, 0.976716, -0.214537, -0.0424517, 0.214344, 0.975835, -0.646934, 0.967047, 0.0834455)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.647, 0.784, -0.081)
 texture = ExtResource("2_563ag")
 
 [node name="Bullets" type="Node3D" parent="CameraPivot/Camera3D"]

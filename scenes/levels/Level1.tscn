@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dvat6v2me6fmy"]
+[gd_scene load_steps=17 format=3 uid="uid://dvat6v2me6fmy"]
 
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_h7o08"]
 [ext_resource type="Material" uid="uid://cikm6vcxn5cjr" path="res://resources/materials/objects/Tree.tres" id="3_fukee"]
@@ -11,15 +11,20 @@
 [ext_resource type="PackedScene" uid="uid://c7prskgdwrrd4" path="res://scenes/objects/decoration/Table.tscn" id="9_6bdl5"]
 [ext_resource type="PackedScene" uid="uid://c4634838ux6pa" path="res://scenes/objects/items/SuperShovel.tscn" id="9_lt3yj"]
 [ext_resource type="PackedScene" uid="uid://d2o78fybjqqli" path="res://scenes/objects/Door.tscn" id="10_heps8"]
+[ext_resource type="AudioStream" uid="uid://cv7f20o05iu7q" path="res://audio/sfx/ambiance/352514__inspectorj__ambience-night-wildlife-a.ogg" id="10_qtw18"]
+[ext_resource type="Texture2D" uid="uid://c8a0oqa0nl5ji" path="res://textures/skybox/1-skybox-studio-hyper-realistic-mountains-lake-hd-skybox-7-crea-panorama-e-vr.jpg" id="12_nysvc"]
 
-[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_etqbp"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ge7wd"]
+panorama = ExtResource("12_nysvc")
+filter = false
 
-[sub_resource type="Sky" id="Sky_8fasa"]
-sky_material = SubResource("PhysicalSkyMaterial_etqbp")
+[sub_resource type="Sky" id="Sky_i0pug"]
+sky_material = SubResource("PanoramaSkyMaterial_ge7wd")
 
 [sub_resource type="Environment" id="Environment_huweb"]
 background_mode = 2
-sky = SubResource("Sky_8fasa")
+sky = SubResource("Sky_i0pug")
+ambient_light_source = 1
 reflected_light_source = 1
 ssr_enabled = true
 ssr_depth_tolerance = 0.01
@@ -276,6 +281,16 @@ omni_attenuation = 0.840897
 
 [node name="Table" parent="LevelStuff/Decor" instance=ExtResource("9_6bdl5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, -1, -6.2)
+
+[node name="Start Ambiance" type="AudioStreamPlayer3D" parent="LevelStuff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
+stream = ExtResource("10_qtw18")
+attenuation_model = 2
+unit_size = 9.0
+autoplay = true
+panning_strength = 0.0
+bus = &"SFX"
+doppler_tracking = 2
 
 [node name="Player" parent="." instance=ExtResource("5_xjdmk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.2, 0.5)

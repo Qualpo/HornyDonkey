@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2o78fybjqqli"]
+[gd_scene load_steps=11 format=3 uid="uid://d2o78fybjqqli"]
 
 [ext_resource type="Script" path="res://scripts/objects/Door.gd" id="1_8sg0n"]
 [ext_resource type="PackedScene" uid="uid://cn1jf5cs3ofde" path="res://models/object/Door.gltf" id="2_fftxk"]
 [ext_resource type="AudioStream" uid="uid://l83tyw2lh5w5" path="res://audio/sfx/DoorOpen.ogg" id="3_x86e2"]
 [ext_resource type="AudioStream" uid="uid://dsju0mnm14anp" path="res://audio/sfx/DoorClose.ogg" id="4_itg7p"]
+[ext_resource type="AudioStream" uid="uid://cl4ybh0ic5gc2" path="res://audio/sfx/New folder/12739__leady__locked-door.wav" id="5_ge527"]
+[ext_resource type="AudioStream" uid="uid://dhljtbu2me8l1" path="res://audio/sfx/New folder/519065__angelkunev__door-unlock.wav" id="6_0tr23"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dc46b"]
 size = Vector3(1, 2, 0.2)
@@ -79,3 +81,18 @@ stream = ExtResource("4_itg7p")
 max_polyphony = 4
 bus = &"SFX"
 doppler_tracking = 2
+
+[node name="Locked" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0)
+stream = ExtResource("5_ge527")
+volume_db = -16.901
+max_polyphony = 4
+bus = &"SFX"
+doppler_tracking = 2
+
+[node name="Unlock" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0)
+stream = ExtResource("6_0tr23")
+volume_db = 18.162
+max_db = 6.0
+bus = &"SFX"

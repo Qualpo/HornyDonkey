@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dhljtbu2me8l1"
+path="res://.godot/imported/519065__angelkunev__door-unlock.wav-c2ab8d2f49f7f6bf59229785a8d612bd.sample"
+
+[deps]
+
+source_file="res://audio/sfx/New folder/519065__angelkunev__door-unlock.wav"
+dest_files=["res://.godot/imported/519065__angelkunev__door-unlock.wav-c2ab8d2f49f7f6bf59229785a8d612bd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
