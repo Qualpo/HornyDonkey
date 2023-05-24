@@ -40,4 +40,5 @@ func _ready():
 					file_name = mdir.get_next()
 			else:
 				print("An error occurred when trying to access the path.")
+	await $Intro.finished
 	get_tree().change_scene_to_packed(Menu)
