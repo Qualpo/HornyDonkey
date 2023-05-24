@@ -12,4 +12,5 @@ func _process(delta):
 
 
 func _on_button_pressed():
+#	Inventory.content.append(load("res://mods/TestMod/assets/scenes/test_item.tscn").instantiate())
 	get_tree().change_scene_to_file("res://scenes/loading_screen.tscn")

@@ -32,6 +32,11 @@ func _ready():
 						print("Found directory: " + file_name)
 					else:
 						print("Found file: " + file_name)
+						if file_name.get_extension() == "pck":
+							ProjectSettings.load_resource_pack("user://mods/" + file_name)
+							var modmainpath = "res://mods/"+file_name.get_basename()+"/Main.gd"
+							var mm = load(modmainpath).new()
+							mm.setup()
 					file_name = mdir.get_next()
 			else:
 				print("An error occurred when trying to access the path.")
