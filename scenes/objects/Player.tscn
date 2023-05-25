@@ -229,8 +229,8 @@ radius = 0.368
 collision_layer = 2
 floor_snap_length = 0.39
 script = ExtResource("1_yweok")
-WalkSpeed = 2.0
-RunSpeed = 3.0
+WalkSpeed = 1.5
+RunSpeed = 2.5
 AimSpeed = 1.0
 Sensitivity = 1.0
 
