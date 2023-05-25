@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://dhljtbu2me8l1" path="res://audio/sfx/New folder/519065__angelkunev__door-unlock.wav" id="6_0tr23"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dc46b"]
-size = Vector3(1, 2, 0.2)
+size = Vector3(1, 2, 0.25)
 
 [sub_resource type="Animation" id="Animation_jje7c"]
 resource_name = "FlippedOpen"
