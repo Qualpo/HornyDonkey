@@ -460,6 +460,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="Speed" type="Label" parent="CanvasLayer/UI"]
+visible = false
 layout_mode = 0
 offset_left = 217.0
 offset_top = 3.0
