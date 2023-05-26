@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="HornyDonkey"
-run/main_scene="res://scenes/levels/DebugLevel.tscn"
+run/main_scene="res://scenes/screens/load.tscn"
+config/custom_user_dir_name="Horney"
 config/features=PackedStringArray("4.0", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
 boot_splash/image="res://textures/branding/donkey fucker devs.png"
+boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="res://textures/donkey cult insignia glowing sprite.png"
 boot_splash/minimum_display_time=3000
@@ -34,6 +38,11 @@ window/size/viewport_width=480
 window/size/viewport_height=270
 window/size/mode=3
 window/stretch/mode="viewport"
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
 
 [editor_plugins]
 

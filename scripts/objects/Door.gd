@@ -22,9 +22,12 @@ func Open():
 				$AnimationPlayer.play_backwards("FlippedOpen")
 			else:
 				$AnimationPlayer.play_backwards("Open")
+			await $AnimationPlayer.animation_finished
 			$Close.play()
+	elif not $AnimationPlayer.is_playing():
+		$Locked.play()
 func Unlock(code):
 	if Code == code:
 		Locked = false
-		Open()
+		$Unlock.play()
 		return true

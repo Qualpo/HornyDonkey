@@ -229,8 +229,8 @@ radius = 0.368
 collision_layer = 2
 floor_snap_length = 0.39
 script = ExtResource("1_yweok")
-WalkSpeed = 2.0
-RunSpeed = 3.0
+WalkSpeed = 1.5
+RunSpeed = 2.5
 AimSpeed = 1.0
 Sensitivity = 1.0
 
@@ -285,15 +285,17 @@ current = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625, -0.741, -0.529)
 
 [node name="Sprite3D" type="Sprite3D" parent="CameraPivot/Camera3D/Gun"]
-transform = Transform3D(0.999099, 0.00910749, 0.0414633, 0, 0.976716, -0.214537, -0.0424517, 0.214344, 0.975835, -0.646934, 0.967047, 0.0834455)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.647, 0.784, -0.081)
 texture = ExtResource("2_563ag")
 
 [node name="Bullets" type="Node3D" parent="CameraPivot/Camera3D"]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="CameraPivot/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.199741, 0)
+light_color = Color(1, 0.956863, 0.917647, 1)
 light_volumetric_fog_energy = 0.0
 shadow_enabled = true
+distance_fade_enabled = true
 spot_range = 60.407
 spot_attenuation = 0.31864
 spot_angle = 62.5

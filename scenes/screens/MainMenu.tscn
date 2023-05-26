@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=3 uid="uid://vlfxe251fi0g"]
+
+[ext_resource type="Script" path="res://scripts/screens/MainMenu.gd" id="1_sdm67"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sdm67")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 121.0
+offset_right = 257.0
+offset_bottom = 155.0
+text = "Play"
+
+[node name="LevelSelect" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 171.0
+offset_top = 82.0
+offset_right = 283.0
+offset_bottom = 106.0
+
+[node name="TextEdit" type="Panel" parent="LevelSelect"]
+layout_mode = 0
+offset_left = -18.0
+offset_top = -9.0
+offset_right = 123.0
+offset_bottom = 27.0
+
+[node name="Label" type="Label" parent="LevelSelect/TextEdit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "DebugLevel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Left" type="Button" parent="LevelSelect"]
+layout_mode = 0
+offset_left = -46.0
+offset_top = -6.0
+offset_right = -22.0
+offset_bottom = 19.0
+disabled = true
+text = "<"
+
+[node name="Right" type="Button" parent="LevelSelect"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = -6.0
+offset_right = 152.0
+offset_bottom = 25.0
+text = ">"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="LevelSelect/Left" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="LevelSelect/Right" to="." method="_on_right_pressed"]

@@ -58,9 +58,9 @@ func Shoot(accuracy, bulletammount, recoil, user):
 							Cast.get_collider().Hit(false,self,Global.GunDamage)
 						else:
 							var hole = BulletHole.instantiate()
-					
-							user.get_parent().add_child(hole)
-							hole.position = Cast.get_collision_point() + (Cast.get_collision_normal()/80)
+							
+							Cast.get_collider().add_child(hole)
+							hole.global_position = Cast.get_collision_point() + (Cast.get_collision_normal()/80)
 							if abs(Cast.get_collision_normal().y) == 1:
 								hole.rotation_degrees.x = 90
 							else:

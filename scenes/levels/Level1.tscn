@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dvat6v2me6fmy"]
+[gd_scene load_steps=17 format=3 uid="uid://dvat6v2me6fmy"]
 
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_h7o08"]
 [ext_resource type="Material" uid="uid://cikm6vcxn5cjr" path="res://resources/materials/objects/Tree.tres" id="3_fukee"]
@@ -11,18 +11,31 @@
 [ext_resource type="PackedScene" uid="uid://c7prskgdwrrd4" path="res://scenes/objects/decoration/Table.tscn" id="9_6bdl5"]
 [ext_resource type="PackedScene" uid="uid://c4634838ux6pa" path="res://scenes/objects/items/SuperShovel.tscn" id="9_lt3yj"]
 [ext_resource type="PackedScene" uid="uid://d2o78fybjqqli" path="res://scenes/objects/Door.tscn" id="10_heps8"]
+[ext_resource type="AudioStream" uid="uid://cv7f20o05iu7q" path="res://audio/sfx/ambiance/352514__inspectorj__ambience-night-wildlife-a.ogg" id="10_qtw18"]
+[ext_resource type="Texture2D" uid="uid://c8a0oqa0nl5ji" path="res://textures/skybox/1-skybox-studio-hyper-realistic-mountains-lake-hd-skybox-7-crea-panorama-e-vr.jpg" id="12_nysvc"]
 
-[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_etqbp"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ge7wd"]
+panorama = ExtResource("12_nysvc")
+filter = false
 
-[sub_resource type="Sky" id="Sky_8fasa"]
-sky_material = SubResource("PhysicalSkyMaterial_etqbp")
+[sub_resource type="Sky" id="Sky_i0pug"]
+sky_material = SubResource("PanoramaSkyMaterial_ge7wd")
 
 [sub_resource type="Environment" id="Environment_huweb"]
 background_mode = 2
-sky = SubResource("Sky_8fasa")
-reflected_light_source = 1
+background_color = Color(1, 1, 1, 1)
+background_energy_multiplier = 3.22
+sky = SubResource("Sky_i0pug")
+ambient_light_color = Color(1, 1, 1, 1)
 ssr_enabled = true
 ssr_depth_tolerance = 0.01
+ssao_enabled = true
+ssil_enabled = true
+ssil_radius = 6.41
+ssil_intensity = 4.53
+sdfgi_enabled = true
+sdfgi_read_sky_light = false
+glow_enabled = true
 volumetric_fog_enabled = true
 adjustment_enabled = true
 
@@ -38,86 +51,85 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1, -4.9)
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 1, -1, -4.9)
 Flipped = true
 
-[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="LevelStuff"]
+[node name="Intro" type="CSGCombiner3D" parent="LevelStuff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, 0)
 use_collision = true
 
-[node name="Intro" type="CSGCombiner3D" parent="LevelStuff/CSGCombiner3D2"]
+[node name="Trees" type="CSGCombiner3D" parent="LevelStuff/Intro"]
 
-[node name="Trees" type="CSGCombiner3D" parent="LevelStuff/CSGCombiner3D2/Intro"]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/Intro/Trees"]
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelStuff/Intro/Trees"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.9, 3, 0.2)
 size = Vector3(10, 8, 1)
 material = ExtResource("3_fukee")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/Intro/Trees"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="LevelStuff/Intro/Trees"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.4, 3, 5.2)
 size = Vector3(10, 8, 1)
 material = ExtResource("3_fukee")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/Intro/Trees"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="LevelStuff/Intro/Trees"]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 5.1, 3, 0.2)
 size = Vector3(10, 8, 1)
 material = ExtResource("3_fukee")
 
-[node name="Grass" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/Intro"]
+[node name="Grass" type="CSGBox3D" parent="LevelStuff/Intro"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.6, -1.5, 0.2)
 size = Vector3(10, 1, 12)
 material = ExtResource("3_lt7jr")
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="LevelStuff/CSGCombiner3D2/Intro"]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="LevelStuff/Intro"]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/Intro/CSGCombiner3D"]
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelStuff/Intro/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, 2.5, -4.9)
 size = Vector3(4, 7, 0.25)
 material = ExtResource("5_u5jb8")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/Intro/CSGCombiner3D"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="LevelStuff/Intro/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 2.5, -4.9)
 size = Vector3(4, 7, 0.25)
 material = ExtResource("5_u5jb8")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/Intro/CSGCombiner3D"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="LevelStuff/Intro/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 3.5, -4.9)
 size = Vector3(4, 5, 0.25)
 material = ExtResource("5_u5jb8")
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="LevelStuff/CSGCombiner3D2/Intro/CSGCombiner3D"]
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="LevelStuff/Intro/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 5.9, -4.774)
 polygon = PackedVector2Array(6, 0, 1.1, 5.1, -4, 0)
 depth = 0.25
 material = ExtResource("5_u5jb8")
 
-[node name="MainHall" type="CSGCombiner3D" parent="LevelStuff/CSGCombiner3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, -13.8)
+[node name="MainHall" type="CSGCombiner3D" parent="LevelStuff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -1.5, -13.8)
+use_collision = true
 
-[node name="Floor" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
+[node name="Floor" type="CSGBox3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, -2)
 size = Vector3(10, 1, 22)
 material = ExtResource("6_sn3jd")
 
-[node name="Wall" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
+[node name="Wall" type="CSGBox3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8, 3.4, -2)
 size = Vector3(0.4, 8.2, 22)
 material = ExtResource("5_u5jb8")
 
-[node name="wall" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
+[node name="wall" type="CSGBox3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6, 3.4, -2)
 size = Vector3(0.4, 8.2, 22)
 material = ExtResource("5_u5jb8")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 2.0336, 9.64415, -4.2)
 size = Vector3(0.4, 7.4, 26)
 material = ExtResource("5_u5jb8")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, -2.8664, 9.64415, -4.2)
 size = Vector3(0.4, 7.4, 26)
 material = ExtResource("5_u5jb8")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
+[node name="SpotLight3D" type="SpotLight3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.4, 10.4, 4)
 light_energy = 15.671
 light_indirect_energy = 4.805
@@ -126,7 +138,7 @@ shadow_enabled = true
 spot_range = 11.738
 spot_angle = 44.25
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
+[node name="SpotLight3D2" type="SpotLight3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.4, 10.4, -5.5)
 light_energy = 15.671
 light_indirect_energy = 4.805
@@ -135,75 +147,75 @@ shadow_enabled = true
 spot_range = 11.738
 spot_angle = 44.25
 
-[node name="Beams" type="CSGCombiner3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
+[node name="Beams" type="CSGCombiner3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/MainHall/Beams"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="LevelStuff/MainHall/Beams"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -0.4, 8, 7)
 size = Vector3(12, 0.5, 0.5)
 material = ExtResource("6_sn3jd")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/MainHall/Beams"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="LevelStuff/MainHall/Beams"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -0.4, 8, 4)
 size = Vector3(12, 0.5, 0.5)
 material = ExtResource("6_sn3jd")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/MainHall/Beams"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="LevelStuff/MainHall/Beams"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -0.4, 8, 1)
 size = Vector3(12, 0.5, 0.5)
 material = ExtResource("6_sn3jd")
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/MainHall/Beams"]
+[node name="CSGBox3D6" type="CSGBox3D" parent="LevelStuff/MainHall/Beams"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -0.4, 8, -2)
 size = Vector3(12, 0.5, 0.5)
 material = ExtResource("6_sn3jd")
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/MainHall/Beams"]
+[node name="CSGBox3D7" type="CSGBox3D" parent="LevelStuff/MainHall/Beams"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -0.4, 8, -5)
 size = Vector3(12, 0.5, 0.5)
 material = ExtResource("6_sn3jd")
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/MainHall/Beams"]
+[node name="CSGBox3D8" type="CSGBox3D" parent="LevelStuff/MainHall/Beams"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -0.4, 8, -8)
 size = Vector3(12, 0.5, 0.5)
 material = ExtResource("6_sn3jd")
 
-[node name="CSGBox3D9" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/MainHall/Beams"]
+[node name="CSGBox3D9" type="CSGBox3D" parent="LevelStuff/MainHall/Beams"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -0.4, 8, -11)
 size = Vector3(12, 0.5, 0.5)
 material = ExtResource("6_sn3jd")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, -16)
 size = Vector3(32, 1, 6)
 material = ExtResource("6_sn3jd")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 3.4, -19.5)
 size = Vector3(32, 6, 1)
 material = ExtResource("5_u5jb8")
 
-[node name="Decal4" type="Decal" parent="LevelStuff/CSGCombiner3D2/MainHall"]
+[node name="Decal4" type="Decal" parent="LevelStuff/MainHall"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.4, 3.6, -19)
 size = Vector3(6, 2, 4)
 texture_albedo = ExtResource("7_sij87")
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
+[node name="CSGBox3D6" type="CSGBox3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1, 3.5, -12.5)
 size = Vector3(10.6, 6, 1)
 material = ExtResource("5_u5jb8")
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
+[node name="CSGBox3D8" type="CSGBox3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3, 3.5, -12.5)
 size = Vector3(10.6, 6, 1)
 material = ExtResource("5_u5jb8")
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
+[node name="CSGBox3D7" type="CSGBox3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 6.7, -15.8)
 size = Vector3(32, 0.6, 8)
 material = ExtResource("5_u5jb8")
 
-[node name="SpotLight3D3" type="SpotLight3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
+[node name="SpotLight3D3" type="SpotLight3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(0.909018, 0.0593912, -0.412503, -0.407247, 0.336824, -0.84894, 0.0885213, 0.939693, 0.330366, -3.1, 0.8, -18)
 light_energy = 15.631
 light_indirect_energy = 16.0
@@ -212,7 +224,7 @@ light_size = 0.346
 light_specular = 7.419
 spot_angle = 18.0
 
-[node name="SpotLight3D4" type="SpotLight3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
+[node name="SpotLight3D4" type="SpotLight3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(0.978211, -0.144544, 0.14903, 0.187795, 0.309976, -0.932013, 0.0885213, 0.939693, 0.330366, 1.8, 0.8, -18)
 light_energy = 15.631
 light_indirect_energy = 16.0
@@ -221,7 +233,7 @@ light_size = 0.346
 light_specular = 7.419
 spot_angle = 18.0
 
-[node name="SpotLight3D5" type="SpotLight3D" parent="LevelStuff/CSGCombiner3D2/MainHall"]
+[node name="SpotLight3D5" type="SpotLight3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(0.99596, -0.0885213, -0.0150768, 0.0150769, 0.330366, -0.943732, 0.0885213, 0.939693, 0.330366, -0.5, 0.8, -18)
 light_energy = 15.631
 light_indirect_energy = 16.0
@@ -276,6 +288,16 @@ omni_attenuation = 0.840897
 
 [node name="Table" parent="LevelStuff/Decor" instance=ExtResource("9_6bdl5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, -1, -6.2)
+
+[node name="Start Ambiance" type="AudioStreamPlayer3D" parent="LevelStuff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
+stream = ExtResource("10_qtw18")
+attenuation_model = 2
+unit_size = 9.0
+autoplay = true
+panning_strength = 0.0
+bus = &"SFX"
+doppler_tracking = 2
 
 [node name="Player" parent="." instance=ExtResource("5_xjdmk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.2, 0.5)
