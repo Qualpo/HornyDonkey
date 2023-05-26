@@ -23,11 +23,19 @@ sky_material = SubResource("PanoramaSkyMaterial_ge7wd")
 
 [sub_resource type="Environment" id="Environment_huweb"]
 background_mode = 2
+background_color = Color(1, 1, 1, 1)
+background_energy_multiplier = 3.22
 sky = SubResource("Sky_i0pug")
-ambient_light_source = 1
-reflected_light_source = 1
+ambient_light_color = Color(1, 1, 1, 1)
 ssr_enabled = true
 ssr_depth_tolerance = 0.01
+ssao_enabled = true
+ssil_enabled = true
+ssil_radius = 6.41
+ssil_intensity = 4.53
+sdfgi_enabled = true
+sdfgi_read_sky_light = false
+glow_enabled = true
 volumetric_fog_enabled = true
 adjustment_enabled = true
 

@@ -292,8 +292,10 @@ texture = ExtResource("2_563ag")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="CameraPivot/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.199741, 0)
+light_color = Color(1, 0.956863, 0.917647, 1)
 light_volumetric_fog_energy = 0.0
 shadow_enabled = true
+distance_fade_enabled = true
 spot_range = 60.407
 spot_attenuation = 0.31864
 spot_angle = 62.5
