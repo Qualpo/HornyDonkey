@@ -23,6 +23,7 @@ var RecoilAmt = 3.0
 var Fov = 75.0
 var MoveSpeed = 1.0
 var SuperJumpBuffer = 0.0
+var MoveSpeedScale = 1.0
 
 var Aiming = false
 var Sprinting = false
@@ -78,6 +79,7 @@ func _physics_process(delta):
 		#Aim Lerp
 		$CameraPivot/Camera3D/Gun.position = lerp($CameraPivot/Camera3D/Gun.position,GunPos,0.4)
 		
+		
 		#Friction
 		
 		#Gravity
@@ -115,7 +117,7 @@ func _physics_process(delta):
 				Fov = 75.0
 		if is_on_floor():
 			velocity = lerp(velocity, Vector3(0,velocity.y,0),0.25)
-			velocity += Vector3(irt.x,0,irt.y) * MoveSpeed
+			velocity += Vector3(irt.x,0,irt.y) * MoveSpeed * MoveSpeedScale
 			
 			if inputDir != Vector2.ZERO and not Aiming:
 				$AnimationPlayer.play("Walk")
@@ -136,7 +138,7 @@ func _physics_process(delta):
 		else:
 			$AnimationPlayer.play("Idle" )
 			velocity = lerp(velocity, Vector3(0,velocity.y,0),0.025)
-			velocity += Vector3(irt.x,0,irt.y) * (MoveSpeed * 0.17)
+			velocity += Vector3(irt.x,0,irt.y) * (MoveSpeed * MoveSpeedScale * 0.17)
 			if Aiming:
 				Bobset = velocity.y/256
 			else:

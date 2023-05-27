@@ -3,7 +3,7 @@ extends Item
 
 @onready var HitNoise = preload("res://audio/sfx/metal clang.ogg")
 
-var Using = false
+
 var User = null
 
 func Use(user):

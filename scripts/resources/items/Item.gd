@@ -6,7 +6,7 @@ class_name Item
 @export var offset : Vector3 
 @export var Name = "TestName"
 
-
+var Using = false
 var Held = false
 var OnGround = true
 
