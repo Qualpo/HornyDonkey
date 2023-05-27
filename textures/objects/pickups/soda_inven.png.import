@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b016ldnwvo2fq"
-path="res://.godot/imported/lives_icon.png-12368411ee80b708532d1713f5b5dbfa.ctex"
+uid="uid://chhtg5cgaj1yk"
+path="res://.godot/imported/soda_inven.png-4db45642599ebfa48148fb5c11c67619.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/ui/lives_icon.png"
-dest_files=["res://.godot/imported/lives_icon.png-12368411ee80b708532d1713f5b5dbfa.ctex"]
+source_file="res://textures/objects/pickups/soda_inven.png"
+dest_files=["res://.godot/imported/soda_inven.png-4db45642599ebfa48148fb5c11c67619.ctex"]
 
 [params]
 

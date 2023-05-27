@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b016ldnwvo2fq"
-path="res://.godot/imported/lives_icon.png-12368411ee80b708532d1713f5b5dbfa.ctex"
+uid="uid://c0oawpyv7ele0"
+path="res://.godot/imported/Soda Color 1.png-6774917ffa222f075eb4e172b657a050.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/ui/lives_icon.png"
-dest_files=["res://.godot/imported/lives_icon.png-12368411ee80b708532d1713f5b5dbfa.ctex"]
+source_file="res://models/object/Soda Color 1.png"
+dest_files=["res://.godot/imported/Soda Color 1.png-6774917ffa222f075eb4e172b657a050.ctex"]
 
 [params]
 
