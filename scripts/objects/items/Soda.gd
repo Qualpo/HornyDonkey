@@ -12,8 +12,6 @@ func Use(user):
 			$AnimationPlayer.play("Drink")
 			Using = true
 			await drink
-			get_parent().remove_child(self)
-			user.add_child(self)
-			
+			pass
 			await $AnimationPlayer.animation_finished
 			Using = false

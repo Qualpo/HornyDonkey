@@ -3,6 +3,13 @@ extends Control
 var Levels = {"DEBUG":"res://scenes/levels/DebugLevel.tscn","LEVEL 1":"res://scenes/levels/Level1.tscn"}
 var CurSelect = 0
 
+func _ready():
+	get_tree().root.grab_focus()
+
+func _physics_process(delta):
+	if has_node("Window"):
+		$Window/Camera2D.position = $Window.position
+
 func _on_button_pressed():
 #	Inventory.content.append(load("res://mods/TestMod/assets/scenes/test_item.tscn").instantiate())
 	get_tree().change_scene_to_file("res://scenes/loading_screen.tscn")
@@ -29,3 +36,7 @@ func _on_left_pressed():
 
 func _on_right_pressed():
 	Move(false)
+
+
+func _on_window_close_requested():
+	$Window.queue_free()
