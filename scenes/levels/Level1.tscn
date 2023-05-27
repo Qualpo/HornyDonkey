@@ -279,7 +279,7 @@ shadow_enabled = true
 omni_attenuation = 0.840897
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="LevelStuff"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 3.8, -4.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 7.8, -4.5)
 light_energy = 1.323
 shadow_enabled = true
 omni_attenuation = 0.840897
