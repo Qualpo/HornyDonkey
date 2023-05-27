@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cxtmqbjxg1f0h"]
+[gd_scene load_steps=31 format=3 uid="uid://cxtmqbjxg1f0h"]
 
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_ym708"]
 [ext_resource type="AudioStream" uid="uid://cehdrvf25dvfm" path="res://audio/music/e1m1.ogg" id="2_1s4sw"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://cxh507iow7u1r" path="res://scenes/objects/items/Shovel.tscn" id="18_th4s3"]
 [ext_resource type="PackedScene" uid="uid://bxvikkan37t75" path="res://scenes/objects/DigSpot.tscn" id="19_733d2"]
 [ext_resource type="PackedScene" uid="uid://d2o78fybjqqli" path="res://scenes/objects/Door.tscn" id="19_joo32"]
+[ext_resource type="PackedScene" uid="uid://cmtlr1ndenhnn" path="res://scenes/objects/items/Soda.tscn" id="21_7hjtc"]
 [ext_resource type="ArrayMesh" uid="uid://b5hyk8iu0sc8b" path="res://models/mesh/TreeWall.res" id="21_dxr8w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qss5h"]
@@ -353,5 +354,8 @@ spot_angle = 72.5
 [node name="TreeWall" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2, 0.1, -11.8)
 mesh = ExtResource("21_dxr8w")
+
+[node name="Soda" parent="." instance=ExtResource("21_7hjtc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0.6, -4.9)
 
 [editable path="Donkey2"]

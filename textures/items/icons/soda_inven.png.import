@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://chhtg5cgaj1yk"
-path="res://.godot/imported/soda_inven.png-4db45642599ebfa48148fb5c11c67619.ctex"
+path="res://.godot/imported/soda_inven.png-52bb87567aac7c5a281550c988bcc12e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/objects/pickups/soda_inven.png"
-dest_files=["res://.godot/imported/soda_inven.png-4db45642599ebfa48148fb5c11c67619.ctex"]
+source_file="res://textures/items/icons/soda_inven.png"
+dest_files=["res://.godot/imported/soda_inven.png-52bb87567aac7c5a281550c988bcc12e.ctex"]
 
 [params]
 

@@ -1,0 +1,104 @@
+[gd_scene load_steps=9 format=3 uid="uid://cmtlr1ndenhnn"]
+
+[ext_resource type="PackedScene" uid="uid://cypywomghdkr2" path="res://scenes/objects/items/Item.tscn" id="1_trh2g"]
+[ext_resource type="Texture2D" uid="uid://chhtg5cgaj1yk" path="res://textures/items/icons/soda_inven.png" id="2_11802"]
+[ext_resource type="PackedScene" uid="uid://pda3bqijnm5w" path="res://models/object/soda.glb" id="2_mxt5d"]
+[ext_resource type="Script" path="res://scripts/objects/items/Soda.gd" id="2_x38xa"]
+[ext_resource type="AudioStream" uid="uid://def4a4pyxcwdj" path="res://audio/sfx/Items/drinksound.ogg" id="5_470jh"]
+
+[sub_resource type="Animation" id="Animation_igfgq"]
+resource_name = "Drink"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.3), Vector3(-0.6, 0.2, 0), Vector3(-0.6, 0.2, 0), Vector3(0, 0, -0.3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visual:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.309, 0, 0), Vector3(1.309, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Drink"
+}]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visual/AudioStreamPlayer3D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_470jh")
+}],
+"times": PackedFloat32Array(0.5)
+}
+tracks/3/use_blend = true
+
+[sub_resource type="Animation" id="Animation_ysui4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.3, 0.3, -0.3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x8i7r"]
+_data = {
+"Drink": SubResource("Animation_igfgq"),
+"RESET": SubResource("Animation_ysui4")
+}
+
+[node name="Soda" instance=ExtResource("1_trh2g")]
+script = ExtResource("2_x38xa")
+icon = ExtResource("2_11802")
+Name = "Soda"
+
+[node name="Visual" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.3, -0.3)
+
+[node name="soda" parent="Visual" index="0" instance=ExtResource("2_mxt5d")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.3, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Visual" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0.6, -0.0517638, 0.193185)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_x8i7r")
+}
