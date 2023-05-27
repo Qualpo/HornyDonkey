@@ -256,7 +256,7 @@ func UpdateUi():
 	$CanvasLayer/UI/Money.text = str("$",Global.Money)
 	$CanvasLayer/UI/Health.text = str(int(HP))
 	$CanvasLayer/UI/Ammo.text = str(Global.Ammo)
-	$CanvasLayer/UI/Lives.text = str("x ", Global.Lives)
+	$CanvasLayer/UI/Lives.text = str("x", Global.Lives)
 
 
 

@@ -7,9 +7,9 @@
 [ext_resource type="Shader" path="res://resources/materials/Invert.gdshader" id="4_ia74v"]
 [ext_resource type="AudioStream" uid="uid://c1lq8t1iulfwy" path="res://audio/sfx/flashlight.ogg" id="4_tnbl5"]
 [ext_resource type="Texture2D" uid="uid://b308hqk2hm7re" path="res://textures/ui/Cursor.png" id="4_v2ikc"]
-[ext_resource type="FontFile" uid="uid://cxwlpyc5xa31h" path="res://resources/fonts/Daydream.ttf" id="6_1ivy6"]
 [ext_resource type="Texture2D" uid="uid://dmiqgdpmqofm5" path="res://textures/ui/health_icon.png" id="7_f0lqq"]
 [ext_resource type="Texture2D" uid="uid://ccn5py45ivxsv" path="res://textures/ui/ammo_icon.png" id="8_qqtri"]
+[ext_resource type="FontFile" uid="uid://c8uq0vrdeg2pf" path="res://resources/fonts/shit.ttf" id="8_yw4va"]
 [ext_resource type="Texture2D" uid="uid://dassaokj5vc1y" path="res://textures/donkey cult insignia glowing sprite.png" id="9_vmia2"]
 [ext_resource type="Texture2D" uid="uid://c2xooisgd675y" path="res://textures/items/Pistol.png" id="10_o1afr"]
 
@@ -369,7 +369,7 @@ offset_bottom = 17.0
 grow_horizontal = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("6_1ivy6")
+theme_override_fonts/font = ExtResource("8_yw4va")
 theme_override_font_sizes/font_size = 8
 text = "$50"
 horizontal_alignment = 2
@@ -388,7 +388,7 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("6_1ivy6")
+theme_override_fonts/font = ExtResource("8_yw4va")
 theme_override_font_sizes/font_size = 8
 text = "12
 "
@@ -405,7 +405,7 @@ offset_right = 62.0
 grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("6_1ivy6")
+theme_override_fonts/font = ExtResource("8_yw4va")
 theme_override_font_sizes/font_size = 8
 text = "100"
 vertical_alignment = 1
@@ -418,7 +418,7 @@ offset_right = 62.0
 offset_bottom = 17.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("6_1ivy6")
+theme_override_fonts/font = ExtResource("8_yw4va")
 theme_override_font_sizes/font_size = 8
 text = "x 3"
 vertical_alignment = 1
@@ -428,11 +428,12 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 27.0
+offset_left = 22.0
 offset_top = -12.0
-offset_right = 35.0
+offset_right = 30.0
 offset_bottom = -4.0
 grow_vertical = 0
+pivot_offset = Vector2(4, 4)
 texture = ExtResource("7_f0lqq")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI"]
@@ -465,9 +466,9 @@ stretch_mode = 4
 visible = false
 layout_mode = 0
 offset_left = 217.0
-offset_top = 3.0
+offset_top = 65.0
 offset_right = 257.0
-offset_bottom = 29.0
+offset_bottom = 91.0
 text = "poop"
 horizontal_alignment = 1
 
@@ -476,8 +477,11 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -226.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(0, 22)
+size_flags_vertical = 0
 
 [node name="Selected" type="TextureRect" parent="CanvasLayer/ScrollThing"]
 layout_mode = 0

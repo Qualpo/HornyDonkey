@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cxwlpyc5xa31h"
-path="res://.godot/imported/Daydream.ttf-e48178fd77b821f425a1829e3f5d859b.fontdata"
+uid="uid://c8uq0vrdeg2pf"
+path="res://.godot/imported/shit.ttf-744ec3217ffd1498ae708021381092cb.fontdata"
 
 [deps]
 
-source_file="res://resources/fonts/Daydream.ttf"
-dest_files=["res://.godot/imported/Daydream.ttf-e48178fd77b821f425a1829e3f5d859b.fontdata"]
+source_file="res://resources/fonts/shit.ttf"
+dest_files=["res://.godot/imported/shit.ttf-744ec3217ffd1498ae708021381092cb.fontdata"]
 
 [params]
 
@@ -26,7 +26,7 @@ oversampling=0.0
 Fallbacks=null
 fallbacks=[]
 Compress=null
-compress=false
+compress=true
 preload=[{
 "chars": [],
 "glyphs": [],

@@ -178,7 +178,7 @@ rings = 16
 material = SubResource("StandardMaterial3D_qss5h")
 
 [node name="Slope" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
-transform = Transform3D(-0.707107, -0.707107, 5.75737e-08, -0.707107, 0.707107, 1.54268e-08, -2.98023e-08, -2.98023e-08, -1, -0.6, 1.9, -7.4)
+transform = Transform3D(-0.866026, -0.5, 5.75737e-08, -0.5, 0.866026, 1.54268e-08, -3.57568e-08, -1.54268e-08, -1, -0.6, 1.9, -7.4)
 size = Vector3(1, 6.2, 2)
 
 [node name="Stairs" type="Node3D" parent="NavigationRegion3D/CSGCombiner3D"]

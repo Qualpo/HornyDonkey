@@ -1,6 +1,6 @@
 extends Control
 
-var Levels = {"Debug":"res://scenes/levels/DebugLevel.tscn","Level1":"res://scenes/levels/Level1.tscn"}
+var Levels = {"DEBUG":"res://scenes/levels/DebugLevel.tscn","LEVEL 1":"res://scenes/levels/Level1.tscn"}
 var CurSelect = 0
 
 func _on_button_pressed():
@@ -13,14 +13,14 @@ func Move(left):
 	else:
 		CurSelect += 1
 	if CurSelect >= Levels.keys().size() -1:
-		$LevelSelect/Right.disabled = true
+		$Panel/Stuff/LevelSelect/Right.disabled = true
 	else:
-		$LevelSelect/Right.disabled = false
+		$Panel/Stuff/LevelSelect/Right.disabled = false
 	if CurSelect <= 0:
-		$LevelSelect/Left.disabled = true
+		$Panel/Stuff/LevelSelect/Left.disabled = true
 	else:
-		$LevelSelect/Left.disabled = false
-	$LevelSelect/TextEdit/Label.text = Levels.keys()[CurSelect]
+		$Panel/Stuff/LevelSelect/Left.disabled = false
+	$Panel/Stuff/LevelSelect/TextEdit/Label.text = Levels.keys()[CurSelect]
 	Global.TargetScenePath = Levels.values()[CurSelect]
 
 func _on_left_pressed():
