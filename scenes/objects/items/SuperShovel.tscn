@@ -108,6 +108,7 @@ _data = {
 }
 
 [node name="SuperShovel" instance=ExtResource("1_2s67t")]
+Name = "SuperShovel"
 
 [node name="AnimationPlayer" parent="." index="2"]
 libraries = {
