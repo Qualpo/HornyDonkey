@@ -1,7 +1,7 @@
 extends Node
 
 
-@export var content = []
+@export var content : Array[Item]= []
 @export var curselect = 0
 
 signal NewItem(item)
@@ -15,6 +15,7 @@ func _ready():
 		AddItem(preload("res://scenes/objects/items/Soda.tscn").instantiate())
 		AddItem(preload("res://scenes/objects/items/Shovel.tscn").instantiate())
 		AddItem(preload("res://scenes/objects/items/Item.tscn").instantiate())
+		AddItem(preload("res://scenes/objects/items/SuperShovel.tscn").instantiate())
 
 func Start(starter):
 	if content.size() > 0:
