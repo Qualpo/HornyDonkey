@@ -339,6 +339,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0.6, -4.9)
 
 [node name="SuperShovel" parent="." instance=ExtResource("18_1r2tu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6, -0.8, -5.5)
+Info = ""
 
 [node name="DigSpot" parent="." instance=ExtResource("19_733d2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0.1, -5.6)

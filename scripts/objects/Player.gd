@@ -241,6 +241,7 @@ func PickupAmmo():
 	$AudioStreamPlayer3D.play()
 func Hurt(am:float):
 	if not Dead:
+		ControlShake(0,1.0, 1.0,0.8)
 		HP -= am
 		$ScreenAnims.play("Hurt")
 		$AudioStreamPlayer3D.stream = JumpSound

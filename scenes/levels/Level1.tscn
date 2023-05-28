@@ -307,3 +307,4 @@ environment = SubResource("Environment_huweb")
 
 [node name="SuperShovel" parent="." instance=ExtResource("9_lt3yj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7, -0.5, 4.3)
+Info = ""

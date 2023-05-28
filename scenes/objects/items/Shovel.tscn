@@ -11,6 +11,7 @@
 script = ExtResource("1_8c8ym")
 icon = ExtResource("2_4g5no")
 Name = "Shovel"
+Info = "DigHoles"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 libraries = {
