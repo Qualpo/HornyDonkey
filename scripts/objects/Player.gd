@@ -118,7 +118,7 @@ func _physics_process(delta):
 				$CameraPivot/Camera3D/UseCast.get_collider().get_parent().Interact(self)
 		if inputDir != Vector2.ZERO:
 			if Sprinting:
-				Fov = 90.0
+				Fov = 75.0 + 15.0 *inputDir.length()
 		else:
 			if Sprinting:
 				Fov = 75.0
