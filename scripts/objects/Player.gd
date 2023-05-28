@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
 
-@export var WalkSpeed = 1.0
-@export var RunSpeed = 2.0
+@export var WalkSpeed = 1.5
+@export var RunSpeed = 2.5
 @export var AimSpeed = 0.5
 @export var HP = 100.0
 @export_range(0.0,1.0,0.01) var Sensitivity = 0.5
@@ -31,6 +31,8 @@ var Shooting = false
 var NoClip = false
 var Dead = false
 
+var LookDisabled = false
+var InvOpen = false
 
 var RNG = RandomNumberGenerator.new()
 
@@ -60,6 +62,7 @@ func _ready():
 	Global.UpMoney.connect(PickupMoney)
 	UpdateUi()
 	Inventory.NewItem.connect(NewItem)
+	Inventory.InvChanged.connect(UpdateInv)
 	Inventory.Start(self)
 	UpdateInvScroll()
 func _physics_process(delta):
@@ -88,16 +91,17 @@ func _physics_process(delta):
 		var inputDir = Input.get_vector("Left","Right","Forward","Backward")
 		var irt = inputDir.rotated(-rotation.y)
 		
-		if Input.is_action_just_pressed("Shoot"):
-			if not $GunAnims.current_animation == "PullOut":
-				emit_signal("Use",self)
-		if Input.is_action_just_released("Shoot"):
-			emit_signal("UnUse",self)
-		if Input.is_action_just_pressed("Aim"):
-			emit_signal("SecondUse",self)
+		if not InvOpen:
+			if Input.is_action_just_pressed("Shoot"):
+				if not $GunAnims.current_animation == "PullOut":
+					emit_signal("Use",self)
+			if Input.is_action_just_released("Shoot"):
+				emit_signal("UnUse",self)
+			if Input.is_action_just_pressed("Aim"):
+				emit_signal("SecondUse",self)
 
-		if Input.is_action_just_released("Aim"):
-			emit_signal("UnSecondUse",self)
+			if Input.is_action_just_released("Aim"):
+				emit_signal("UnSecondUse",self)
 		if Input.is_action_just_pressed("Sprint"):
 			UnAim()
 			Sprint()
@@ -121,6 +125,7 @@ func _physics_process(delta):
 			
 			if inputDir != Vector2.ZERO and not Aiming:
 				$AnimationPlayer.play("Walk")
+				
 			else:
 				$AnimationPlayer.stop(true)
 				Bobset = 0.0
@@ -152,7 +157,7 @@ func _physics_process(delta):
 				$CameraPivot/Camera3D.position.y -= dist
 		TiltDir = Vector2(-inputDir.x*(4+(6*int(Sprinting))),inputDir.y*10* int(Sprinting))
 func _input(event):
-	if not Dead:
+	if not Dead and not LookDisabled:
 		if event is InputEventMouseMotion:
 			rotation_degrees.y -= event.relative.x * Sensitivity
 			CameraDirection.x -= event.relative.y * Sensitivity
@@ -161,18 +166,34 @@ func _input(event):
 		$CameraPivot/Camera3D/SpotLight3D.visible = !$CameraPivot/Camera3D/SpotLight3D.visible
 		$FlashlightSound.play()
 	if event.is_action_pressed("InvUp"):
-		Inventory.MoveRight()
+		if not InvOpen:
+			Inventory.MoveRight()
+		else:
+			$CanvasLayer/Inventory.PageUp()
+	if event.is_action_pressed("InvDown"):
+		if not InvOpen:
+			Inventory.MoveLeft()
+		else:
+			$CanvasLayer/Inventory.PageDown()
 	if event.is_action_pressed("Inventory"):
-		$CanvasLayer/Inventory.visible = !$CanvasLayer/Inventory.visible
-	elif event.is_action_pressed("InvDown"):
+		$CanvasLayer/Inventory.visible = true
+		$CanvasLayer/Inventory.Open()
+		Inventory
+		LookDisabled = true
+		InvOpen = true
+		
+	if event.is_action_released("Inventory"):
+		$CanvasLayer/Inventory.visible = false
+		$CanvasLayer/Inventory.Active = false
+		LookDisabled = false
+		InvOpen = false
 
-		Inventory.MoveLeft()
 
 func PickUpItem(pick):
 	pick.PickUp(self)
-	Inventory.content.append(pick)
+	Inventory.AddItem(pick)
 	pick.get_parent().remove_child(pick)
-	$CanvasLayer/Inventory/Panel/ItemList.add_item(pick.Name, pick.icon,true)
+func UpdateInv():
 	UpdateInvScroll()
 func UpdateInvScroll():
 	if Inventory.content.size() > 0:

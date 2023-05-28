@@ -6,6 +6,8 @@ class_name Key
 
 var keying = false
 
+func SetInfo():
+	Info = str("Door:",Code)
 
 func Use(user):
 	if Held:

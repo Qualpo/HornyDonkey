@@ -20,6 +20,8 @@ func Use(user):
 		
 		Shoot(Accuracy,BulletAmmount,Recoil, user)
 		user.UpdateUi()
+func SetInfo():
+	Info = str(Ammo,"/",MaxAmmo)
 func SecondUse(user):
 	if Held:
 		user.UnSprint()
@@ -50,22 +52,21 @@ func Shoot(accuracy, bulletammount, recoil, user):
 			Cast.rotation_degrees = Vector3(spread.x,spread.y,0)
 			Cast.force_raycast_update()
 		for Cast in user.ShootNode.get_children():
-					if Cast.is_colliding():
-						
+			if Cast.is_colliding():
+				
+			
+				if Cast.get_collider().is_in_group("Enemy"):
+					Cast.get_collider().Hit(false,self,Global.GunDamage)
+				else:
+					var hole = BulletHole.instantiate()
 					
-						if Cast.get_collider().is_in_group("Enemy"):
-					
-							Cast.get_collider().Hit(false,self,Global.GunDamage)
-						else:
-							var hole = BulletHole.instantiate()
-							
-							Cast.get_collider().add_child(hole)
-							hole.global_position = Cast.get_collision_point() + (Cast.get_collision_normal()/80)
-							if abs(Cast.get_collision_normal().y) == 1:
-								hole.rotation_degrees.x = 90
-							else:
-								hole.look_at(Cast.get_collision_point()-Cast.get_collision_normal(),Vector3.UP)
-					Cast.queue_free()
+					Cast.get_collider().add_child(hole)
+					hole.global_position = Cast.get_collision_point() + (Cast.get_collision_normal()/80)
+					if abs(Cast.get_collision_normal().y) == 1:
+						hole.rotation_degrees.x = 90
+					else:
+						hole.look_at(Cast.get_collision_point()-Cast.get_collision_normal(),Vector3.UP)
+			Cast.queue_free()
 		user.CameraOffset.x += recoil * 3
 		user.CameraDirection.x += recoil
 		user.CameraDirection.x = clamp(user.CameraDirection.x,-90,90)

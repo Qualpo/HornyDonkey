@@ -75,7 +75,19 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.3, 0.3, -0.3)]
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visual:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x8i7r"]
@@ -88,9 +100,7 @@ _data = {
 script = ExtResource("2_x38xa")
 icon = ExtResource("2_11802")
 Name = "Soda"
-
-[node name="Visual" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 0.258819, -0.965926, 0, 0.965926, 0.258819, -0.3, 0.3, -0.3)
+Info = "Speed + 50%"
 
 [node name="soda" parent="Visual" index="0" instance=ExtResource("2_mxt5d")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.3, 0)

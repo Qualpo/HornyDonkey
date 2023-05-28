@@ -5,10 +5,12 @@ class_name Item
 @export var icon : Texture
 @export var offset : Vector3 
 @export var Name = "TestName"
+@export var Info = ""
 
 var Using = false
 var Held = false
 var OnGround = true
+
 
 func PickUp(user):
 	OnGround = false
@@ -20,8 +22,11 @@ func PickUp(user):
 	user.connect("SecondUse",SecondUse)
 	user.connect("UnSecondUse",UnSecondUse)
 func _ready():
+	SetInfo()
 	if OnGround:
 		$Spin.play("Spin")
+func SetInfo():
+	pass
 func Select():
 	Held = true
 func Deselect():

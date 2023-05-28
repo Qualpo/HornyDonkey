@@ -20,14 +20,14 @@ func Move(left):
 	else:
 		CurSelect += 1
 	if CurSelect >= Levels.keys().size() -1:
-		$Panel/Stuff/LevelSelect/Right.disabled = true
+		$Main/Stuff/LevelSelect/Right.disabled = true
 	else:
-		$Panel/Stuff/LevelSelect/Right.disabled = false
+		$Main/Stuff/LevelSelect/Right.disabled = false
 	if CurSelect <= 0:
-		$Panel/Stuff/LevelSelect/Left.disabled = true
+		$Main/Stuff/LevelSelect/Left.disabled = true
 	else:
-		$Panel/Stuff/LevelSelect/Left.disabled = false
-	$Panel/Stuff/LevelSelect/TextEdit/Label.text = Levels.keys()[CurSelect]
+		$Main/Stuff/LevelSelect/Left.disabled = false
+	$Main/Stuff/LevelSelect/TextEdit/Label.text = Levels.keys()[CurSelect]
 	Global.TargetScenePath = Levels.values()[CurSelect]
 
 func _on_left_pressed():
