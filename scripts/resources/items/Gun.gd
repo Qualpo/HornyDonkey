@@ -67,6 +67,7 @@ func Shoot(accuracy, bulletammount, recoil, user):
 					else:
 						hole.look_at(Cast.get_collision_point()-Cast.get_collision_normal(),Vector3.UP)
 			Cast.queue_free()
+		user.ControlShake(0,1.0, 1.0,0.5)
 		user.CameraOffset.x += recoil * 3
 		user.CameraDirection.x += recoil
 		user.CameraDirection.x = clamp(user.CameraDirection.x,-90,90)
@@ -74,6 +75,8 @@ func Shoot(accuracy, bulletammount, recoil, user):
 		await user.get_tree().create_timer(ShootCooldown).timeout
 		Shooting = false
 	elif not Shooting:
+		
 		if user.GunSound.stream != NoBulletSound:
 			user.GunSound.stream = NoBulletSound
 		user.GunSound.play()
+		user.ControlShake(0,1.0,0.0,0.2)

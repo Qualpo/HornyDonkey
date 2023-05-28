@@ -31,6 +31,7 @@ func Dig():
 					$AnimationPlayer.play("Shovel/hit")
 					$AudioStreamPlayer3D.stream = HitNoise
 					$AudioStreamPlayer3D.play()
+					User.ControlShake(0,1.0, 1.0,0.6)
 					if User.velocity.y < 0:
 						User.velocity.y =-User.velocity.y/2
 					User.velocity -= (User.global_position.direction_to(Cast.get_collision_point()))*8

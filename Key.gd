@@ -27,6 +27,10 @@ func Use(user):
 					var col = Cast.get_collider().get_parent()
 					if col.Unlock(Code):
 						Cast.queue_free()
+						await get_tree().create_timer(0.3).timeout
+						user.ControlShake(0,1.0,0.0,0.2)
+						await get_tree().create_timer(0.2).timeout
+						user.ControlShake(0,0.0,0.5,0.2)
 						await $AnimationPlayer.animation_finished
 						Inventory.RemoveItem(self)
 						queue_free()

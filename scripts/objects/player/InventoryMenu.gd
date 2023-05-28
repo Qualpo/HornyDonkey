@@ -6,6 +6,7 @@ var CurSelect = 0
 var Active = false
 var LastVec = Vector2()
 var MenuMousePos = Vector2()
+var D = false
 
 func _ready():
 	Inventory.InvChanged.connect(UpdateMenu)
@@ -21,9 +22,18 @@ func _input(event):
 	if Active:
 		if event is InputEventMouseMotion:
 			
-			NewSelect(GetMenuIndex(event.relative,MenuMousePos.length()))
+			NewSelect(GetMenuIndex(event.relative,MenuMousePos.length(),false))
 		if event.is_action_pressed("Shoot"):
 			Choose()
+func _physics_process(delta):
+	var poop = Input.get_vector("CamLeft","CamRight","CamUp","CamDown")
+	if poop.length() >0.1:
+		NewSelect(GetMenuIndex(poop,MenuMousePos.length(),true))
+		D = false
+	else:
+		if not D:
+			D = true
+			NewSelect(GetMenuIndex(Vector2(),MenuMousePos.length(),true))
 func UpdateMenu():
 	$WheelTexture/Info/Page.text = str("PAGE\n",Page + 1)
 	for i in range(8):
@@ -32,26 +42,34 @@ func UpdateMenu():
 			tex.texture = Inventory.content[i + (Page *8)].icon
 		else:
 			tex.texture = null
-func GetMenuIndex(dirVec : Vector2, dist):
-	var dir = DoThing(dirVec)
-	if dist > 62:
-		match dir:
-			Vector2(0,-1):
-				return 0
-			Vector2(1,-1):
-				return 1
-			Vector2(1,0):
-				return 2
-			Vector2(1,1):
-				return 3
-			Vector2(0,1):
-				return 4
-			Vector2(-1,1):
-				return 5
-			Vector2(-1,0):
-				return 6
-			Vector2(-1,-1):
-				return 7
+func GetMenuIndex(dirVec : Vector2, dist,controller):
+	var dir = Vector2()
+	if controller:
+		dir = dirVec.normalized().round()
+		$Line2D.points[1] = dir.normalized()*70
+		$OutLine.points[1] = dir.normalized() * 70 + dir.normalized()
+	else:
+		dir = DoThing(dirVec)
+	if not controller and dist < 62:
+		return CurSelect%8
+
+	match dir:
+		Vector2(0,-1):
+			return 0
+		Vector2(1,-1):
+			return 1
+		Vector2(1,0):
+			return 2
+		Vector2(1,1):
+			return 3
+		Vector2(0,1):
+			return 4
+		Vector2(-1,1):
+			return 5
+		Vector2(-1,0):
+			return 6
+		Vector2(-1,-1):
+			return 7
 	return CurSelect%8
 func DoThing(vec : Vector2):
 #	var doVec = vec

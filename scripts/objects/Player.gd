@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Player
 
 
 @export var WalkSpeed = 1.5
@@ -24,6 +25,7 @@ var Fov = 75.0
 var MoveSpeed = 1.0
 var SuperJumpBuffer = 0.0
 var MoveSpeedScale = 1.0
+var SensitivityScale = 1.0
 
 var Aiming = false
 var Sprinting = false
@@ -90,6 +92,8 @@ func _physics_process(delta):
 		#Inputs
 		var inputDir = Input.get_vector("Left","Right","Forward","Backward")
 		var irt = inputDir.rotated(-rotation.y)
+		var cInputDir = Input.get_vector("CamRight","CamLeft","CamDown","CamUp")
+		MoveCamera(cInputDir*3)
 		
 		if not InvOpen:
 			if Input.is_action_just_pressed("Shoot"):
@@ -124,6 +128,7 @@ func _physics_process(delta):
 			velocity += Vector3(irt.x,0,irt.y) * MoveSpeed * MoveSpeedScale
 			
 			if inputDir != Vector2.ZERO and not Aiming:
+				$AnimationPlayer.speed_scale = (inputDir.length()+(int(Sprinting)*0.5))/2
 				$AnimationPlayer.play("Walk")
 				
 			else:
@@ -156,12 +161,14 @@ func _physics_process(delta):
 				var dist = position.y - LastPos.y
 				$CameraPivot/Camera3D.position.y -= dist
 		TiltDir = Vector2(-inputDir.x*(4+(6*int(Sprinting))),inputDir.y*10* int(Sprinting))
-func _input(event):
+func MoveCamera(vec : Vector2):
 	if not Dead and not LookDisabled:
-		if event is InputEventMouseMotion:
-			rotation_degrees.y -= event.relative.x * Sensitivity
-			CameraDirection.x -= event.relative.y * Sensitivity
-			CameraDirection.x = clamp(CameraDirection.x, -90.0,90.0)
+		rotation_degrees.y += vec.x * Sensitivity * SensitivityScale
+		CameraDirection.x += vec.y * Sensitivity * SensitivityScale
+		CameraDirection.x = clamp(CameraDirection.x, -90.0,90.0)
+func _input(event):
+	if event is InputEventMouseMotion:
+		MoveCamera(Vector2(-event.relative.x,-event.relative.y))
 	if event.is_action_pressed("Flashlight"):
 		$CameraPivot/Camera3D/SpotLight3D.visible = !$CameraPivot/Camera3D/SpotLight3D.visible
 		$FlashlightSound.play()
@@ -210,6 +217,8 @@ func UpdateInvScroll():
 		else:
 			$CanvasLayer/ScrollThing/Backward.texture = Inventory.content[Inventory.curselect-1].icon
 			$CanvasLayer/ScrollThing/Backward.show()
+func ControlShake(controller,small,large,time):
+	Input.start_joy_vibration(controller,small,large,time)
 func NewItem(item:Item):
 	$GunAnims.stop()
 	$GunAnims.play("PullOut")
@@ -247,11 +256,15 @@ func Die():
 		CameraDirection.x = 0
 		await  $AnimationPlayer.animation_finished
 		if Global.Lives <= 0:
+			UnEquip()
 			get_tree().change_scene_to_file("res://scenes/screens/DeathScreen.tscn")
 		Global.Lives -= 1
 		position = Global.Checkpoint
 		UnDie()
-	
+func UnEquip():
+	if $CameraPivot/Camera3D/Gun.get_child_count() > 0:
+		for c in $CameraPivot/Camera3D/Gun.get_children():
+			$CameraPivot/Camera3D/Gun.remove_child(c)
 func Aim():
 	$AnimationPlayer.stop(true)
 	Aiming = true
@@ -259,21 +272,21 @@ func Aim():
 	MoveSpeed = AimSpeed
 	Fov = 50.0
 	Sprinting = false
+	SensitivityScale = 0.5
 func UnAim():
 	Aiming = false
 	GunPos = GunStartPos
 	MoveSpeed = WalkSpeed
 	Fov = 75.0
+	SensitivityScale = 1.0
 func Sprint():
 	MoveSpeed = RunSpeed
 	Sprinting = true
-	$AnimationPlayer.speed_scale = 0.75
 	Aiming = false
 func UnSprint():
 	MoveSpeed = WalkSpeed
 	Fov = 75.0
 	Sprinting = false
-	$AnimationPlayer.speed_scale = 0.5
 
 func UpdateUi():
 	$CanvasLayer/UI/Money.text = str("$",Global.Money)
