@@ -7,4 +7,5 @@ diffuse_mode = 1
 specular_mode = 1
 albedo_texture = ExtResource("1_2n7wh")
 uv1_triplanar = true
+uv1_world_triplanar = true
 texture_filter = 0

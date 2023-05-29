@@ -66,6 +66,10 @@ func _ready():
 	Inventory.InvChanged.connect(UpdateInv)
 	Inventory.Start(self)
 	UpdateInvScroll()
+	ControlShake(0,1.0,1.0,100.0)
+	ControlShake(0,1.0,1.0,100.0)
+	ControlShake(0,1.0,1.0,100.0)
+	ControlShake(0,1.0,1.0,100.0)
 func _physics_process(delta):
 	$CameraPivot/Camera3D.rotation_degrees.x = CameraDirection.x + CameraOffset.x
 	if not Dead:

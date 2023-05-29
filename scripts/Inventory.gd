@@ -9,13 +9,7 @@ signal InvChanged
 
 
 func _ready():
-	for i in range (10):
-		AddItem(preload("res://scenes/objects/items/Pisstol.tscn").instantiate())
-		AddItem(preload("res://scenes/objects/items/key.tscn").instantiate())
-		AddItem(preload("res://scenes/objects/items/Soda.tscn").instantiate())
-		AddItem(preload("res://scenes/objects/items/Shovel.tscn").instantiate())
-		AddItem(preload("res://scenes/objects/items/Item.tscn").instantiate())
-		AddItem(preload("res://scenes/objects/items/SuperShovel.tscn").instantiate())
+	AddItem(preload("res://scenes/objects/items/Pisstol.tscn").instantiate())
 
 func Start(starter):
 	if content.size() > 0:
