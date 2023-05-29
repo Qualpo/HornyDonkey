@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dumfutaf6ugpf"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3vosa"]
+load_path = "res://.godot/imported/fence.png-6b37005262d403eda262a25ddbe8efe0.ctex"
+
+[resource]
+transparency = 1
+diffuse_mode = 1
+specular_mode = 1
+albedo_texture = SubResource("CompressedTexture2D_3vosa")
+uv1_scale = Vector3(11.241, 0.704, 1)
+uv1_offset = Vector3(0, 0.301, 0)
+texture_filter = 0

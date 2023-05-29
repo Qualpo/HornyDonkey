@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dvat6v2me6fmy"]
+[gd_scene load_steps=43 format=3 uid="uid://dvat6v2me6fmy"]
 
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_h7o08"]
 [ext_resource type="Material" uid="uid://cikm6vcxn5cjr" path="res://resources/materials/objects/Tree.tres" id="3_fukee"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://o0nigkmlpwjv" path="res://scenes/objects/items/key.tscn" id="14_lm3s1"]
 [ext_resource type="PackedScene" uid="uid://cxh507iow7u1r" path="res://scenes/objects/items/Shovel.tscn" id="15_2pefd"]
 [ext_resource type="PackedScene" uid="uid://dqu8m1d68dqri" path="res://scenes/objects/decoration/Tree.tscn" id="15_bw6bd"]
+[ext_resource type="Material" uid="uid://dumfutaf6ugpf" path="res://resources/materials/objects/Fence.tres" id="16_nwtic"]
 [ext_resource type="Texture2D" uid="uid://c6luvc5owugq" path="res://textures/CabinWindow.png" id="17_8ap7m"]
 [ext_resource type="Material" uid="uid://dv3wq3w3nvvnw" path="res://resources/materials/objects/Gaben.tres" id="20_o2ctj"]
 [ext_resource type="Texture2D" uid="uid://cnf3apj82oqdt" path="res://textures/gaben_wall.png" id="21_muc80"]
@@ -41,6 +42,29 @@ shader_parameter/offset = 10.0
 shader_parameter/offsety = 0.0
 shader_parameter/submount = 0.0
 shader_parameter/Texture = ExtResource("10_e2gcl")
+
+[sub_resource type="QuadMesh" id="QuadMesh_fuo5q"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3vosa"]
+load_path = "res://.godot/imported/fence.png-6b37005262d403eda262a25ddbe8efe0.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wl2io"]
+transparency = 1
+diffuse_mode = 1
+specular_mode = 1
+albedo_texture = SubResource("CompressedTexture2D_3vosa")
+uv1_scale = Vector3(3.673, 0.704, 1)
+uv1_offset = Vector3(0, 0.301, 0)
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_evj6n"]
+transparency = 1
+diffuse_mode = 1
+specular_mode = 1
+albedo_texture = SubResource("CompressedTexture2D_3vosa")
+uv1_scale = Vector3(4.545, 0.704, 1)
+uv1_offset = Vector3(0, 0.301, 0)
+texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j2ton"]
 albedo_texture = ExtResource("12_g4ldy")
@@ -597,6 +621,26 @@ transform = Transform3D(3.07964e-07, 0, -1, 0, 1, 0, 1, 0, 3.07964e-07, 5.7, 3, 
 use_collision = true
 size = Vector3(7.4, 8, 1.4)
 material = ExtResource("3_fukee")
+
+[node name="Fence" type="MeshInstance3D" parent="LevelStuff/Graveyard/TreeWalls"]
+transform = Transform3D(25, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -5.2, -0.2, -13.4)
+material_override = ExtResource("16_nwtic")
+mesh = SubResource("QuadMesh_fuo5q")
+
+[node name="Fence2" type="MeshInstance3D" parent="LevelStuff/Graveyard/TreeWalls"]
+transform = Transform3D(-3.27835e-07, 0, -1.5, 0, 1.5, 0, 7.5, 0, -6.55671e-08, 4.9, -0.2, -9.90001)
+material_override = SubResource("StandardMaterial3D_wl2io")
+mesh = SubResource("QuadMesh_fuo5q")
+
+[node name="Fence3" type="MeshInstance3D" parent="LevelStuff/Graveyard/TreeWalls"]
+transform = Transform3D(-6.41858e-07, 0, 1.5, 0, 1.5, 0, -14.684, 0, -6.55671e-08, -15.3, -0.2, -6)
+material_override = SubResource("StandardMaterial3D_evj6n")
+mesh = SubResource("QuadMesh_fuo5q")
+
+[node name="Fence4" type="MeshInstance3D" parent="LevelStuff/Graveyard/TreeWalls"]
+transform = Transform3D(-14.684, 0, -1.31134e-07, 0, 1.5, 0, 1.28372e-06, 0, -1.5, -4.7, -0.2, 9.39999)
+material_override = SubResource("StandardMaterial3D_evj6n")
+mesh = SubResource("QuadMesh_fuo5q")
 
 [node name="Trees" type="Node3D" parent="LevelStuff/Graveyard"]
 
