@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqu8m1d68dqri"]
+
+[ext_resource type="Texture2D" uid="uid://ca6b8c2prvvo5" path="res://textures/tree.png" id="1_4bncg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mxkf8"]
+transparency = 1
+diffuse_mode = 1
+specular_mode = 1
+albedo_texture = ExtResource("1_4bncg")
+texture_filter = 0
+billboard_mode = 2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jp4hc"]
+height = 6.0
+radius = 0.7
+
+[node name="Tree" type="StaticBody3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+material_override = SubResource("StandardMaterial3D_mxkf8")
+offset = Vector2(4, 0)
+pixel_size = 0.05
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("1_4bncg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_jp4hc")

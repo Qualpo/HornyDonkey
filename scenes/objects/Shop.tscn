@@ -1,0 +1,119 @@
+[gd_scene load_steps=19 format=3 uid="uid://bjdd0qa8xlfui"]
+
+[ext_resource type="Script" path="res://scripts/objects/Shop.gd" id="1_i0wc8"]
+[ext_resource type="Texture2D" uid="uid://ul28fj4m8tja" path="res://textures/objects/Shopkeeper Sprites/shopkeeper_idle.png" id="2_kswfe"]
+[ext_resource type="Texture2D" uid="uid://1oieiu23tl8s" path="res://textures/objects/Shopkeeper Sprites/shopkeeper_idle2.png" id="3_u63a3"]
+[ext_resource type="Texture2D" uid="uid://bdacypee0cjae" path="res://textures/objects/Shopkeeper Sprites/shopkeeper_idle3.png" id="4_3qe2e"]
+[ext_resource type="Texture2D" uid="uid://bjl3vncvb4b35" path="res://textures/objects/Shopkeeper Sprites/shopkeeper_whatyoubuyin.png" id="5_fpbfu"]
+[ext_resource type="Texture2D" uid="uid://ctc3iuyrplg3g" path="res://textures/objects/Shopkeeper Sprites/shopkeeper_buy.png" id="6_6gcr2"]
+[ext_resource type="Texture2D" uid="uid://j02ajtdnei8a" path="res://textures/objects/Shopkeeper Sprites/shopkeeper_exit.png" id="7_fooy7"]
+[ext_resource type="AudioStream" uid="uid://b535bib7bu76k" path="res://audio/sfx/shopkeep/Greet.tres" id="7_x7ci1"]
+[ext_resource type="AudioStream" uid="uid://dt1y0jku83leo" path="res://audio/sfx/shopkeep/shop_goodchoice.ogg" id="8_t5bvy"]
+[ext_resource type="AudioStream" uid="uid://bthedj6mdd3gn" path="res://audio/sfx/shopkeep/shop_cantbuy.ogg" id="9_g1qya"]
+[ext_resource type="AudioStream" uid="uid://ce20dmoconn4m" path="res://audio/sfx/shopkeep/NoBuy.tres" id="10_vaell"]
+[ext_resource type="AudioStream" uid="uid://d1fmvn164ubwe" path="res://audio/sfx/shopkeep/shop_cya.ogg" id="11_sy2k6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f8ilq"]
+size = Vector3(1.5, 2.4, 1.5)
+
+[sub_resource type="Animation" id="Animation_4t411"]
+resource_name = "Idle"
+length = 2.40001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Keeper:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_kswfe"), ExtResource("3_u63a3"), ExtResource("2_kswfe"), ExtResource("4_3qe2e")]
+}
+
+[sub_resource type="Animation" id="Animation_fh37t"]
+resource_name = "Buy"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Keeper:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_6gcr2")]
+}
+
+[sub_resource type="Animation" id="Animation_x1k8k"]
+resource_name = "Exit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Keeper:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_fooy7")]
+}
+
+[sub_resource type="Animation" id="Animation_jlarp"]
+resource_name = "Open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Keeper:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_fpbfu")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qce35"]
+_data = {
+"Buy": SubResource("Animation_fh37t"),
+"Exit": SubResource("Animation_x1k8k"),
+"Idle": SubResource("Animation_4t411"),
+"Open": SubResource("Animation_jlarp")
+}
+
+[node name="Shop" type="Node3D"]
+script = ExtResource("1_i0wc8")
+Sounds = {
+"Buy": ExtResource("8_t5bvy"),
+"CantBuy": ExtResource("9_g1qya"),
+"Greet": ExtResource("7_x7ci1"),
+"Leave": ExtResource("11_sy2k6"),
+"NoBuy": ExtResource("10_vaell")
+}
+
+[node name="Shop" type="StaticBody3D" parent="."]
+collision_layer = 17
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Shop"]
+shape = SubResource("BoxShape3D_f8ilq")
+
+[node name="Keeper" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+pixel_size = 0.02
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("2_kswfe")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qce35")
+}
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]

@@ -1,0 +1,14 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://b535bib7bu76k"]
+
+[ext_resource type="AudioStream" uid="uid://d0naa2gikdxtk" path="res://audio/sfx/shopkeep/shop_welcome.ogg" id="1_62cfi"]
+[ext_resource type="AudioStream" uid="uid://bd73tmbe62e83" path="res://audio/sfx/shopkeep/shop_hello.ogg" id="2_ggepk"]
+[ext_resource type="AudioStream" uid="uid://qjvxrd32vtvp" path="res://audio/sfx/shopkeep/shop_question.ogg" id="3_ggylu"]
+
+[resource]
+streams_count = 3
+stream_0/stream = ExtResource("1_62cfi")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_ggepk")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_ggylu")
+stream_2/weight = 1.0

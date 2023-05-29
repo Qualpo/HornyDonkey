@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dvat6v2me6fmy"]
+[gd_scene load_steps=38 format=3 uid="uid://dvat6v2me6fmy"]
 
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_h7o08"]
 [ext_resource type="Material" uid="uid://cikm6vcxn5cjr" path="res://resources/materials/objects/Tree.tres" id="3_fukee"]
@@ -17,10 +17,12 @@
 [ext_resource type="AudioStream" uid="uid://cv7f20o05iu7q" path="res://audio/sfx/ambiance/352514__inspectorj__ambience-night-wildlife-a.ogg" id="10_qtw18"]
 [ext_resource type="Material" uid="uid://c25ekniqqkl4w" path="res://resources/materials/objects/Wallnotworld.tres" id="11_3fofs"]
 [ext_resource type="Texture2D" uid="uid://c4ktnw6pelefm" path="res://textures/objects/Wood.png" id="12_g4ldy"]
+[ext_resource type="PackedScene" uid="uid://bjdd0qa8xlfui" path="res://scenes/objects/Shop.tscn" id="12_h8l5s"]
 [ext_resource type="Texture2D" uid="uid://c8a0oqa0nl5ji" path="res://textures/skybox/1-skybox-studio-hyper-realistic-mountains-lake-hd-skybox-7-crea-panorama-e-vr.jpg" id="12_nysvc"]
 [ext_resource type="Texture2D" uid="uid://bfelfgruispqr" path="res://textures/dirt_ground.png" id="13_a13t3"]
 [ext_resource type="PackedScene" uid="uid://o0nigkmlpwjv" path="res://scenes/objects/items/key.tscn" id="14_lm3s1"]
 [ext_resource type="PackedScene" uid="uid://cxh507iow7u1r" path="res://scenes/objects/items/Shovel.tscn" id="15_2pefd"]
+[ext_resource type="PackedScene" uid="uid://dqu8m1d68dqri" path="res://scenes/objects/decoration/Tree.tscn" id="15_bw6bd"]
 [ext_resource type="Texture2D" uid="uid://c6luvc5owugq" path="res://textures/CabinWindow.png" id="17_8ap7m"]
 [ext_resource type="Material" uid="uid://dv3wq3w3nvvnw" path="res://resources/materials/objects/Gaben.tres" id="20_o2ctj"]
 [ext_resource type="Texture2D" uid="uid://cnf3apj82oqdt" path="res://textures/gaben_wall.png" id="21_muc80"]
@@ -459,6 +461,9 @@ use_collision = true
 size = Vector3(10, 0.6, 14)
 material = ExtResource("5_u5jb8")
 
+[node name="Shop" parent="LevelStuff/Shop" instance=ExtResource("12_h8l5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, 0.2, 2.3)
+
 [node name="ShopHall" type="Node3D" parent="LevelStuff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, -42)
 
@@ -594,6 +599,21 @@ size = Vector3(7.4, 8, 1.4)
 material = ExtResource("3_fukee")
 
 [node name="Trees" type="Node3D" parent="LevelStuff/Graveyard"]
+
+[node name="Tree" parent="LevelStuff/Graveyard/Trees" instance=ExtResource("15_bw6bd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2, 0.299999)
+
+[node name="Tree2" parent="LevelStuff/Graveyard/Trees" instance=ExtResource("15_bw6bd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4, 1.8, 8.1)
+
+[node name="Tree3" parent="LevelStuff/Graveyard/Trees" instance=ExtResource("15_bw6bd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3, 1.8, -3.1)
+
+[node name="Tree4" parent="LevelStuff/Graveyard/Trees" instance=ExtResource("15_bw6bd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 1.8, 5.6)
+
+[node name="Tree5" parent="LevelStuff/Graveyard/Trees" instance=ExtResource("15_bw6bd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 1.8, -8.8)
 
 [node name="Start Ambiance2" type="AudioStreamPlayer3D" parent="LevelStuff/Graveyard"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4, 1, -7.5)
