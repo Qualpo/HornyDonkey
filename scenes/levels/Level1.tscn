@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dvat6v2me6fmy"]
+[gd_scene load_steps=35 format=3 uid="uid://dvat6v2me6fmy"]
 
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_h7o08"]
 [ext_resource type="Material" uid="uid://cikm6vcxn5cjr" path="res://resources/materials/objects/Tree.tres" id="3_fukee"]
@@ -21,6 +21,8 @@
 [ext_resource type="PackedScene" uid="uid://o0nigkmlpwjv" path="res://scenes/objects/items/key.tscn" id="14_lm3s1"]
 [ext_resource type="PackedScene" uid="uid://cxh507iow7u1r" path="res://scenes/objects/items/Shovel.tscn" id="15_2pefd"]
 [ext_resource type="Texture2D" uid="uid://c6luvc5owugq" path="res://textures/CabinWindow.png" id="17_8ap7m"]
+[ext_resource type="Material" uid="uid://dv3wq3w3nvvnw" path="res://resources/materials/objects/Gaben.tres" id="20_o2ctj"]
+[ext_resource type="Texture2D" uid="uid://cnf3apj82oqdt" path="res://textures/gaben_wall.png" id="21_muc80"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e8oje"]
 albedo_texture = ExtResource("8_3g32w")
@@ -44,6 +46,48 @@ texture_filter = 0
 albedo_texture = ExtResource("13_a13t3")
 uv1_triplanar = true
 texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3bxvy"]
+albedo_texture = ExtResource("21_muc80")
+uv1_offset = Vector3(0.975, 0.481, 0)
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="Animation" id="Animation_6vld0"]
+resource_name = "s"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatableBody3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGBox3D9:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_214hj"]
+_data = {
+"s": SubResource("Animation_6vld0")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5qkr8"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ge7wd"]
 panorama = ExtResource("12_nysvc")
@@ -74,13 +118,6 @@ adjustment_enabled = true
 script = ExtResource("1_h7o08")
 
 [node name="LevelStuff" type="Node3D" parent="."]
-
-[node name="Door" parent="LevelStuff" instance=ExtResource("10_heps8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1, -4.9)
-
-[node name="Door2" parent="LevelStuff" instance=ExtResource("10_heps8")]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 1, -1, -4.9)
-Flipped = true
 
 [node name="Intro" type="CSGCombiner3D" parent="LevelStuff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, 0)
@@ -130,6 +167,65 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 5.9, -4.774)
 polygon = PackedVector2Array(6, 0, 1.1, 5.1, -4, 0)
 depth = 0.25
 material = ExtResource("5_u5jb8")
+
+[node name="Decal" type="Decal" parent="LevelStuff/Intro"]
+transform = Transform3D(-1, -3.82137e-15, 8.74228e-08, -8.74228e-08, 4.37114e-08, -1, 0, -1, -4.37114e-08, -3.3, 0.9, -5.1)
+size = Vector3(1.113, 0.79, 1.829)
+texture_albedo = ExtResource("6_nu1po")
+upper_fade = 0.0375
+lower_fade = 0.000800412
+cull_mask = 1048573
+
+[node name="Decal2" type="Decal" parent="LevelStuff/Intro"]
+transform = Transform3D(-1, -3.82137e-15, 8.74228e-08, -8.74228e-08, 4.37114e-08, -1, 0, -1, -4.37114e-08, 2.5, 0.9, -5.1)
+size = Vector3(1.113, 0.79, 1.829)
+texture_albedo = ExtResource("6_nu1po")
+upper_fade = 0.0375
+lower_fade = 0.000800412
+cull_mask = 1048573
+
+[node name="Decal3" type="Decal" parent="LevelStuff/Intro"]
+transform = Transform3D(-1, -3.82137e-15, 8.74228e-08, -8.74228e-08, 4.37114e-08, -1, 0, -1, -4.37114e-08, -0.4, 7.9, -5.1)
+size = Vector3(1.113, 0.79, 1.829)
+texture_albedo = ExtResource("6_nu1po")
+upper_fade = 0.0375
+lower_fade = 0.000800412
+cull_mask = 1048573
+
+[node name="OmniLight3D" type="OmniLight3D" parent="LevelStuff/Intro"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3, 0.8, -4.5)
+light_energy = 1.323
+shadow_enabled = true
+omni_attenuation = 0.840897
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="LevelStuff/Intro"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.8, -4.5)
+light_energy = 1.323
+shadow_enabled = true
+omni_attenuation = 0.840897
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="LevelStuff/Intro"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 7.8, -4.5)
+light_energy = 1.323
+shadow_enabled = true
+omni_attenuation = 0.840897
+
+[node name="Start Ambiance" type="AudioStreamPlayer3D" parent="LevelStuff/Intro"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1, 4)
+stream = ExtResource("10_qtw18")
+attenuation_model = 2
+unit_size = 9.0
+autoplay = true
+panning_strength = 0.0
+bus = &"SFX"
+doppler_tracking = 2
+
+[node name="Door" parent="LevelStuff/Intro" instance=ExtResource("10_heps8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, -1, -4.9)
+
+[node name="Door2" parent="LevelStuff/Intro" instance=ExtResource("10_heps8")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.6, -1, -4.9)
+Flipped = true
 
 [node name="MainHall" type="CSGCombiner3D" parent="LevelStuff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -1.5, -13.8)
@@ -269,6 +365,12 @@ light_volumetric_fog_energy = 16.0
 light_size = 0.346
 light_specular = 7.419
 spot_angle = 18.0
+
+[node name="Decor" type="Node3D" parent="LevelStuff/MainHall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.5, 13.8)
+
+[node name="Table" parent="LevelStuff/MainHall/Decor" instance=ExtResource("9_6bdl5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, -1, -6.2)
 
 [node name="Shop" type="CSGCombiner3D" parent="LevelStuff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -30)
@@ -429,6 +531,16 @@ material = ExtResource("3_fukee")
 transform = Transform3D(3.07964e-07, 0, -1, 0, 1, 0, 1, 0, 3.07964e-07, 5.7, 3, -9.79999)
 size = Vector3(7.4, 8, 1.4)
 material = ExtResource("3_fukee")
+
+[node name="Start Ambiance2" type="AudioStreamPlayer3D" parent="LevelStuff/Graveyard"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4, 1, -7.5)
+stream = ExtResource("10_qtw18")
+attenuation_model = 2
+unit_size = 16.0
+autoplay = true
+panning_strength = 0.0
+bus = &"SFX"
+doppler_tracking = 2
 
 [node name="Shack" type="CSGCombiner3D" parent="LevelStuff"]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -45.5335, 0.9, -39.608)
@@ -611,72 +723,73 @@ shadow_enabled = true
 spot_range = 15.245
 spot_angle = 78.4
 
-[node name="Decal" type="Decal" parent="LevelStuff"]
-transform = Transform3D(-1, -3.82137e-15, 8.74228e-08, -8.74228e-08, 4.37114e-08, -1, 0, -1, -4.37114e-08, -2.9, 0.9, -5.1)
-size = Vector3(1.113, 0.79, 1.829)
-texture_albedo = ExtResource("6_nu1po")
-upper_fade = 0.0375
-lower_fade = 0.000800412
-cull_mask = 1048573
+[node name="Gaben" type="CSGCombiner3D" parent="LevelStuff"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -10.4, 5.2, -22.2)
+use_collision = true
 
-[node name="Decal2" type="Decal" parent="LevelStuff"]
-transform = Transform3D(-1, -3.82137e-15, 8.74228e-08, -8.74228e-08, 4.37114e-08, -1, 0, -1, -4.37114e-08, 2.9, 0.9, -5.1)
-size = Vector3(1.113, 0.79, 1.829)
-texture_albedo = ExtResource("6_nu1po")
-upper_fade = 0.0375
-lower_fade = 0.000800412
-cull_mask = 1048573
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelStuff/Gaben"]
+size = Vector3(7.8, 0.6, 6.8)
+material = ExtResource("20_o2ctj")
 
-[node name="Decal3" type="Decal" parent="LevelStuff"]
-transform = Transform3D(-1, -3.82137e-15, 8.74228e-08, -8.74228e-08, 4.37114e-08, -1, 0, -1, -4.37114e-08, 0, 7.9, -5.1)
-size = Vector3(1.113, 0.79, 1.829)
-texture_albedo = ExtResource("6_nu1po")
-upper_fade = 0.0375
-lower_fade = 0.000800412
-cull_mask = 1048573
+[node name="CSGBox3D5" type="CSGBox3D" parent="LevelStuff/Gaben"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9, 0)
+size = Vector3(7.8, 0.6, 6.8)
+material = ExtResource("20_o2ctj")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="LevelStuff"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, 0.8, -4.5)
-light_energy = 1.323
-shadow_enabled = true
-omni_attenuation = 0.840897
+[node name="CSGBox3D2" type="CSGBox3D" parent="LevelStuff/Gaben"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9, -3.1)
+size = Vector3(7.8, 5.4, 1)
+material = ExtResource("20_o2ctj")
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="LevelStuff"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9, 0.8, -4.5)
-light_energy = 1.323
-shadow_enabled = true
-omni_attenuation = 0.840897
+[node name="CSGBox3D6" type="CSGBox3D" parent="LevelStuff/Gaben"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 2.9, 2.9)
+size = Vector3(3.2, 5.4, 1)
+material = ExtResource("20_o2ctj")
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="LevelStuff"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 7.8, -4.5)
-light_energy = 1.323
-shadow_enabled = true
-omni_attenuation = 0.840897
+[node name="CSGBox3D7" type="CSGBox3D" parent="LevelStuff/Gaben"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 2.9, 2.9)
+size = Vector3(3.2, 5.4, 1)
+material = ExtResource("20_o2ctj")
 
-[node name="Decor" type="Node3D" parent="LevelStuff"]
+[node name="CSGBox3D8" type="CSGBox3D" parent="LevelStuff/Gaben"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.200001, 4, 2.90001)
+size = Vector3(3.2, 3.4, 1)
+material = ExtResource("20_o2ctj")
 
-[node name="Table" parent="LevelStuff/Decor" instance=ExtResource("9_6bdl5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, -1, -6.2)
+[node name="CSGBox3D3" type="CSGBox3D" parent="LevelStuff/Gaben"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3, 2.9, 0.400023)
+size = Vector3(0.8, 5.4, 6)
+material = ExtResource("20_o2ctj")
 
-[node name="Start Ambiance" type="AudioStreamPlayer3D" parent="LevelStuff"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
-stream = ExtResource("10_qtw18")
-attenuation_model = 2
-unit_size = 9.0
-autoplay = true
-panning_strength = 0.0
-bus = &"SFX"
-doppler_tracking = 2
+[node name="CSGBox3D4" type="CSGBox3D" parent="LevelStuff/Gaben"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, 2.9, 0.400023)
+size = Vector3(0.8, 5.4, 6)
+material = ExtResource("20_o2ctj")
 
-[node name="Start Ambiance2" type="AudioStreamPlayer3D" parent="LevelStuff"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.2, 1, -55)
-stream = ExtResource("10_qtw18")
-attenuation_model = 2
-unit_size = 16.0
-autoplay = true
-panning_strength = 0.0
-bus = &"SFX"
-doppler_tracking = 2
+[node name="Door" parent="LevelStuff/Gaben" instance=ExtResource("10_heps8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0.3, 3.2)
+
+[node name="Door2" parent="LevelStuff/Gaben" instance=ExtResource("10_heps8")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.2, 0.3, 3.2)
+Flipped = true
+
+[node name="Node3D" type="Node3D" parent="LevelStuff/Gaben"]
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="LevelStuff/Gaben/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
+material = SubResource("StandardMaterial3D_3bxvy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LevelStuff/Gaben/Node3D"]
+autoplay = "s"
+libraries = {
+"": SubResource("AnimationLibrary_214hj")
+}
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="LevelStuff/Gaben/Node3D"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 1.9, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelStuff/Gaben/Node3D/AnimatableBody3D"]
+shape = SubResource("BoxShape3D_5qkr8")
 
 [node name="Player" parent="." instance=ExtResource("5_xjdmk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.2, 0.5)
