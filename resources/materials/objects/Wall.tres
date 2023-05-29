@@ -1,11 +1,11 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dx4gxnniaok34"]
 
-[ext_resource type="Texture2D" uid="uid://c56kyqkoqmbjd" path="res://textures/wall.png" id="1_6a70m"]
+[ext_resource type="Texture2D" uid="uid://cel0aqtl1xoer" path="res://textures/wall_alt.png" id="1_b7fdw"]
 
 [resource]
 diffuse_mode = 1
 specular_mode = 1
-albedo_texture = ExtResource("1_6a70m")
+albedo_texture = ExtResource("1_b7fdw")
 uv1_scale = Vector3(0.681, 0.681, 0.681)
 uv1_triplanar = true
 uv1_world_triplanar = true

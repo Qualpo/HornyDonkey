@@ -7,3 +7,4 @@ diffuse_mode = 1
 specular_mode = 1
 albedo_texture = ExtResource("1_apth2")
 texture_filter = 0
+distance_fade_min_distance = 12.0

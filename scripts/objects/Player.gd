@@ -205,12 +205,17 @@ func PickUpItem(pick):
 	pick.PickUp(self)
 	Inventory.AddItem(pick)
 	pick.get_parent().remove_child(pick)
+	if Inventory.content.size() == 1:
+		Inventory.content[0].Select()
+		NewItem(Inventory.content[0])
+
 func UpdateInv():
 	UpdateInvScroll()
 func UpdateInvScroll():
 	if Inventory.content.size() > 0:
 		$CanvasLayer/ScrollThing/AnimationPlayer.stop()
 		$CanvasLayer/ScrollThing/AnimationPlayer.play("Fade")
+		$CanvasLayer/ScrollThing/Selected.show()
 		$CanvasLayer/ScrollThing/Selected.texture = Inventory.content[Inventory.curselect].icon
 		if Inventory.curselect == Inventory.content.size() -1:
 			$CanvasLayer/ScrollThing/Foreward.hide()
@@ -222,13 +227,18 @@ func UpdateInvScroll():
 		else:
 			$CanvasLayer/ScrollThing/Backward.texture = Inventory.content[Inventory.curselect-1].icon
 			$CanvasLayer/ScrollThing/Backward.show()
+	else:
+		$CanvasLayer/ScrollThing/Selected.hide()
+		$CanvasLayer/ScrollThing/Foreward.hide()
+		$CanvasLayer/ScrollThing/Backward.hide()
 func ControlShake(controller,small,large,time):
 	Input.start_joy_vibration(controller,small,large,time)
 func NewItem(item:Item):
 	$GunAnims.stop()
 	$GunAnims.play("PullOut")
-	$CameraPivot/Camera3D/Gun.remove_child($CameraPivot/Camera3D/Gun.get_child(0))
-	$CameraPivot/Camera3D/Gun.add_child(item)
+	if $CameraPivot/Camera3D/Gun.get_child_count()> 0:
+		$CameraPivot/Camera3D/Gun.remove_child($CameraPivot/Camera3D/Gun.get_child(0))
+	$CameraPivot/Camera3D/Gun.call_deferred("add_child",item)
 	UpdateInvScroll()
 	if Aiming:
 		UnAim()

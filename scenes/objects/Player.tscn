@@ -1,20 +1,19 @@
-[gd_scene load_steps=36 format=3 uid="uid://8t15wlahpiii"]
+[gd_scene load_steps=35 format=3 uid="uid://8t15wlahpiii"]
 
 [ext_resource type="Script" path="res://scripts/objects/Player.gd" id="1_yweok"]
-[ext_resource type="Texture2D" uid="uid://tx7d83buhd1y" path="res://textures/objects/easter_egg.png" id="2_563ag"]
 [ext_resource type="AudioStream" uid="uid://dsju0mnm14anp" path="res://audio/sfx/DoorClose.ogg" id="3_mkcdy"]
 [ext_resource type="AudioStream" uid="uid://bua8ttou8eytl" path="res://audio/sfx/gun/Shoot.ogg" id="3_o62s8"]
 [ext_resource type="Shader" path="res://resources/materials/Invert.gdshader" id="4_ia74v"]
 [ext_resource type="AudioStream" uid="uid://c1lq8t1iulfwy" path="res://audio/sfx/flashlight.ogg" id="4_tnbl5"]
-[ext_resource type="Texture2D" uid="uid://b308hqk2hm7re" path="res://textures/UI/Cursor.png" id="4_v2ikc"]
-[ext_resource type="Texture2D" uid="uid://dmiqgdpmqofm5" path="res://textures/UI/health_icon.png" id="7_f0lqq"]
-[ext_resource type="Texture2D" uid="uid://ccn5py45ivxsv" path="res://textures/UI/ammo_icon.png" id="8_qqtri"]
+[ext_resource type="Texture2D" uid="uid://b308hqk2hm7re" path="res://textures/ui/Cursor.png" id="4_v2ikc"]
+[ext_resource type="Texture2D" uid="uid://dmiqgdpmqofm5" path="res://textures/ui/health_icon.png" id="7_f0lqq"]
+[ext_resource type="Texture2D" uid="uid://ccn5py45ivxsv" path="res://textures/ui/ammo_icon.png" id="8_qqtri"]
 [ext_resource type="FontFile" uid="uid://c8uq0vrdeg2pf" path="res://resources/fonts/shit.ttf" id="8_yw4va"]
 [ext_resource type="Texture2D" uid="uid://dassaokj5vc1y" path="res://textures/donkey cult insignia glowing sprite.png" id="9_vmia2"]
 [ext_resource type="Texture2D" uid="uid://c2xooisgd675y" path="res://textures/items/Pistol.png" id="10_o1afr"]
 [ext_resource type="Script" path="res://scripts/objects/player/InventoryMenu.gd" id="13_rntua"]
-[ext_resource type="Texture2D" uid="uid://b4ant3bop5qtd" path="res://textures/UI/RadialMenu.png" id="14_20kc7"]
-[ext_resource type="Texture2D" uid="uid://dp0tfook41nfe" path="res://textures/UI/RadialSegment.png" id="15_nkpbv"]
+[ext_resource type="Texture2D" uid="uid://b4ant3bop5qtd" path="res://textures/ui/RadialMenu.png" id="14_20kc7"]
+[ext_resource type="Texture2D" uid="uid://dp0tfook41nfe" path="res://textures/ui/RadialSegment.png" id="15_nkpbv"]
 [ext_resource type="Texture2D" uid="uid://cnf3apj82oqdt" path="res://textures/gaben_wall.png" id="16_nfr0g"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w1t2g"]
@@ -288,10 +287,6 @@ current = true
 
 [node name="Gun" type="Node3D" parent="CameraPivot/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625, -0.741, -0.529)
-
-[node name="Sprite3D" type="Sprite3D" parent="CameraPivot/Camera3D/Gun"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.647, 0.784, -0.081)
-texture = ExtResource("2_563ag")
 
 [node name="Bullets" type="Node3D" parent="CameraPivot/Camera3D"]
 

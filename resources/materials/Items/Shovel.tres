@@ -8,8 +8,11 @@
 diffuse_mode = 1
 specular_mode = 1
 albedo_texture = ExtResource("1_3b3hc")
-metallic = 0.93
+metallic = 0.97
 metallic_texture = ExtResource("2_iq5jf")
+roughness = 0.89
 roughness_texture = ExtResource("3_72fxq")
 roughness_texture_channel = 4
 texture_filter = 0
+distance_fade_min_distance = 20.0
+distance_fade_max_distance = 15.0

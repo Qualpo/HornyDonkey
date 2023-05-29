@@ -5,6 +5,7 @@
 [resource]
 albedo_texture = ExtResource("1_t8h5w")
 uv1_triplanar = true
+uv1_world_triplanar = true
 texture_filter = 0
 distance_fade_mode = 2
 distance_fade_min_distance = 13.17

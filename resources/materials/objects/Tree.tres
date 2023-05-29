@@ -6,5 +6,8 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_qhjln")
-shader_parameter/xScale = 1.518
+shader_parameter/xScale = 1.451
+shader_parameter/offset = 9.476
+shader_parameter/offsety = 0.006
+shader_parameter/submount = 0.007
 shader_parameter/Texture = ExtResource("2_i4iou")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dvat6v2me6fmy"]
+[gd_scene load_steps=36 format=3 uid="uid://dvat6v2me6fmy"]
 
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_h7o08"]
 [ext_resource type="Material" uid="uid://cikm6vcxn5cjr" path="res://resources/materials/objects/Tree.tres" id="3_fukee"]
@@ -9,6 +9,7 @@
 [ext_resource type="Material" uid="uid://d36x51l4wfll2" path="res://resources/materials/objects/Floor.tres" id="6_sn3jd"]
 [ext_resource type="Texture2D" uid="uid://bxu82a02e30r4" path="res://textures/donkey_propaganda.png" id="7_sij87"]
 [ext_resource type="Texture2D" uid="uid://bhwetbs626i2l" path="res://textures/grass_ground.png" id="8_3g32w"]
+[ext_resource type="PackedScene" uid="uid://un562or35h5y" path="res://scenes/objects/items/Pisstol.tscn" id="8_v3air"]
 [ext_resource type="PackedScene" uid="uid://c7prskgdwrrd4" path="res://scenes/objects/decoration/Table.tscn" id="9_6bdl5"]
 [ext_resource type="Shader" path="res://resources/materials/objects/Tree.gdshader" id="9_vxktn"]
 [ext_resource type="Texture2D" uid="uid://bqwldicdqx17e" path="res://textures/tree_wall.png" id="10_e2gcl"]
@@ -34,6 +35,9 @@ texture_filter = 0
 render_priority = 0
 shader = ExtResource("9_vxktn")
 shader_parameter/xScale = 0.517
+shader_parameter/offset = 10.0
+shader_parameter/offsety = 0.0
+shader_parameter/submount = 0.0
 shader_parameter/Texture = ExtResource("10_e2gcl")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j2ton"]
@@ -119,51 +123,58 @@ script = ExtResource("1_h7o08")
 
 [node name="LevelStuff" type="Node3D" parent="."]
 
-[node name="Intro" type="CSGCombiner3D" parent="LevelStuff"]
+[node name="Intro" type="Node3D" parent="LevelStuff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, 0)
-use_collision = true
 
-[node name="Trees" type="CSGCombiner3D" parent="LevelStuff/Intro"]
+[node name="Trees" type="Node3D" parent="LevelStuff/Intro"]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="LevelStuff/Intro/Trees"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.9, 3, 0.2)
+use_collision = true
 size = Vector3(10, 8, 1)
 material = ExtResource("3_fukee")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="LevelStuff/Intro/Trees"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.4, 3, 5.2)
+use_collision = true
 size = Vector3(10, 8, 1)
 material = ExtResource("3_fukee")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="LevelStuff/Intro/Trees"]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 5.1, 3, 0.2)
+use_collision = true
 size = Vector3(10, 8, 1)
 material = ExtResource("3_fukee")
 
 [node name="Grass" type="CSGBox3D" parent="LevelStuff/Intro"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.6, -1.5, 0.2)
+use_collision = true
 size = Vector3(10, 1, 12)
 material = ExtResource("3_lt7jr")
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="LevelStuff/Intro"]
+[node name="CSGCombiner3D" type="Node3D" parent="LevelStuff/Intro"]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="LevelStuff/Intro/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, 2.5, -4.9)
+use_collision = true
 size = Vector3(4, 7, 0.25)
 material = ExtResource("5_u5jb8")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="LevelStuff/Intro/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 2.5, -4.9)
+use_collision = true
 size = Vector3(4, 7, 0.25)
 material = ExtResource("5_u5jb8")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="LevelStuff/Intro/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 3.5, -4.9)
+use_collision = true
 size = Vector3(4, 5, 0.25)
 material = ExtResource("5_u5jb8")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="LevelStuff/Intro/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 5.9, -4.774)
+use_collision = true
 polygon = PackedVector2Array(6, 0, 1.1, 5.1, -4, 0)
 depth = 0.25
 material = ExtResource("5_u5jb8")
@@ -227,32 +238,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, -1, -4.9)
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.6, -1, -4.9)
 Flipped = true
 
-[node name="MainHall" type="CSGCombiner3D" parent="LevelStuff"]
+[node name="Gun" parent="LevelStuff/Intro" instance=ExtResource("8_v3air")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, -0.6, -3.5)
+
+[node name="MainHall" type="Node3D" parent="LevelStuff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -1.5, -13.8)
-use_collision = true
 
 [node name="Floor" type="CSGBox3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, -2)
+use_collision = true
 size = Vector3(10, 1, 22)
 material = ExtResource("6_sn3jd")
 
 [node name="Wall" type="CSGBox3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8, 3.4, -2)
+use_collision = true
 size = Vector3(0.4, 8.2, 22)
 material = ExtResource("5_u5jb8")
 
 [node name="wall" type="CSGBox3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1, 3.4, -2)
+use_collision = true
 size = Vector3(1.2, 8.2, 22)
 material = ExtResource("5_u5jb8")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 2.0336, 9.64415, -4.2)
+use_collision = true
 size = Vector3(0.4, 7.4, 26)
 material = ExtResource("5_u5jb8")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, -2.8664, 9.64415, -4.2)
+use_collision = true
 size = Vector3(0.4, 7.4, 26)
 material = ExtResource("5_u5jb8")
 
@@ -276,46 +294,55 @@ spot_angle = 44.25
 
 [node name="Beam5" type="CSGBox3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -0.4, 7, 7)
+use_collision = true
 size = Vector3(12, 0.5, 0.5)
 material = ExtResource("6_sn3jd")
 
 [node name="Beam9" type="CSGBox3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -0.4, 7, 4)
+use_collision = true
 size = Vector3(12, 0.5, 0.5)
 material = ExtResource("6_sn3jd")
 
 [node name="Beam10" type="CSGBox3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -0.4, 7, 1)
+use_collision = true
 size = Vector3(12, 0.5, 0.5)
 material = ExtResource("6_sn3jd")
 
 [node name="Beam11" type="CSGBox3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -0.4, 7, -2)
+use_collision = true
 size = Vector3(12, 0.5, 0.5)
 material = ExtResource("6_sn3jd")
 
 [node name="Beam12" type="CSGBox3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -0.4, 7, -5)
+use_collision = true
 size = Vector3(12, 0.5, 0.5)
 material = ExtResource("6_sn3jd")
 
 [node name="Beam13" type="CSGBox3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -0.4, 7, -8)
+use_collision = true
 size = Vector3(12, 0.5, 0.5)
 material = ExtResource("6_sn3jd")
 
 [node name="Beam14" type="CSGBox3D" parent="LevelStuff/MainHall"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -0.4, 7, -11)
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0.1, 7, -11)
+use_collision = true
 size = Vector3(12, 0.5, 0.5)
 material = ExtResource("6_sn3jd")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, -16)
+use_collision = true
 size = Vector3(32, 1, 6)
 material = ExtResource("6_sn3jd")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 3.4, -19.5)
+use_collision = true
 size = Vector3(32, 6, 1)
 material = ExtResource("5_u5jb8")
 
@@ -326,16 +353,19 @@ texture_albedo = ExtResource("7_sij87")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 3.5, -12.5)
+use_collision = true
 size = Vector3(10.8, 6, 1)
 material = ExtResource("5_u5jb8")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3, 3.5, -12.5)
+use_collision = true
 size = Vector3(10.6, 6, 1)
 material = ExtResource("5_u5jb8")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="LevelStuff/MainHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 6.7, -15.8)
+use_collision = true
 size = Vector3(32, 0.6, 8)
 material = ExtResource("5_u5jb8")
 
@@ -372,96 +402,111 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.5, 13.8)
 [node name="Table" parent="LevelStuff/MainHall/Decor" instance=ExtResource("9_6bdl5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, -1, -6.2)
 
-[node name="Shop" type="CSGCombiner3D" parent="LevelStuff"]
+[node name="Shop" type="Node3D" parent="LevelStuff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -30)
-use_collision = true
 
 [node name="Floor" type="CSGBox3D" parent="LevelStuff/Shop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1.5, -1.1)
+use_collision = true
 size = Vector3(10, 1, 14.2)
 material = ExtResource("6_sn3jd")
 
 [node name="Wall1" type="CSGBox3D" parent="LevelStuff/Shop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.999998, 2, 6.5)
+use_collision = true
 size = Vector3(10, 6, 1)
 material = ExtResource("5_u5jb8")
 
 [node name="Wall2" type="CSGBox3D" parent="LevelStuff/Shop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 2, -1)
+use_collision = true
 size = Vector3(1, 7, 14.8)
 material = ExtResource("5_u5jb8")
 
 [node name="Wall3" type="CSGBox3D" parent="LevelStuff/Shop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2, 5.1)
+use_collision = true
 size = Vector3(1, 6, 1.8)
 material = ExtResource("5_u5jb8")
 
 [node name="Wall4" type="CSGBox3D" parent="LevelStuff/Shop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2, -5.9)
+use_collision = true
 size = Vector3(1, 6, 4.2)
 material = ExtResource("5_u5jb8")
 
 [node name="Wall5" type="CSGBox3D" parent="LevelStuff/Shop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2, -8.2)
+use_collision = true
 size = Vector3(3, 6, 0.4)
 material = ExtResource("5_u5jb8")
 
 [node name="Wall6" type="CSGBox3D" parent="LevelStuff/Shop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2, -8.2)
+use_collision = true
 size = Vector3(3, 7, 0.4)
 material = ExtResource("5_u5jb8")
 
 [node name="Wall7" type="CSGBox3D" parent="LevelStuff/Shop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.999998, 4, -8.2)
+use_collision = true
 size = Vector3(4.2, 2, 0.4)
 material = ExtResource("5_u5jb8")
 
 [node name="Cealing" type="CSGBox3D" parent="LevelStuff/Shop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.999998, 5.2, -1)
+use_collision = true
 size = Vector3(10, 0.6, 14)
 material = ExtResource("5_u5jb8")
 
-[node name="ShopHall" type="CSGCombiner3D" parent="LevelStuff"]
+[node name="ShopHall" type="Node3D" parent="LevelStuff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, -42)
-use_collision = true
 
 [node name="Floor" type="CSGBox3D" parent="LevelStuff/ShopHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, -3.7)
+use_collision = true
 size = Vector3(7.6, 1, 15)
 material = ExtResource("6_sn3jd")
 
 [node name="Wall" type="CSGBox3D" parent="LevelStuff/ShopHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6, 2, -0.399998)
+use_collision = true
 size = Vector3(0.4, 6, 8)
 material = ExtResource("5_u5jb8")
 
 [node name="Wall2" type="CSGBox3D" parent="LevelStuff/ShopHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 2, -0.399998)
+use_collision = true
 size = Vector3(0.4, 6, 8)
 material = ExtResource("5_u5jb8")
 
 [node name="Wall6" type="CSGBox3D" parent="LevelStuff/ShopHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 2, -9.6)
+use_collision = true
 size = Vector3(0.4, 6, 3.2)
 material = ExtResource("5_u5jb8")
 
 [node name="Wall7" type="CSGBox3D" parent="LevelStuff/ShopHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 3.9, -6.2)
+use_collision = true
 size = Vector3(0.4, 2, 3.8)
 material = ExtResource("5_u5jb8")
 
 [node name="Wall3" type="CSGBox3D" parent="LevelStuff/ShopHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6, 2, -8.5)
+use_collision = true
 size = Vector3(0.4, 6, 6.2)
 material = ExtResource("5_u5jb8")
 
 [node name="Wall5" type="CSGBox3D" parent="LevelStuff/ShopHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.199999, 2, -11.4)
+use_collision = true
 size = Vector3(7.2, 6, 0.4)
 material = ExtResource("5_u5jb8")
 
 [node name="Wall4" type="CSGBox3D" parent="LevelStuff/ShopHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6, 3, -4.9)
+use_collision = true
 size = Vector3(0.4, 4, 1.2)
 material = ExtResource("5_u5jb8")
 
@@ -470,67 +515,85 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.6, 
 
 [node name="Cealing" type="CSGBox3D" parent="LevelStuff/ShopHall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, 5.2, -4)
+use_collision = true
 size = Vector3(7.6, 0.6, 15.2)
 material = ExtResource("5_u5jb8")
 
-[node name="Graveyard" type="CSGCombiner3D" parent="LevelStuff"]
+[node name="Graveyard" type="Node3D" parent="LevelStuff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.8, 0, -47.5)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="LevelStuff/Graveyard"]
 use_collision = true
 
-[node name="Grass" type="CSGBox3D" parent="LevelStuff/Graveyard"]
+[node name="Grass" type="CSGBox3D" parent="LevelStuff/Graveyard/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2, -1.5, -2)
+use_collision = true
 size = Vector3(20.4, 1, 23)
 material = SubResource("StandardMaterial3D_e8oje")
 
-[node name="CSGBox3D10" type="CSGBox3D" parent="LevelStuff/Graveyard"]
+[node name="CSGBox3D10" type="CSGBox3D" parent="LevelStuff/Graveyard/CSGCombiner3D"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -14.105, -1.5, 8.53589)
 operation = 2
+use_collision = true
 size = Vector3(3.2, 1, 5.8)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="LevelStuff/Graveyard"]
+[node name="TreeWalls" type="Node3D" parent="LevelStuff/Graveyard"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelStuff/Graveyard/TreeWalls"]
 transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -4.6, 3, 10.2)
+use_collision = true
 size = Vector3(14.8, 8, 1.4)
 material = ExtResource("3_fukee")
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="LevelStuff/Graveyard"]
+[node name="CSGBox3D8" type="CSGBox3D" parent="LevelStuff/Graveyard/TreeWalls"]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -20.8607, 3, 12.1092)
+use_collision = true
 size = Vector3(11.4, 8, 1.4)
 material = ExtResource("3_fukee")
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="LevelStuff/Graveyard"]
+[node name="CSGBox3D6" type="CSGBox3D" parent="LevelStuff/Graveyard/TreeWalls"]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -12.4698, 3.16, 10.8142)
+use_collision = true
 size = Vector3(5.6, 7.8, 1.4)
 material = ExtResource("3_fukee")
 
-[node name="CSGBox3D9" type="CSGBox3D" parent="LevelStuff/Graveyard"]
+[node name="CSGBox3D9" type="CSGBox3D" parent="LevelStuff/Graveyard/TreeWalls"]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -15.5103, 4.36, 13.8548)
+use_collision = true
 size = Vector3(3.2, 5.4, 1.4)
 material = SubResource("ShaderMaterial_w1lgx")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="LevelStuff/Graveyard"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="LevelStuff/Graveyard/TreeWalls"]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -9.39076, 3, 10.8875)
+use_collision = true
 size = Vector3(5.8, 8, 1.4)
 material = ExtResource("3_fukee")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="LevelStuff/Graveyard"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="LevelStuff/Graveyard/TreeWalls"]
 transform = Transform3D(1, 0, 1.7683e-07, 0, 1, 0, -1.7683e-07, 0, 1, -5.2, 3, -14.2)
+use_collision = true
 size = Vector3(20.4, 8, 1.4)
 material = ExtResource("3_fukee")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="LevelStuff/Graveyard"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="LevelStuff/Graveyard/TreeWalls"]
 transform = Transform3D(-2.20541e-07, 0, 1, 0, 1, 0, -1, 0, -2.20541e-07, -16.1, 3, -5.59999)
+use_collision = true
 size = Vector3(15.8, 8, 1.4)
 material = ExtResource("3_fukee")
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="LevelStuff/Graveyard"]
+[node name="CSGBox3D7" type="CSGBox3D" parent="LevelStuff/Graveyard/TreeWalls"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -19.4658, 3, 5.36971)
+use_collision = true
 size = Vector3(10.2, 8, 1.4)
 material = ExtResource("3_fukee")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="LevelStuff/Graveyard"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="LevelStuff/Graveyard/TreeWalls"]
 transform = Transform3D(3.07964e-07, 0, -1, 0, 1, 0, 1, 0, 3.07964e-07, 5.7, 3, -9.79999)
+use_collision = true
 size = Vector3(7.4, 8, 1.4)
 material = ExtResource("3_fukee")
+
+[node name="Trees" type="Node3D" parent="LevelStuff/Graveyard"]
 
 [node name="Start Ambiance2" type="AudioStreamPlayer3D" parent="LevelStuff/Graveyard"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4, 1, -7.5)
@@ -542,151 +605,175 @@ panning_strength = 0.0
 bus = &"SFX"
 doppler_tracking = 2
 
-[node name="Shack" type="CSGCombiner3D" parent="LevelStuff"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -45.5335, 0.9, -39.608)
-use_collision = true
+[node name="Shack" type="Node3D" parent="LevelStuff/Graveyard"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -15.7335, 0.9, 7.89203)
 
-[node name="Floor" type="CSGBox3D" parent="LevelStuff/Shack"]
+[node name="Floor" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-05, -1.6, 0.299978)
+use_collision = true
 size = Vector3(7.4, 0.6, 7.6)
 material = ExtResource("11_3fofs")
 
-[node name="Floor3" type="CSGBox3D" parent="LevelStuff/Shack"]
+[node name="Floor3" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.60003, -1.6, 2.69995)
-size = Vector3(2, 0.6, 6)
+use_collision = true
+size = Vector3(1.8, 0.6, 6)
 material = ExtResource("11_3fofs")
 
-[node name="Floor2" type="CSGBox3D" parent="LevelStuff/Shack"]
+[node name="Floor2" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.29999, -1.6, 4.79999)
+use_collision = true
 size = Vector3(2, 0.6, 1.4)
 material = ExtResource("11_3fofs")
 
-[node name="Step" type="CSGBox3D" parent="LevelStuff/Shack"]
+[node name="Step" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.8, -3.6)
+use_collision = true
 size = Vector3(7.4, 0.4, 1.2)
 material = ExtResource("11_3fofs")
 
-[node name="Post" type="CSGBox3D" parent="LevelStuff/Shack"]
+[node name="Post" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.10003, 0.0999998, -3.00005)
+use_collision = true
 size = Vector3(0.2, 2.8, 0.2)
 material = SubResource("StandardMaterial3D_j2ton")
 
-[node name="Post2" type="CSGBox3D" parent="LevelStuff/Shack"]
+[node name="Post2" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.19997, 0.0999998, -3.00006)
+use_collision = true
 size = Vector3(0.2, 2.8, 0.2)
 material = SubResource("StandardMaterial3D_j2ton")
 
-[node name="Door3" parent="LevelStuff/Shack" instance=ExtResource("10_heps8")]
+[node name="Door3" parent="LevelStuff/Graveyard/Shack" instance=ExtResource("10_heps8")]
 transform = Transform3D(-1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, -1, 0.500011, -1.3, -0.500019)
 
-[node name="Wall" type="CSGBox3D" parent="LevelStuff/Shack"]
+[node name="Wall" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1, -0.4, -0.500004)
+use_collision = true
 size = Vector3(3.2, 2.2, 0.4)
 material = ExtResource("11_3fofs")
 
-[node name="Wall2" type="CSGBox3D" parent="LevelStuff/Shack"]
+[node name="Wall2" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09999, -0.4, -0.50001)
+use_collision = true
 size = Vector3(3.2, 2.2, 0.4)
 material = ExtResource("11_3fofs")
 
-[node name="Wall4" type="CSGBox3D" parent="LevelStuff/Shack"]
+[node name="Wall4" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.49998, -1.6, 2.79997)
+use_collision = true
 size = Vector3(0.4, 6.6, 6.2)
 material = ExtResource("11_3fofs")
 
-[node name="Wall9" type="CSGBox3D" parent="LevelStuff/Shack"]
+[node name="Wall9" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.70002, -1.6, 2.79996)
+use_collision = true
 size = Vector3(0.4, 6.6, 6.2)
 material = ExtResource("11_3fofs")
 
-[node name="Wall5" type="CSGBox3D" parent="LevelStuff/Shack"]
+[node name="Wall5" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.50002, -0.1, 2.79996)
+use_collision = true
 size = Vector3(0.4, 3.6, 6.2)
 material = ExtResource("11_3fofs")
 
-[node name="Wall7" type="CSGBox3D" parent="LevelStuff/Shack"]
+[node name="Wall7" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(0.245307, -0.969445, 0, 0.969445, 0.245307, 0, 0, 0, 1, 2.76582, 2.0406, 2.49995)
+use_collision = true
 size = Vector3(0.4, 5.8, 8)
 material = ExtResource("11_3fofs")
 
-[node name="Wall8" type="CSGBox3D" parent="LevelStuff/Shack"]
+[node name="Wall8" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(0.245307, 0.969445, 0, -0.969445, 0.245307, 0, 0, 0, 1, -2.73928, 2.03406, 2.49991)
+use_collision = true
 size = Vector3(0.4, 5.8, 8)
 material = ExtResource("11_3fofs")
 
-[node name="Wall6" type="CSGBox3D" parent="LevelStuff/Shack"]
+[node name="Wall6" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.10003, -1.6, 5.69993)
+use_collision = true
 size = Vector3(8.8, 6.6, 0.4)
 material = ExtResource("11_3fofs")
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="LevelStuff/Shack"]
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8147e-06, 1.9, -0.30003)
+use_collision = true
 polygon = PackedVector2Array(-3.3, -0.2, 0, 0.6, 3.4, -0.2)
 material = ExtResource("11_3fofs")
 
-[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="LevelStuff/Shack"]
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8147e-06, 1.9, 6.49997)
+use_collision = true
 polygon = PackedVector2Array(-3.3, -0.2, 0, 0.6, 3.4, -0.2)
 material = ExtResource("11_3fofs")
 
-[node name="Wall3" type="CSGBox3D" parent="LevelStuff/Shack"]
+[node name="Wall3" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8147e-06, 1.2, -0.500015)
+use_collision = true
 size = Vector3(7.4, 1, 0.4)
 material = ExtResource("11_3fofs")
 
-[node name="Awning" type="CSGBox3D" parent="LevelStuff/Shack"]
+[node name="Awning" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14441e-05, 1.6, -2.30004)
+use_collision = true
 size = Vector3(7.4, 0.2, 3.2)
 material = ExtResource("11_3fofs")
 
-[node name="Stair" type="CSGBox3D" parent="LevelStuff/Shack"]
+[node name="Stair" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.799992, -2.2, 4.79998)
+use_collision = true
 size = Vector3(1, 0.6, 1.4)
 material = ExtResource("11_3fofs")
 
-[node name="Stair2" type="CSGBox3D" parent="LevelStuff/Shack"]
+[node name="Stair2" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10001, -2.8, 4.79998)
+use_collision = true
 size = Vector3(0.8, 0.6, 1.4)
 material = ExtResource("11_3fofs")
 
-[node name="Stair3" type="CSGBox3D" parent="LevelStuff/Shack"]
+[node name="Stair3" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.900017, -3.4, 4.79998)
+use_collision = true
 size = Vector3(0.8, 0.6, 1.4)
 material = ExtResource("11_3fofs")
 
-[node name="Stair4" type="CSGBox3D" parent="LevelStuff/Shack"]
+[node name="Stair4" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70001, -4, 4.79998)
+use_collision = true
 size = Vector3(0.8, 0.6, 1.4)
 material = ExtResource("11_3fofs")
 
-[node name="Stair5" type="CSGBox3D" parent="LevelStuff/Shack"]
+[node name="Stair5" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -4.6, 4.79999)
+use_collision = true
 size = Vector3(0.8, 0.6, 1.4)
 material = ExtResource("11_3fofs")
 
-[node name="Wall10" type="CSGBox3D" parent="LevelStuff/Shack"]
+[node name="Wall10" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.900005, -3.4, -0.500008)
+use_collision = true
 size = Vector3(9.4, 3, 0.4)
 material = ExtResource("11_3fofs")
 
-[node name="Dirt" type="CSGBox3D" parent="LevelStuff/Shack"]
+[node name="Dirt" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, -5.4, 2.59999)
+use_collision = true
 size = Vector3(8.8, 1, 5.8)
 material = SubResource("StandardMaterial3D_8ikiu")
 
-[node name="Key" parent="LevelStuff/Shack" instance=ExtResource("14_lm3s1")]
+[node name="Key" parent="LevelStuff/Graveyard/Shack" instance=ExtResource("14_lm3s1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.90002, -3.5, 1.39997)
 
-[node name="Shovel" parent="LevelStuff/Shack" instance=ExtResource("15_2pefd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.10921, -0.9, 0.271908)
+[node name="Shovel" parent="LevelStuff/Graveyard/Shack" instance=ExtResource("15_2pefd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.10921, -0.9, -2.72809)
 
-[node name="Table" parent="LevelStuff/Shack" instance=ExtResource("9_6bdl5")]
+[node name="Table" parent="LevelStuff/Graveyard/Shack" instance=ExtResource("9_6bdl5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90002, -1.3, 1.99998)
 
-[node name="Table2" parent="LevelStuff/Shack" instance=ExtResource("9_6bdl5")]
+[node name="Table2" parent="LevelStuff/Graveyard/Shack" instance=ExtResource("9_6bdl5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.90003, -4.9, 1.39997)
 
-[node name="Window" type="Decal" parent="LevelStuff/Shack"]
+[node name="Window" type="Decal" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.70001, 0, -0.500015)
 size = Vector3(1, 0.623, 1)
 texture_albedo = ExtResource("17_8ap7m")
@@ -694,13 +781,13 @@ upper_fade = 0.00686291
 lower_fade = 0.009375
 cull_mask = 1048573
 
-[node name="OmniLight3D" type="OmniLight3D" parent="LevelStuff/Shack/Window"]
+[node name="OmniLight3D" type="OmniLight3D" parent="LevelStuff/Graveyard/Shack/Window"]
 transform = Transform3D(1, 0, 0, 0, 1, 7.10543e-15, 0, 0, 1, 0, 0.399998, 0)
 light_color = Color(1, 0.803667, 0.62, 1)
 light_energy = 2.087
 shadow_enabled = true
 
-[node name="Window2" type="Decal" parent="LevelStuff/Shack"]
+[node name="Window2" type="Decal" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.69998, 0, -0.500023)
 size = Vector3(1, 0.623, 1)
 texture_albedo = ExtResource("17_8ap7m")
@@ -708,13 +795,13 @@ upper_fade = 0.00686291
 lower_fade = 0.009375
 cull_mask = 1048573
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="LevelStuff/Shack/Window2"]
+[node name="OmniLight3D2" type="OmniLight3D" parent="LevelStuff/Graveyard/Shack/Window2"]
 transform = Transform3D(1, 0, 0, 0, 1, 7.10543e-15, 0, 0, 1, -3.8147e-06, 0.399992, 0)
 light_color = Color(1, 0.803667, 0.62, 1)
 light_energy = 2.087
 shadow_enabled = true
 
-[node name="SpotLight3D" type="SpotLight3D" parent="LevelStuff/Shack"]
+[node name="SpotLight3D" type="SpotLight3D" parent="LevelStuff/Graveyard/Shack"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.4, 2)
 light_color = Color(1, 0.803922, 0.619608, 1)
 light_energy = 8.917
@@ -723,46 +810,53 @@ shadow_enabled = true
 spot_range = 15.245
 spot_angle = 78.4
 
-[node name="Gaben" type="CSGCombiner3D" parent="LevelStuff"]
+[node name="Gaben" type="Node3D" parent="LevelStuff"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -10.4, 5.2, -22.2)
-use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="LevelStuff/Gaben"]
+use_collision = true
 size = Vector3(7.8, 0.6, 6.8)
 material = ExtResource("20_o2ctj")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="LevelStuff/Gaben"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9, 0)
+use_collision = true
 size = Vector3(7.8, 0.6, 6.8)
 material = ExtResource("20_o2ctj")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="LevelStuff/Gaben"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9, -3.1)
+use_collision = true
 size = Vector3(7.8, 5.4, 1)
 material = ExtResource("20_o2ctj")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="LevelStuff/Gaben"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 2.9, 2.9)
+use_collision = true
 size = Vector3(3.2, 5.4, 1)
 material = ExtResource("20_o2ctj")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="LevelStuff/Gaben"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 2.9, 2.9)
+use_collision = true
 size = Vector3(3.2, 5.4, 1)
 material = ExtResource("20_o2ctj")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="LevelStuff/Gaben"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.200001, 4, 2.90001)
-size = Vector3(3.2, 3.4, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.200001, 3.9, 2.90001)
+use_collision = true
+size = Vector3(2, 3.2, 1)
 material = ExtResource("20_o2ctj")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="LevelStuff/Gaben"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3, 2.9, 0.400023)
+use_collision = true
 size = Vector3(0.8, 5.4, 6)
 material = ExtResource("20_o2ctj")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="LevelStuff/Gaben"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, 2.9, 0.400023)
+use_collision = true
 size = Vector3(0.8, 5.4, 6)
 material = ExtResource("20_o2ctj")
 
@@ -770,7 +864,7 @@ material = ExtResource("20_o2ctj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0.3, 3.2)
 
 [node name="Door2" parent="LevelStuff/Gaben" instance=ExtResource("10_heps8")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.2, 0.3, 3.2)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.2, 0.3, 3.20002)
 Flipped = true
 
 [node name="Node3D" type="Node3D" parent="LevelStuff/Gaben"]

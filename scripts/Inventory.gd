@@ -9,7 +9,8 @@ signal InvChanged
 
 
 func _ready():
-	AddItem(preload("res://scenes/objects/items/Pisstol.tscn").instantiate())
+	pass
+#	AddItem(preload("res://scenes/objects/items/Pisstol.tscn").instantiate())
 
 func Start(starter):
 	if content.size() > 0:
@@ -27,6 +28,7 @@ func MoveRight():
 			Select(curselect + 1)
 
 func AddItem(item):
+
 	content.append(item)
 	emit_signal("InvChanged")
 
@@ -39,7 +41,7 @@ func RemoveItem(item):
 	emit_signal("InvChanged")
 
 func Select(index):
-	if (index < content.size() and index >= 0) and index != curselect:
+	if (index < content.size() and index >= 0 and index != curselect):
 		if content[curselect].Using == false:
 			content[curselect].Deselect()
 			curselect = index
