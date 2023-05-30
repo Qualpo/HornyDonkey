@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cxtmqbjxg1f0h"]
+[gd_scene load_steps=33 format=3 uid="uid://cxtmqbjxg1f0h"]
 
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_ym708"]
 [ext_resource type="AudioStream" uid="uid://cehdrvf25dvfm" path="res://audio/music/e1m1.ogg" id="2_1s4sw"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cmtlr1ndenhnn" path="res://scenes/objects/items/Soda.tscn" id="21_7hjtc"]
 [ext_resource type="ArrayMesh" uid="uid://b5hyk8iu0sc8b" path="res://models/mesh/TreeWall.res" id="21_dxr8w"]
 [ext_resource type="PackedScene" uid="uid://un562or35h5y" path="res://scenes/objects/items/Pisstol.tscn" id="22_il301"]
+[ext_resource type="PackedScene" uid="uid://c3aqxp33l27va" path="res://models/object/lament.glb" id="23_imqht"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qss5h"]
 diffuse_mode = 1
@@ -362,5 +363,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0.6, -4.9)
 
 [node name="Gun" parent="." instance=ExtResource("22_il301")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1, -0.3)
+
+[node name="lament" parent="." instance=ExtResource("23_imqht")]
+transform = Transform3D(0.161, 0, 0, 0, 0.161, 0, 0, 0, 0.161, 3.09179, 0.265077, 1.28409)
 
 [editable path="Donkey2"]

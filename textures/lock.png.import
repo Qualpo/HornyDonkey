@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmiqgdpmqofm5"
-path="res://.godot/imported/health_icon.png-18bb462763fc498b9dd24ec745c0ec97.ctex"
+uid="uid://cijge8yc4ypan"
+path="res://.godot/imported/lock.png-80a0bd6d19a651187d3e1bde88c3d8e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/UI/health_icon.png"
-dest_files=["res://.godot/imported/health_icon.png-18bb462763fc498b9dd24ec745c0ec97.ctex"]
+source_file="res://textures/lock.png"
+dest_files=["res://.godot/imported/lock.png-80a0bd6d19a651187d3e1bde88c3d8e2.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
