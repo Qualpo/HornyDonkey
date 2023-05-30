@@ -2,16 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4ant3bop5qtd"
-path="res://.godot/imported/RadialMenu.png-7e15d6f41d14ae4a4ea9e8df1c82dcb3.ctex"
+uid="uid://cx24b43hpfihj"
+path="res://.godot/imported/medal_Torus Base Color.png-3ccd227ab627c455fa88aea4caf91a76.ctex"
 metadata={
 "vram_texture": false
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://textures/ui/RadialMenu.png"
-dest_files=["res://.godot/imported/RadialMenu.png-7e15d6f41d14ae4a4ea9e8df1c82dcb3.ctex"]
+source_file="res://models/object/medal_Torus Base Color.png"
+dest_files=["res://.godot/imported/medal_Torus Base Color.png-3ccd227ab627c455fa88aea4caf91a76.ctex"]
 
 [params]
 
