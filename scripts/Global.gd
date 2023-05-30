@@ -2,7 +2,7 @@ extends Node
 
 
 
-var LoadingScreen = preload("res://scenes/loading_screen.tscn")
+var LoadingScreen = preload("res://scenes/screens/loading_screen.tscn")
 var TargetScenePath = "res://scenes/levels/DebugLevel.tscn"
 
 var Checkpoint = Vector3()

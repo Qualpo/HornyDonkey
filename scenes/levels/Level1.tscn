@@ -1,6 +1,7 @@
-[gd_scene load_steps=43 format=3 uid="uid://dvat6v2me6fmy"]
+[gd_scene load_steps=44 format=3 uid="uid://dvat6v2me6fmy"]
 
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_h7o08"]
+[ext_resource type="AudioStream" uid="uid://je4vv2d8o6ff" path="res://audio/music/Doom.ogg" id="2_ff34m"]
 [ext_resource type="Material" uid="uid://cikm6vcxn5cjr" path="res://resources/materials/objects/Tree.tres" id="3_fukee"]
 [ext_resource type="Material" uid="uid://05qppb0b8dbe" path="res://resources/materials/Level1.tres" id="3_lt7jr"]
 [ext_resource type="Material" uid="uid://dx4gxnniaok34" path="res://resources/materials/objects/Wall.tres" id="5_u5jb8"]
@@ -146,6 +147,7 @@ adjustment_enabled = true
 
 [node name="Level1" type="Node3D"]
 script = ExtResource("1_h7o08")
+BGM = ExtResource("2_ff34m")
 
 [node name="LevelStuff" type="Node3D" parent="."]
 

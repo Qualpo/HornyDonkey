@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://vlfxe251fi0g"]
+[gd_scene load_steps=12 format=3 uid="uid://vlfxe251fi0g"]
 
 [ext_resource type="Script" path="res://scripts/screens/MainMenu.gd" id="1_sdm67"]
 [ext_resource type="FontFile" uid="uid://cxwlpyc5xa31h" path="res://resources/fonts/Daydream.ttf" id="2_8vbhj"]
 [ext_resource type="FontFile" uid="uid://c8uq0vrdeg2pf" path="res://resources/fonts/shit.ttf" id="3_0mm4n"]
 [ext_resource type="Texture2D" uid="uid://tx7d83buhd1y" path="res://textures/objects/easter_egg.png" id="4_0jgml"]
+[ext_resource type="Texture2D" uid="uid://bkn17mjem258k" path="res://textures/objects/gun stuff/BulletHole.png" id="5_1wifq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6d8oi"]
 sky_top_color = Color(0.0745098, 0.0980392, 0.129412, 1)
@@ -33,6 +34,9 @@ border_color = Color(0.239216, 0.239216, 0.239216, 0.745098)
 shadow_color = Color(0, 0, 0, 0.619608)
 shadow_size = 5
 anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4d3ab"]
+bg_color = Color(0.364706, 0.364706, 0.364706, 1)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -217,8 +221,10 @@ horizontal_alignment = 1
 [node name="Window" type="Window" parent="."]
 transparent_bg = true
 initial_position = 1
+title = "stupid"
 size = Vector2i(167, 197)
 unresizable = true
+borderless = true
 transparent = true
 
 [node name="Camera2D" type="Camera2D" parent="Window"]
@@ -228,8 +234,93 @@ anchor_mode = 0
 position = Vector2(50, 51)
 texture = ExtResource("4_0jgml")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Window"]
+
+[node name="TextureRect" type="TextureRect" parent="Window/CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_1wifq")
+
+[node name="Settings Window" type="Window" parent="."]
+initial_position = 2
+title = "Settings"
+size = Vector2i(480, 270)
+visible = false
+
+[node name="Root" type="Panel" parent="Settings Window"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4d3ab")
+
+[node name="Volume" type="Control" parent="Settings Window/Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Volume" type="Label" parent="Settings Window/Root/Volume"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 102.0
+offset_right = 127.0
+offset_bottom = 128.0
+text = "Volume"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings Window/Root/Volume"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 148.0
+offset_right = 127.0
+offset_bottom = 261.0
+metadata/_edit_group_ = true
+
+[node name="Main" type="HSlider" parent="Settings Window/Root/Volume/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+value = 50.0
+
+[node name="Label" type="Label" parent="Settings Window/Root/Volume/VBoxContainer/Main"]
+layout_mode = 0
+offset_left = 58.0
+offset_top = -26.0
+offset_right = 104.0
+text = "Main
+"
+
+[node name="MusicSlider" type="HSlider" parent="Settings Window/Root/Volume/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+value = 50.0
+
+[node name="Label" type="Label" parent="Settings Window/Root/Volume/VBoxContainer/MusicSlider"]
+layout_mode = 0
+offset_left = 58.0
+offset_top = -23.0
+offset_right = 104.0
+offset_bottom = 3.0
+text = "Music"
+
+[node name="Sfx" type="HSlider" parent="Settings Window/Root/Volume/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+value = 50.0
+
+[node name="Label" type="Label" parent="Settings Window/Root/Volume/VBoxContainer/Sfx"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = -23.0
+offset_right = 111.0
+offset_bottom = 3.0
+text = "SFX
+"
+
 [connection signal="pressed" from="Main/Stuff/Button/Play" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Main/Stuff/Button/Options" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Main/Stuff/Button/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Main/Stuff/LevelSelect/Left" to="." method="_on_left_pressed"]
 [connection signal="pressed" from="Main/Stuff/LevelSelect/Right" to="." method="_on_right_pressed"]
 [connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]
