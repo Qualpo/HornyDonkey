@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dvat6v2me6fmy"]
+[gd_scene load_steps=45 format=3 uid="uid://dvat6v2me6fmy"]
 
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_h7o08"]
 [ext_resource type="AudioStream" uid="uid://je4vv2d8o6ff" path="res://audio/music/Doom.ogg" id="2_ff34m"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://c6luvc5owugq" path="res://textures/CabinWindow.png" id="17_8ap7m"]
 [ext_resource type="Material" uid="uid://dv3wq3w3nvvnw" path="res://resources/materials/objects/Gaben.tres" id="20_o2ctj"]
 [ext_resource type="Texture2D" uid="uid://cnf3apj82oqdt" path="res://textures/gaben_wall.png" id="21_muc80"]
+[ext_resource type="PackedScene" uid="uid://tfhx2kmo6qex" path="res://scenes/objects/decoration/RockingChair.tscn" id="25_7ldlo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e8oje"]
 albedo_texture = ExtResource("8_3g32w")
@@ -790,33 +791,69 @@ size = Vector3(7.4, 0.2, 3.2)
 material = ExtResource("11_3fofs")
 
 [node name="Stair" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.799992, -2.2, 4.79998)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, -1.9, 4.79998)
 use_collision = true
-size = Vector3(1, 0.6, 1.4)
+size = Vector3(0.4, 0.6, 1.4)
 material = ExtResource("11_3fofs")
 
 [node name="Stair2" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10001, -2.8, 4.79998)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.699993, -2.2, 4.79998)
 use_collision = true
-size = Vector3(0.8, 0.6, 1.4)
+size = Vector3(0.4, 0.6, 1.4)
 material = ExtResource("11_3fofs")
 
 [node name="Stair3" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.900017, -3.4, 4.79998)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.299988, -2.5, 4.79999)
 use_collision = true
-size = Vector3(0.8, 0.6, 1.4)
+size = Vector3(0.4, 0.6, 1.4)
 material = ExtResource("11_3fofs")
 
 [node name="Stair4" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70001, -4, 4.79998)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0999985, -2.8, 4.79999)
 use_collision = true
-size = Vector3(0.8, 0.6, 1.4)
+size = Vector3(0.4, 0.6, 1.4)
 material = ExtResource("11_3fofs")
 
 [node name="Stair5" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -4.6, 4.79999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.499992, -3.1, 4.8)
 use_collision = true
-size = Vector3(0.8, 0.6, 1.4)
+size = Vector3(0.4, 0.6, 1.4)
+material = ExtResource("11_3fofs")
+
+[node name="Stair6" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.899994, -3.4, 4.8)
+use_collision = true
+size = Vector3(0.4, 0.6, 1.4)
+material = ExtResource("11_3fofs")
+
+[node name="Stair7" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, -3.7, 4.8)
+use_collision = true
+size = Vector3(0.4, 0.6, 1.4)
+material = ExtResource("11_3fofs")
+
+[node name="Stair8" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, -4, 4.79999)
+use_collision = true
+size = Vector3(0.4, 0.6, 1.4)
+material = ExtResource("11_3fofs")
+
+[node name="Stair9" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.09999, -4.3, 4.8)
+use_collision = true
+size = Vector3(0.4, 0.6, 1.4)
+material = ExtResource("11_3fofs")
+
+[node name="Stair10" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49998, -4.6, 4.8)
+use_collision = true
+size = Vector3(0.4, 0.6, 1.4)
+material = ExtResource("11_3fofs")
+
+[node name="Stair11" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.89999, -4.9, 4.8)
+use_collision = true
+size = Vector3(0.4, 0.6, 1.4)
 material = ExtResource("11_3fofs")
 
 [node name="Wall10" type="CSGBox3D" parent="LevelStuff/Graveyard/Shack"]
@@ -885,6 +922,12 @@ light_volumetric_fog_energy = 0.426
 shadow_enabled = true
 spot_range = 15.245
 spot_angle = 78.4
+
+[node name="RockingChair" parent="LevelStuff/Graveyard/Shack" instance=ExtResource("25_7ldlo")]
+transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, 2.47824, -1.3, -1.53455)
+
+[node name="RockingChair2" parent="LevelStuff/Graveyard/Shack" instance=ExtResource("25_7ldlo")]
+transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -3.04824, -1.3, -1.48606)
 
 [node name="Gaben" type="Node3D" parent="LevelStuff"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -10.4, 5.2, -22.2)
