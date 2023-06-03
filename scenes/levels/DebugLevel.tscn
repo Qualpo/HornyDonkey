@@ -335,12 +335,18 @@ Code = 1
 
 [node name="Key" parent="." instance=ExtResource("17_ncwja")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.7, -4.6)
+offset = Vector3(0, 0, 0)
+Info = ""
+Upgradeable = false
+UpgradePath = ""
 
 [node name="Shovel" parent="." instance=ExtResource("18_th4s3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0.6, -4.9)
+offset = Vector3(0, 0, 0)
 
 [node name="SuperShovel" parent="." instance=ExtResource("18_1r2tu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6, -0.8, -5.5)
+offset = Vector3(0, 0, 0)
 Info = ""
 
 [node name="DigSpot" parent="." instance=ExtResource("19_733d2")]
@@ -360,9 +366,16 @@ mesh = ExtResource("21_dxr8w")
 
 [node name="Soda" parent="." instance=ExtResource("21_7hjtc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0.6, -4.9)
+offset = Vector3(0, 0, 0)
+Upgradeable = false
+UpgradePath = ""
 
 [node name="Gun" parent="." instance=ExtResource("22_il301")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1, -0.3)
+offset = Vector3(0, 0, 0)
+Info = ""
+Upgradeable = false
+UpgradePath = ""
 
 [node name="lament" parent="." instance=ExtResource("23_imqht")]
 transform = Transform3D(0.161, 0, 0, 0, 0.161, 0, 0, 0, 0.161, 3.09179, 0.265077, 1.28409)

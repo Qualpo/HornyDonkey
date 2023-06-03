@@ -6,6 +6,8 @@ class_name Item
 @export var offset : Vector3 
 @export var Name = "TestName"
 @export var Info = ""
+@export var Upgradeable = false
+@export var UpgradePath = ""
 
 var Using = false
 var Held = false
@@ -25,6 +27,11 @@ func _ready():
 	SetInfo()
 	if OnGround:
 		$Spin.play("Spin")
+func Upgrade(upgrader):
+	if Upgradeable:
+		if UpgradePath != "":
+			if Inventory.content.has(self):
+				Inventory.ReplaceItem(Inventory.content.find(self),load(UpgradePath).instantiate(),upgrader)
 func SetInfo():
 	pass
 func Select():
