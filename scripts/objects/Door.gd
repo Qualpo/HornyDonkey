@@ -5,6 +5,9 @@ extends Node3D
 @export var Flipped = false
 var Opened = false
 
+func _ready():
+	if Locked:
+		$Lock.show()
 func Interact(interactor):
 	Open()
 func Open():
@@ -28,6 +31,7 @@ func Open():
 		$Locked.play()
 func Unlock(code):
 	if Code == code:
+		$Lock.hide()
 		Locked = false
 		$Unlock.play()
 		return true
