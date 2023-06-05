@@ -28,6 +28,7 @@ func _ready():
 	if OnGround:
 		$Spin.play("Spin")
 func Upgrade(upgrader):
+	#it works who gives a shit
 	if Upgradeable:
 		if UpgradePath != "":
 			if Inventory.content.has(self):

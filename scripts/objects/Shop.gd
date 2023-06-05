@@ -12,5 +12,6 @@ func Interact(interacter):
 	$AnimationPlayer.play("Buy")
 	$AudioStreamPlayer3D.stream = Sounds["Greet"]
 	$AudioStreamPlayer3D.play()
+	# shitty fucking upgrade change later
 	if Inventory.content.size() > 0:
 		Inventory.content[Inventory.curselect].Upgrade(interacter)
