@@ -47,7 +47,16 @@ func Select(index):
 			curselect = index
 			content[curselect].Select()
 			emit_signal("NewItem",content[curselect])
-
+func ReplaceItem(index,variant:Item,user):
+	if index >= 0 and index < content.size():
+		var pre = content[index]
+		variant.PickUp(user)
+		variant.Select()
+		content[index] = variant
+		if index == curselect:
+			emit_signal("NewItem",variant)
+		emit_signal("InvChanged")
+		pre.queue_free()
 func MoveLeft():
 	if content.size() > 1:
 		if curselect == 0:

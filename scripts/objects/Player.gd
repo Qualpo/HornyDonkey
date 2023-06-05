@@ -209,6 +209,7 @@ func PickUpItem(pick):
 		Inventory.content[0].Select()
 		NewItem(Inventory.content[0])
 
+
 func UpdateInv():
 	UpdateInvScroll()
 func UpdateInvScroll():
