@@ -160,6 +160,7 @@ func _physics_process(delta):
 				Bobset = velocity.y/32
 		LastPos = position
 		move_and_slide()
+		Global.PlayerPos = position
 		if is_on_floor():
 			if abs(position.y - LastPos.y)>0.01:
 				

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4ant3bop5qtd"
-path="res://.godot/imported/RadialMenu.png-7e15d6f41d14ae4a4ea9e8df1c82dcb3.ctex"
+uid="uid://dkbixchpyb2ug"
+path="res://.godot/imported/welcome_home_carpet.png-0f1aad8cb107d93cb913a9444d4f87d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/ui/RadialMenu.png"
-dest_files=["res://.godot/imported/RadialMenu.png-7e15d6f41d14ae4a4ea9e8df1c82dcb3.ctex"]
+source_file="res://textures/welcome_home_carpet.png"
+dest_files=["res://.godot/imported/welcome_home_carpet.png-0f1aad8cb107d93cb913a9444d4f87d7.ctex"]
 
 [params]
 

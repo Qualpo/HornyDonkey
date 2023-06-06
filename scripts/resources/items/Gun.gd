@@ -57,15 +57,15 @@ func Shoot(accuracy, bulletammount, recoil, user):
 			
 				if Cast.get_collider().is_in_group("Enemy"):
 					Cast.get_collider().Hit(false,self,Global.GunDamage)
-				else:
-					var hole = BulletHole.instantiate()
+				
+				var hole = BulletHole.instantiate()
 					
-					Cast.get_collider().add_child(hole)
-					hole.global_position = Cast.get_collision_point() + (Cast.get_collision_normal()/80)
-					if abs(Cast.get_collision_normal().y) == 1:
-						hole.rotation_degrees.x = 90
-					else:
-						hole.look_at(Cast.get_collision_point()-Cast.get_collision_normal(),Vector3.UP)
+				Cast.get_collider().add_child(hole)
+				hole.global_position = Cast.get_collision_point() + (Cast.get_collision_normal()/80)
+				if abs(Cast.get_collision_normal().y) == 1:
+					hole.rotation_degrees.x = 90
+				else:
+					hole.look_at(Cast.get_collision_point()-Cast.get_collision_normal(),Vector3.UP)
 			Cast.queue_free()
 		user.ControlShake(0,1.0, 1.0,0.5)
 		user.CameraOffset.x += recoil * 3

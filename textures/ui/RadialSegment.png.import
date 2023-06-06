@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dp0tfook41nfe"
-path="res://.godot/imported/RadialSegment.png-8c6ac547e079ecc6cce5144ef18233c2.ctex"
+path="res://.godot/imported/RadialSegment.png-9e626812ef5e4b818331bd35b58e4a3d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/UI/RadialSegment.png"
-dest_files=["res://.godot/imported/RadialSegment.png-8c6ac547e079ecc6cce5144ef18233c2.ctex"]
+source_file="res://textures/ui/RadialSegment.png"
+dest_files=["res://.godot/imported/RadialSegment.png-9e626812ef5e4b818331bd35b58e4a3d.ctex"]
 
 [params]
 

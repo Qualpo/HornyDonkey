@@ -63,6 +63,8 @@ shape = SubResource("BoxShape3D_dc46b")
 [node name="Door" parent="Body" instance=ExtResource("2_fftxk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Body"]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Body")
 libraries = {
