@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6gygqb04qmtd"]
+[gd_scene load_steps=9 format=3 uid="uid://b6gygqb04qmtd"]
 
 [ext_resource type="Script" path="res://scripts/objects/enemies/Enemy.gd" id="1_08hcf"]
 [ext_resource type="Texture2D" uid="uid://cnf3apj82oqdt" path="res://textures/gaben_wall.png" id="2_ohmxn"]
@@ -11,22 +11,29 @@ length = 0.7
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mggel"]
 radius = 0.3
-height = 1.6
+height = 1.4
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1eom2"]
 height = 18.8
 radius = 5.5
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_c7qhk"]
+size = Vector3(4, 4, 1.2)
+
 [node name="Enemy" type="CharacterBody3D" groups=["Enemy"]]
 collision_layer = 4
 floor_snap_length = 0.39
 script = ExtResource("1_08hcf")
+MoveSpeed = 4.0
+HP = 99999
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_ysp08")
 
 [node name="Decal" type="Decal" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.4, -0.5)
+visible = false
 size = Vector3(0.8, 0.5, 0.6)
 texture_albedo = ExtResource("2_ohmxn")
 
@@ -42,7 +49,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.
 shape = SubResource("SeparationRayShape3D_w5r7v")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -1.31134e-08)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 shape = SubResource("CapsuleShape3D_mggel")
 
 [node name="Vision" type="Area3D" parent="."]
@@ -63,6 +70,21 @@ target_position = Vector3(100, 0, 0)
 collision_mask = 3
 debug_shape_custom_color = Color(0.917647, 0.741176, 0.941176, 1)
 debug_shape_thickness = 3
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+pixel_size = 0.1
+billboard = 2
+texture_filter = 0
+texture = ExtResource("2_ohmxn")
+
+[node name="HitBox" type="Area3D" parent="." groups=["Hurt"]]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_c7qhk")
 
 [connection signal="timeout" from="TargetTimer" to="." method="_on_target_timer_timeout"]
 [connection signal="body_entered" from="Vision" to="." method="OnVisionEntered"]

@@ -7,8 +7,11 @@ var State = STATES.idle
 
 @export var MoveSpeed = 1.5
 @export var HP = 100
+@export var Damage = 100
 
 var EyeTarget = null
+
+
 
 
 func _physics_process(delta):

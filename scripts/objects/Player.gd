@@ -328,4 +328,4 @@ func _on_hurtbox_area_entered(area):
 		PickUpItem(area.get_parent())
 		print("peepee")
 	if area.is_in_group("Hurt"):
-		Hurt(10)
+		Hurt(area.get_parent().Damage)
