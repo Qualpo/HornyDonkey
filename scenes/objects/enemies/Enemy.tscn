@@ -25,7 +25,7 @@ collision_layer = 4
 floor_snap_length = 0.39
 script = ExtResource("1_08hcf")
 MoveSpeed = 4.0
-HP = 99999
+HP = 1200
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false
