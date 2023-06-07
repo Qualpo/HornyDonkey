@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cypywomghdkr2"]
 
 [ext_resource type="Script" path="res://scripts/resources/items/Item.gd" id="1_5mchg"]
-[ext_resource type="Texture2D" uid="uid://cnf3apj82oqdt" path="res://textures/gaben_wall.png" id="2_7q545"]
+[ext_resource type="Texture2D" uid="uid://b4lmxvu4gg73n" path="res://textures/items/icons/No.png" id="2_tx7oq"]
 
 [sub_resource type="Animation" id="Animation_1budx"]
 resource_name = "Spin"
@@ -41,7 +41,7 @@ _data = {
 
 [node name="Item" type="Node3D"]
 script = ExtResource("1_5mchg")
-icon = ExtResource("2_7q545")
+icon = ExtResource("2_tx7oq")
 
 [node name="Spin" type="AnimationPlayer" parent="."]
 libraries = {

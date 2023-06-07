@@ -207,9 +207,7 @@ func PickUpItem(pick):
 	Inventory.AddItem(pick)
 	pick.get_parent().remove_child(pick)
 	#this is just shit but oh well who fucking cares
-	if Inventory.content.size() == 1:
-		Inventory.content[0].Select()
-		NewItem(Inventory.content[0])
+
 
 
 func UpdateInv():

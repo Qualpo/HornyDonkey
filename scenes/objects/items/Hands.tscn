@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtwjl5usv5s56"]
+
+[ext_resource type="PackedScene" uid="uid://cypywomghdkr2" path="res://scenes/objects/items/Item.tscn" id="1_5kv10"]
+
+[node name="Hands" instance=ExtResource("1_5kv10")]
+Name = "Hands"
+Info = "Unequip"
