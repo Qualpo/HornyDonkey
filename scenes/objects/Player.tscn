@@ -5,15 +5,15 @@
 [ext_resource type="AudioStream" uid="uid://bua8ttou8eytl" path="res://audio/sfx/gun/Shoot.ogg" id="3_o62s8"]
 [ext_resource type="Shader" path="res://resources/materials/Invert.gdshader" id="4_ia74v"]
 [ext_resource type="AudioStream" uid="uid://c1lq8t1iulfwy" path="res://audio/sfx/flashlight.ogg" id="4_tnbl5"]
-[ext_resource type="Texture2D" uid="uid://b308hqk2hm7re" path="res://textures/UI/Cursor.png" id="4_v2ikc"]
-[ext_resource type="Texture2D" uid="uid://dmiqgdpmqofm5" path="res://textures/UI/health_icon.png" id="7_f0lqq"]
-[ext_resource type="Texture2D" uid="uid://ccn5py45ivxsv" path="res://textures/UI/ammo_icon.png" id="8_qqtri"]
+[ext_resource type="Texture2D" uid="uid://b308hqk2hm7re" path="res://textures/ui/Cursor.png" id="4_v2ikc"]
+[ext_resource type="Texture2D" uid="uid://dmiqgdpmqofm5" path="res://textures/ui/health_icon.png" id="7_f0lqq"]
+[ext_resource type="Texture2D" uid="uid://ccn5py45ivxsv" path="res://textures/ui/ammo_icon.png" id="8_qqtri"]
 [ext_resource type="FontFile" uid="uid://c8uq0vrdeg2pf" path="res://resources/fonts/shit.ttf" id="8_yw4va"]
 [ext_resource type="Texture2D" uid="uid://dassaokj5vc1y" path="res://textures/donkey cult insignia glowing sprite.png" id="9_vmia2"]
 [ext_resource type="Texture2D" uid="uid://c2xooisgd675y" path="res://textures/items/Pistol.png" id="10_o1afr"]
 [ext_resource type="Script" path="res://scripts/objects/player/InventoryMenu.gd" id="13_rntua"]
-[ext_resource type="Texture2D" uid="uid://b4ant3bop5qtd" path="res://textures/UI/RadialMenu.png" id="14_20kc7"]
-[ext_resource type="Texture2D" uid="uid://dp0tfook41nfe" path="res://textures/UI/RadialSegment.png" id="15_nkpbv"]
+[ext_resource type="Texture2D" uid="uid://b4ant3bop5qtd" path="res://textures/ui/RadialMenu.png" id="14_20kc7"]
+[ext_resource type="Texture2D" uid="uid://dp0tfook41nfe" path="res://textures/ui/RadialSegment.png" id="15_nkpbv"]
 [ext_resource type="Texture2D" uid="uid://cnf3apj82oqdt" path="res://textures/gaben_wall.png" id="16_nfr0g"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w1t2g"]
@@ -71,7 +71,7 @@ resource_name = "Idle"
 
 [sub_resource type="Animation" id="Animation_3ew0v"]
 resource_name = "Walk"
-length = 0.2
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -80,10 +80,22 @@ tracks/0/path = NodePath(".:Bobset")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.2]
+"values": [0.0, 0.1, 0.0, 0.1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:Bobsety")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.05, 0.0, -0.05, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gnifo"]
@@ -238,6 +250,7 @@ floor_snap_length = 0.39
 script = ExtResource("1_yweok")
 AimSpeed = 1.0
 Sensitivity = 1.0
+Bobsety = 0.05
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)

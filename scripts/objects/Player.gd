@@ -8,6 +8,7 @@ class_name Player
 @export var HP = 100.0
 @export_range(0.0,1.0,0.01) var Sensitivity = 0.5
 @export var Bobset = 0.0
+@export var Bobsety = 0.0
 
 var FacingDir = Vector2.UP
 var CameraDirection = Vector2()
@@ -82,6 +83,7 @@ func _physics_process(delta):
 		$CameraPivot/Camera3D.fov = lerp($CameraPivot/Camera3D.fov,Fov,0.2)
 		CameraOffset.x = lerp(CameraOffset.x,0.0,0.1)
 		$CameraPivot/Camera3D.v_offset = lerp($CameraPivot/Camera3D.v_offset,Bobset,AnimWalkSpeed)
+		$CameraPivot/Camera3D.h_offset = lerp($CameraPivot/Camera3D.h_offset,Bobsety,AnimWalkSpeed * 0.5)
 		$CameraPivot.rotation_degrees = lerp($CameraPivot.rotation_degrees, Vector3(TiltDir.y,0,TiltDir.x), 0.1)
 		$CameraPivot/Camera3D.position = lerp($CameraPivot/Camera3D.position,Vector3(0,0.5,0),0.3)
 		#Aim Lerp
@@ -138,7 +140,7 @@ func _physics_process(delta):
 				$AnimationPlayer.stop(true)
 				AnimWalkSpeed = 0.1
 				Bobset = 0.0
-
+				Bobsety = 0.0
 			
 			if Input.is_action_pressed("Jump"):
 				if SuperJumpBuffer > 0.0:
@@ -154,6 +156,7 @@ func _physics_process(delta):
 			AnimWalkSpeed = 0.1
 			velocity = lerp(velocity, Vector3(0,velocity.y,0),0.025)
 			velocity += Vector3(irt.x,0,irt.y) * (MoveSpeed * MoveSpeedScale * 0.17)
+			Bobsety = 0.0
 			if Aiming:
 				Bobset = velocity.y/256
 			else:
