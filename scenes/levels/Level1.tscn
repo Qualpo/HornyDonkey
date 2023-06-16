@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bjdd0qa8xlfui" path="res://scenes/objects/Shop.tscn" id="12_h8l5s"]
 [ext_resource type="Texture2D" uid="uid://c8a0oqa0nl5ji" path="res://textures/skybox/1-skybox-studio-hyper-realistic-mountains-lake-hd-skybox-7-crea-panorama-e-vr.jpg" id="12_nysvc"]
 [ext_resource type="Texture2D" uid="uid://bfelfgruispqr" path="res://textures/dirt_ground.png" id="13_a13t3"]
-[ext_resource type="PackedScene" path="res://scenes/objects/decoration/Lantern.tscn" id="13_tv0yx"]
+[ext_resource type="PackedScene" uid="uid://c51mhb7tdiy4v" path="res://scenes/objects/decoration/Lantern.tscn" id="13_tv0yx"]
 [ext_resource type="PackedScene" uid="uid://o0nigkmlpwjv" path="res://scenes/objects/items/key.tscn" id="14_lm3s1"]
 [ext_resource type="PackedScene" uid="uid://cxh507iow7u1r" path="res://scenes/objects/items/Shovel.tscn" id="15_2pefd"]
 [ext_resource type="PackedScene" uid="uid://dqu8m1d68dqri" path="res://scenes/objects/decoration/Tree.tscn" id="15_bw6bd"]
