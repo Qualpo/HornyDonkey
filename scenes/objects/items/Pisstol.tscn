@@ -61,16 +61,4 @@ libraries = {
 [node name="Gun" parent="Visual" index="0" instance=ExtResource("3_spvaf")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.1, -0.1)
 
-[node name="GunBase" parent="Visual/Gun/Node2" index="0"]
-layers = 2
-
-[node name="GunTop" parent="Visual/Gun/Node2" index="1"]
-layers = 2
-
-[node name="Barrel" parent="Visual/Gun/Node2" index="2"]
-layers = 2
-
-[node name="cube" parent="Visual/Gun/Node2" index="3"]
-layers = 2
-
 [editable path="Visual/Gun"]

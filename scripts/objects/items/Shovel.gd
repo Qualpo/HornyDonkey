@@ -6,6 +6,9 @@ extends Item
 
 var User = null
 
+func PickUp(user):
+	super.PickUp(user)
+	$Visual/Shovel/Node2/cube.layers = 2
 func Use(user):
 	if Held:
 		User = user

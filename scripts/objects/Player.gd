@@ -87,7 +87,7 @@ func _physics_process(delta):
 		$CameraPivot.rotation_degrees = lerp($CameraPivot.rotation_degrees, Vector3(TiltDir.y,0,TiltDir.x), 0.1)
 		$CameraPivot/Camera3D.position = lerp($CameraPivot/Camera3D.position,Vector3(0,0.5,0),0.3)
 		#Aim Lerp
-		$CameraPivot/Camera3D/Gun.position = lerp($CameraPivot/Camera3D/Gun.position,GunPos,0.4)
+		$CanvasLayer/HandViewPort/SubViewport/GunCam/Gun.position = lerp($CanvasLayer/HandViewPort/SubViewport/GunCam/Gun.position,GunPos,0.4)
 		
 		
 		#Friction
@@ -170,6 +170,9 @@ func _physics_process(delta):
 				var dist = position.y - LastPos.y
 				$CameraPivot/Camera3D.position.y -= dist
 		TiltDir = Vector2(-inputDir.x*(4+(6*int(Sprinting))),inputDir.y*10* int(Sprinting))
+	$CanvasLayer/HandViewPort/SubViewport/GunCam.global_transform = $CameraPivot/Camera3D.global_transform
+	$CanvasLayer/HandViewPort/SubViewport/GunCam.h_offset = $CameraPivot/Camera3D.h_offset
+	$CanvasLayer/HandViewPort/SubViewport/GunCam.v_offset = $CameraPivot/Camera3D.v_offset
 func MoveCamera(vec : Vector2):
 	if not Dead and not LookDisabled:
 		rotation_degrees.y += vec.x * Sensitivity * SensitivityScale
@@ -240,9 +243,9 @@ func ControlShake(controller,small,large,time):
 func NewItem(item:Item):
 	$GunAnims.stop()
 	$GunAnims.play("PullOut")
-	if $CameraPivot/Camera3D/Gun.get_child_count()> 0:
-		$CameraPivot/Camera3D/Gun.remove_child($CameraPivot/Camera3D/Gun.get_child(0))
-	$CameraPivot/Camera3D/Gun.call_deferred("add_child",item)
+	if $CanvasLayer/HandViewPort/SubViewport/GunCam/Gun.get_child_count()> 0:
+		$CanvasLayer/HandViewPort/SubViewport/GunCam/Gun.remove_child($CanvasLayer/HandViewPort/SubViewport/GunCam/Gun.get_child(0))
+	$CanvasLayer/HandViewPort/SubViewport/GunCam/Gun.call_deferred("add_child",item)
 	UpdateInvScroll()
 	if Aiming:
 		UnAim()
@@ -282,9 +285,9 @@ func Die():
 		position = Global.Checkpoint
 		UnDie()
 func UnEquip():
-	if $CameraPivot/Camera3D/Gun.get_child_count() > 0:
-		for c in $CameraPivot/Camera3D/Gun.get_children():
-			$CameraPivot/Camera3D/Gun.remove_child(c)
+	if $CanvasLayer/HandViewPort/SubViewport/GunCam/Gun.get_child_count() > 0:
+		for c in $CanvasLayer/HandViewPort/SubViewport/GunCam/Gun.get_children():
+			$CanvasLayer/HandViewPort/SubViewport/GunCam/Gun.remove_child(c)
 func Aim():
 	$AnimationPlayer.stop(true)
 	Aiming = true

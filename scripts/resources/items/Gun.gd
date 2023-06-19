@@ -14,7 +14,12 @@ var BulletHole = preload("res://scenes/objects/BulletHole.tscn")
 
 var Shooting = false
 var RNG = RandomNumberGenerator.new()
-
+func PickUp(user):
+	super.PickUp(user)
+	$Visual/Gun/Node2/GunBase.layers = 2
+	$Visual/Gun/Node2/GunTop.layers = 2
+	$Visual/Gun/Node2/Barrel.layers = 2
+	$Visual/Gun/Node2/cube.layers = 2
 func Use(user):
 	if Held:
 		

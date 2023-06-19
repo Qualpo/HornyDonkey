@@ -23,9 +23,6 @@ libraries = {
 [node name="Shovel" parent="Visual" index="0" instance=ExtResource("2_jjl43")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.4, 0)
 
-[node name="cube" parent="Visual/Shovel/Node2" index="0"]
-layers = 2
-
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="4"]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." index="5"]

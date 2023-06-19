@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://8t15wlahpiii"]
+[gd_scene load_steps=36 format=3 uid="uid://8t15wlahpiii"]
 
 [ext_resource type="Script" path="res://scripts/objects/Player.gd" id="1_yweok"]
 [ext_resource type="AudioStream" uid="uid://dsju0mnm14anp" path="res://audio/sfx/DoorClose.ogg" id="3_mkcdy"]
@@ -110,7 +110,7 @@ resource_name = "Hit"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CameraPivot/Camera3D/Gun:rotation")
+tracks/0/path = NodePath("CanvasLayer/HandViewPort/SubViewport/GunCam/Gun:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -126,7 +126,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CameraPivot/Camera3D/Gun:position")
+tracks/0/path = NodePath("CanvasLayer/HandViewPort/SubViewport/GunCam/Gun:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -142,7 +142,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CameraPivot/Camera3D/Gun:rotation")
+tracks/0/path = NodePath("CanvasLayer/HandViewPort/SubViewport/GunCam/Gun:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -213,6 +213,10 @@ _data = {
 "Heal": SubResource("Animation_27m0s"),
 "Hurt": SubResource("Animation_fwhk5")
 }
+
+[sub_resource type="Environment" id="Environment_5pmoy"]
+ambient_light_color = Color(1, 1, 1, 1)
+reflected_light_source = 1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q23x6"]
 shader = ExtResource("4_ia74v")
@@ -300,16 +304,15 @@ shape = SubResource("SeparationRayShape3D_h48ti")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.500259, 0)
+cull_mask = 1048573
 doppler_tracking = 2
 current = true
-
-[node name="Gun" type="Node3D" parent="CameraPivot/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625, -0.741, -0.529)
 
 [node name="Bullets" type="Node3D" parent="CameraPivot/Camera3D"]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="CameraPivot/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.199741, 0)
+layers = 3
 light_color = Color(1, 0.956863, 0.917647, 1)
 light_energy = 0.417
 light_volumetric_fog_energy = 0.0
@@ -350,6 +353,28 @@ stream = ExtResource("4_tnbl5")
 max_polyphony = 4
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HandViewPort" type="SubViewportContainer" parent="CanvasLayer"]
+offset_right = 480.0
+offset_bottom = 270.0
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/HandViewPort"]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_cull_mask = 4293918720
+size = Vector2i(480, 270)
+render_target_update_mode = 4
+
+[node name="GunCam" type="Camera3D" parent="CanvasLayer/HandViewPort/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.500259, 0)
+environment = SubResource("Environment_5pmoy")
+
+[node name="Gun" type="Node3D" parent="CanvasLayer/HandViewPort/SubViewport/GunCam"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625, -0.741, -0.529)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CanvasLayer/HandViewPort/SubViewport/GunCam"]
+transform = Transform3D(0.1219, 0.166154, -0.978536, 0.118163, 0.976448, 0.180519, 0.985483, -0.137632, 0.0993961, 0, 5.59974, 0)
 
 [node name="UI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
