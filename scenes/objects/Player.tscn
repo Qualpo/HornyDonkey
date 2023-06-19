@@ -215,7 +215,9 @@ _data = {
 }
 
 [sub_resource type="Environment" id="Environment_5pmoy"]
+ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.2
 reflected_light_source = 1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q23x6"]
@@ -304,7 +306,6 @@ shape = SubResource("SeparationRayShape3D_h48ti")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.500259, 0)
-cull_mask = 1048573
 doppler_tracking = 2
 current = true
 
@@ -376,6 +377,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625, -0.741, -0.529)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="CanvasLayer/HandViewPort/SubViewport/GunCam"]
 transform = Transform3D(0.1219, 0.166154, -0.978536, 0.118163, 0.976448, 0.180519, 0.985483, -0.137632, 0.0993961, 0, 5.59974, 0)
+light_angular_distance = 0.5
+shadow_enabled = true
 
 [node name="UI" type="Control" parent="CanvasLayer"]
 layout_mode = 3

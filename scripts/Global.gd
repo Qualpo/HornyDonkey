@@ -9,7 +9,7 @@ var Checkpoint = Vector3()
 
 var Lives = 3
 var Money = 0.0
-var Ammo = 12
+var Ammo = INF
 var GunDamage = 30
 var PlayerPos = Vector3()
 

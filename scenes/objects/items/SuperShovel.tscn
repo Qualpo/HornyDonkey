@@ -118,7 +118,6 @@ libraries = {
 }
 
 [node name="cube" parent="Visual/Shovel/Node2" index="0"]
-layers = 1
 surface_material_override/0 = ExtResource("2_sr5yb")
 metadata/_edit_lock_ = true
 
