@@ -1,7 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4634838ux6pa"]
+[gd_scene load_steps=9 format=3 uid="uid://c4634838ux6pa"]
 
 [ext_resource type="PackedScene" uid="uid://cxh507iow7u1r" path="res://scenes/objects/items/Shovel.tscn" id="1_2s67t"]
 [ext_resource type="Material" uid="uid://b2hp6xcxdplfi" path="res://resources/materials/Gold.tres" id="2_sr5yb"]
+
+[sub_resource type="Animation" id="Animation_2vnl2"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mdlao"]
+_data = {
+"RESET": SubResource("Animation_2vnl2")
+}
 
 [sub_resource type="Animation" id="Animation_ckq4t"]
 resource_name = "RESET"
@@ -114,8 +122,12 @@ UpgradePath = ""
 
 [node name="AnimationPlayer" parent="." index="2"]
 libraries = {
+"": SubResource("AnimationLibrary_mdlao"),
 "Shovel": SubResource("AnimationLibrary_f4htf")
 }
+
+[node name="Shovel" parent="Visual" index="0"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, -0.4, 0)
 
 [node name="cube" parent="Visual/Shovel/Node2" index="0"]
 surface_material_override/0 = ExtResource("2_sr5yb")

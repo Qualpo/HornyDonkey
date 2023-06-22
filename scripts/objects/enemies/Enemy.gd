@@ -10,33 +10,46 @@ var State = STATES.idle
 @export var MoveSpeed = 1.5
 @export var HP = 100
 @export var Damage = 100
-
+@export var ViewRadius = 5.0
+@export var ViewFov = 75.0
+@export var Friction = 0.25
 
 var EyeTarget = null
 
 signal See(P:Player)
 
+func _ready():
+	var Shape = SphereShape3D.new()
+	Shape.radius = ViewRadius
+	$Vision/CollisionShape3D2.shape = Shape
+	$Vision/Eye.target_position = Vector3(0,0,-ViewRadius)
 
 func _physics_process(delta):
 	if Enabled:
 		if EyeTarget != null:
-			$Eye.target_position = ($Eye.position + position).direction_to(EyeTarget.position) * 100
-			if $Eye.is_colliding():
-				if $Eye.get_collider() == EyeTarget:
+			$Vision/Eye.look_at(EyeTarget.position)
+			$Vision/Eye.rotation_degrees.x = clamp($Vision/Eye.rotation_degrees.x, -ViewFov,ViewFov)
+			$Vision/Eye.rotation_degrees.y = clamp($Vision/Eye.rotation_degrees.y, -ViewFov,ViewFov)
+			$Vision/Eye.rotation_degrees.z = clamp($Vision/Eye.rotation_degrees.z, -ViewFov,ViewFov)
+			if $Vision/Eye.is_colliding():
+				
+				if $Vision/Eye.get_collider() == EyeTarget:
+					print("peepoo")
 					State = STATES.pathfind
-		velocity = lerp(velocity,Vector3(0,velocity.y,0),0.25)
+		velocity = lerp(velocity,Vector3(0,velocity.y,0),Friction)
 		var dir2Target = Vector3()
 		if State == STATES.pathfind:
 			dir2Target = position.direction_to(Vector3(NavAgent.get_next_path_position().x,0,NavAgent.get_next_path_position().z))
 			rotation.y = Vector2(-position.direction_to(EyeTarget.position).z,-position.direction_to(EyeTarget.position).x).angle()
 		else:
 			dir2Target = Vector3()
-			rotation.y = Vector2(-velocity.z,-velocity.x).angle()
-		velocity += Vector3(dir2Target.x,0,dir2Target.z) *  MoveSpeed
+			if velocity > Vector3():
+				rotation.y = Vector2(-velocity.z,-velocity.x).angle()
+		velocity += Vector3(dir2Target.x,0,dir2Target.z).normalized() *  MoveSpeed
 		velocity.y -= 1
 		
-		$Eye.global_rotation.y = 0
 		move_and_slide()
+
 func UpdateTargetLocation(tarloc):
 	NavAgent.set_target_position(tarloc)
 func Hit(head,hitter,damage):

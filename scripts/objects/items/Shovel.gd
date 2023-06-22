@@ -5,6 +5,7 @@ extends Item
 
 
 var User = null
+var Melee = false
 
 func PickUp(user):
 	super.PickUp(user)
@@ -18,6 +19,10 @@ func Use(user):
 
 func UnUse(user):
 	pass
+func SecondUse(user):
+	Melee = true
+func UnSecondUser(user):
+	Melee = false
 func Dig():
 			var Cast:RayCast3D = RayCast3D.new()
 			User.ShootNode.add_child(Cast)
@@ -32,8 +37,8 @@ func Dig():
 				else:
 					$GPUParticles3D.restart()
 					$AnimationPlayer.play("Shovel/hit")
-					$AudioStreamPlayer3D.stream = HitNoise
-					$AudioStreamPlayer3D.play()
+					$Visual/Shovel/AudioStreamPlayer3D.stream = HitNoise
+					$Visual/Shovel/AudioStreamPlayer3D.play()
 					User.ControlShake(0,1.0, 1.0,0.6)
 					if User.velocity.y < 0:
 						User.velocity.y =-User.velocity.y/2

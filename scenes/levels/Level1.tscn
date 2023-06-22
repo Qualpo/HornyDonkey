@@ -1169,20 +1169,22 @@ environment = SubResource("Environment_huweb")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.966833, 0.0639555, 0.247273, -0.220764, -0.277613, 0.934984, 0.128444, -0.958562, -0.254286, 0, 14.4, 0)
 light_color = Color(0.945098, 0.894118, 0.992157, 1)
-light_energy = 0.21
-light_indirect_energy = 0.505
+light_energy = 0.266
+light_indirect_energy = 0.347
 light_volumetric_fog_energy = 0.0
 light_angular_distance = 0.5
 shadow_enabled = true
-shadow_opacity = 0.62
+shadow_opacity = 0.44
 shadow_blur = 3.474
 
 [node name="Enemies" type="Node3D" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("30_lxnio")]
-transform = Transform3D(-0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, -0.984808, -3.44791, 0.1, -27.1046)
+transform = Transform3D(-1, 0, 2.45869e-07, 0, 1, 0, -2.45869e-07, 0, -1, 0.125216, 0.1, -19.5097)
 Enabled = true
+MoveSpeed = 0.5
 HP = 6969
+Friction = 0.0
 
 [connection signal="See" from="Enemies/Enemy" to="." method="_on_enemy_see"]
 

@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6gygqb04qmtd"]
+[gd_scene load_steps=7 format=3 uid="uid://b6gygqb04qmtd"]
 
 [ext_resource type="Script" path="res://scripts/objects/enemies/Enemy.gd" id="1_08hcf"]
 [ext_resource type="Texture2D" uid="uid://cnf3apj82oqdt" path="res://textures/gaben_wall.png" id="2_ohmxn"]
-[ext_resource type="ArrayMesh" uid="uid://cjv4hag5dafv6" path="res://models/mesh/Cone.res" id="2_yyiqd"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ysp08"]
 
@@ -13,10 +12,6 @@ length = 0.7
 radius = 0.3
 height = 1.4
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_1eom2"]
-height = 18.8
-radius = 5.5
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_c7qhk"]
 size = Vector3(4, 4, 1.2)
 
@@ -26,6 +21,7 @@ floor_snap_length = 0.39
 script = ExtResource("1_08hcf")
 MoveSpeed = 4.0
 HP = 1200
+ViewRadius = 10.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false
@@ -53,20 +49,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 shape = SubResource("CapsuleShape3D_mggel")
 
 [node name="Vision" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.3, -1.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8, 0)
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Vision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 4.17233e-07)
-shape = SubResource("CylinderShape3D_1eom2")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Vision"]
-visible = false
-mesh = ExtResource("2_yyiqd")
-
-[node name="Eye" type="RayCast3D" parent="."]
-target_position = Vector3(100, 0, 0)
+[node name="Eye" type="RayCast3D" parent="Vision"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+target_position = Vector3(0, 0, -10)
 collision_mask = 3
 debug_shape_custom_color = Color(0.917647, 0.741176, 0.941176, 1)
 debug_shape_thickness = 3
