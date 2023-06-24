@@ -126,9 +126,6 @@ libraries = {
 "Shovel": SubResource("AnimationLibrary_f4htf")
 }
 
-[node name="Shovel" parent="Visual" index="0"]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, -0.4, 0)
-
 [node name="cube" parent="Visual/Shovel/Node2" index="0"]
 surface_material_override/0 = ExtResource("2_sr5yb")
 metadata/_edit_lock_ = true

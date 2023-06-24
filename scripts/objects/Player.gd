@@ -197,7 +197,7 @@ func _input(event):
 	if event.is_action_pressed("Inventory"):
 		$CanvasLayer/Inventory.visible = true
 		$CanvasLayer/Inventory.Open()
-		Inventory
+
 		LookDisabled = true
 		InvOpen = true
 		

@@ -12,9 +12,11 @@ class_name Item
 var Using = false
 var Held = false
 var OnGround = true
+var User = null
 
 
 func PickUp(user):
+	User = user
 	OnGround = false
 	$Area3D.collision_layer = 0
 	position = Vector3()

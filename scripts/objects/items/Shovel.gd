@@ -4,12 +4,10 @@ extends Item
 @onready var HitNoise = preload("res://audio/sfx/metal clang.ogg")
 
 
-var User = null
 var Melee = false
 
 func PickUp(user):
 	super.PickUp(user)
-	$Visual/Shovel/Node2/cube.layers = 2
 func Use(user):
 	if Held:
 		User = user

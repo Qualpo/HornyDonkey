@@ -9,17 +9,17 @@ class_name Gun
 @export var ShootCooldown = 0.15
 @export var ShootSound : AudioStream
 @export var NoBulletSound : AudioStream
+@export var GunAimPosition : Vector3 
 
 var BulletHole = preload("res://scenes/objects/BulletHole.tscn")
 
 var Shooting = false
 var RNG = RandomNumberGenerator.new()
+func _ready():
+	super._ready()
+	print(GunAimPosition)
 func PickUp(user):
 	super.PickUp(user)
-	$Visual/Gun/Node2/GunBase.layers = 2
-	$Visual/Gun/Node2/GunTop.layers = 2
-	$Visual/Gun/Node2/Barrel.layers = 2
-	$Visual/Gun/Node2/cube.layers = 2
 func Use(user):
 	if Held:
 		
@@ -31,10 +31,15 @@ func SecondUse(user):
 	if Held:
 		user.UnSprint()
 		user.Aim()
+func Select():
+	super.Select()
+	print(GunAimPosition)
+	User.GunAimPos = GunAimPosition
 func UnSecondUse(user):
 	if Held:
 		if user.Aiming:
 			user.UnAim()
+
 func Shoot(accuracy, bulletammount, recoil, user):
 	if not Shooting and Global.Ammo > 0:
 		Global.Ammo -= 1
