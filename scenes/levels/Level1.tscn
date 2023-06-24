@@ -1184,6 +1184,7 @@ transform = Transform3D(-1, 0, 2.45869e-07, 0, 1, 0, -2.45869e-07, 0, -1, 0.1252
 Enabled = true
 MoveSpeed = 0.5
 HP = 6969
+ViewFov = 180.0
 Friction = 0.0
 
 [connection signal="See" from="Enemies/Enemy" to="." method="_on_enemy_see"]
