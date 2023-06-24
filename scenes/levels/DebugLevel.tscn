@@ -363,7 +363,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0.6, -4.9)
 
 [node name="Gun" parent="." instance=ExtResource("22_il301")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1, -0.3)
-GunAimPosition = Vector3(0, 0, 0)
 
 [node name="lament" parent="." instance=ExtResource("23_imqht")]
 transform = Transform3D(0.161, 0, 0, 0, 0.161, 0, 0, 0, 0.161, 3.09179, 0.265077, 1.28409)

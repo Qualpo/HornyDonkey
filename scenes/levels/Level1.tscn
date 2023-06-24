@@ -289,7 +289,6 @@ Flipped = true
 
 [node name="Gun" parent="NavigationRegion3D/LevelStuff/Intro" instance=ExtResource("8_v3air")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, -0.6, -3.5)
-GunAimPosition = Vector3(0, 0, 0)
 
 [node name="MainHall" type="Node3D" parent="NavigationRegion3D/LevelStuff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -1.5, -13.8)
@@ -1183,7 +1182,6 @@ shadow_blur = 3.474
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("30_lxnio")]
 transform = Transform3D(-1, 0, 2.45869e-07, 0, 1, 0, -2.45869e-07, 0, -1, 0.125216, 0.1, -19.5097)
-Enabled = true
 MoveSpeed = 0.5
 HP = 6969
 ViewFov = 180.0
@@ -1191,7 +1189,6 @@ Friction = 0.0
 
 [node name="Shotgun" parent="." instance=ExtResource("31_n6bb6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49012e-08, -0.48, -2.2)
-GunAimPos = null
 
 [connection signal="See" from="Enemies/Enemy" to="." method="_on_enemy_see"]
 

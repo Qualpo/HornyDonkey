@@ -52,7 +52,8 @@ func Shoot(accuracy, bulletammount, recoil, user):
 
 		for i in range(bulletammount):
 			var rand = (abs(1-accuracy))*25
-			var spread = Vector2(RNG.randf_range(-rand,rand),RNG.randf_range(-rand,rand))
+			var spreadDir = Vector2(RNG.randf_range(-1,1),RNG.randf_range(-1,1)).normalized()
+			var spread = spreadDir * randf_range(0,rand)
 			var Cast:RayCast3D = RayCast3D.new()
 			user.ShootNode.add_child(Cast)
 			Cast.position = Vector3()

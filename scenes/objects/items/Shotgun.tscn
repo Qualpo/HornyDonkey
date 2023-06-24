@@ -34,13 +34,13 @@ _data = {
 script = ExtResource("2_a8o7d")
 MaxAmmo = 16
 Ammo = 14
-Accuracy = 0.5
+Accuracy = 0.0
 Recoil = 5.0
-BulletAmmount = 10
-ShootCooldown = 0.15
+BulletAmmount = 1000
+ShootCooldown = 0.5
 ShootSound = ExtResource("3_1ifml")
 NoBulletSound = ExtResource("4_8gw2y")
-GunAimPos = Vector3(0.42, -0.29, -0.14)
+GunAimPosition = Vector3(0.431, -0.292, -0.185)
 
 [node name="sHOTGUN" parent="Visual" index="0" instance=ExtResource("2_olt4k")]
 

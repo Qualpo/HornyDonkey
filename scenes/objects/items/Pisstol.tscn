@@ -66,7 +66,7 @@ BulletAmmount = 1
 ShootCooldown = 0.15
 ShootSound = ExtResource("3_p5rlf")
 NoBulletSound = ExtResource("4_wpo0o")
-GunAimPosition = Vector3(0, 0, 0)
+GunAimPosition = Vector3(0, -0.23, -0.184)
 icon = ExtResource("5_3i7sp")
 Name = "Gun"
 
