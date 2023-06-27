@@ -1182,6 +1182,7 @@ shadow_blur = 3.474
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("30_lxnio")]
 transform = Transform3D(-1, 0, 2.45869e-07, 0, 1, 0, -2.45869e-07, 0, -1, 0.125216, 0.1, -19.5097)
+Enabled = true
 MoveSpeed = 0.5
 HP = 6969
 ViewFov = 180.0

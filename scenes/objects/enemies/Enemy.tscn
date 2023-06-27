@@ -56,7 +56,6 @@ collision_mask = 2
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Vision"]
 
 [node name="Eye" type="RayCast3D" parent="Vision"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 target_position = Vector3(0, 0, -10)
 collision_mask = 3
 debug_shape_custom_color = Color(0.917647, 0.741176, 0.941176, 1)
