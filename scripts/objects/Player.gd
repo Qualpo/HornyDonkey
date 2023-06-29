@@ -316,6 +316,8 @@ func UpdateUi():
 	$CanvasLayer/UI/Health.text = str(int(HP))
 	$CanvasLayer/UI/Ammo.text = str(Global.Ammo)
 	$CanvasLayer/UI/Lives.text = str("x", Global.Lives)
+	discord_sdk.details = str("$",Global.Money,"\nHP: ",int(HP),"\nAmmo: ",Global.Ammo,"\nLives: ",Global.Lives)
+	discord_sdk.refresh()
 
 
 
