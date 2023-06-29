@@ -6,6 +6,8 @@ var CurSelect = 0
 var windowvel = Vector2()
 
 func _ready():
+	discord_sdk.state = "MainMenu"
+	discord_sdk.refresh()
 	get_tree().root.grab_focus()
 
 func _physics_process(delta):

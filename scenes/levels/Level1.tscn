@@ -163,6 +163,7 @@ adjustment_enabled = true
 
 [node name="Level1" type="Node3D"]
 script = ExtResource("1_sdvsi")
+LevelName = "Level 1"
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_745ov")

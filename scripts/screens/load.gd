@@ -4,6 +4,14 @@ extends Node
 var Mods = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	discord_sdk.app_id = 1124083212696698881
+	
+	discord_sdk.details = "Testing discord shit"
+	discord_sdk.state = "Loading"
+	discord_sdk.large_image = "gaben"
+	discord_sdk.small_image = "icon"
+	discord_sdk.refresh()
+	
 	print("poop")
 	var udir = DirAccess.open("user://")
 	if not udir.dir_exists("patch"):

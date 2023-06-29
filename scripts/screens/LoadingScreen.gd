@@ -5,6 +5,8 @@ var SceneLoadStatus = 0
 var doing = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	discord_sdk.state = "Loading"
+	discord_sdk.refresh()
 	scene = Global.TargetScenePath
 	ResourceLoader.load_threaded_request(scene)
 	

@@ -89,6 +89,7 @@ glow_bloom = 0.54
 
 [node name="DebugLevel" type="Node3D"]
 script = ExtResource("1_ym708")
+LevelName = "Debug Level"
 BGM = ExtResource("2_1s4sw")
 
 [node name="CSGBox3D20" type="CSGBox3D" parent="."]

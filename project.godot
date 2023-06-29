@@ -31,6 +31,7 @@ driver/enable_input=true
 Music="*res://scenes/Music.tscn"
 Global="*res://scripts/Global.gd"
 Inventory="*res://scripts/Inventory.gd"
+DiscordSDKLoader="*res://addons/discord-sdk-gd/nodes/core_updater.gd"
 
 [display]
 
@@ -48,7 +49,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/discord-sdk-gd/plugin.cfg")
 
 [importer_defaults]
 
