@@ -249,6 +249,10 @@ func NewItem(item:Item):
 	UpdateInvScroll()
 	if Aiming:
 		UnAim()
+	discord_sdk.details = "Item: " + str(item.name) 
+	discord_sdk.refresh()
+	$Timer.start(1)
+	
 func Heal(am:float):
 	HP += am
 	HP = clamp(HP,0.0,100.0)
@@ -335,3 +339,8 @@ func _on_hurtbox_area_entered(area):
 		print("peepee")
 	if area.is_in_group("Hurt"):
 		Hurt(area.get_parent().Damage)
+
+
+func _on_timer_timeout():
+	discord_sdk.details = str("$",Global.Money,"\nHP: ",int(HP),"\nAmmo: ",Global.Ammo,"\nLives: ",Global.Lives)
+	discord_sdk.refresh()
