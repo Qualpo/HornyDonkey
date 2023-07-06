@@ -89,7 +89,6 @@ func _physics_process(delta):
 		#Aim Lerp
 		$CanvasLayer/HandViewPort/SubViewport/GunCam/Gun.position = lerp($CanvasLayer/HandViewPort/SubViewport/GunCam/Gun.position,GunPos,0.4)
 		
-		
 		#Friction
 		
 		#Gravity
