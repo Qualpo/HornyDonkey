@@ -378,7 +378,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1, -0.3)
 transform = Transform3D(0.161, 0, 0, 0, 0.161, 0, 0, 0, 0.161, 3.09179, 0.265077, 1.28409)
 
 [node name="Enemy" parent="." instance=ExtResource("24_jth7w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.38, 1.18, -3.85)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.38, -5.14018, -3.85)
 Enabled = true
 MoveSpeed = 2.0
 ViewRadius = 100.0
